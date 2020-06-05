@@ -1,0 +1,55 @@
+defaults:
+  # background:        "#212325"
+  background:        "#232323"
+  foreground:        "#e1e1e1"
+  border:            "#404040"
+
+  highlightBg:       "#66cf43"
+  highlightFg:       "#212325"
+
+  backgroundAlt:     "#404040"
+  foregroundAlt:     "#999999"
+  borderAlt:         "#404040"
+
+
+  highLighterFg:     "#f1f1f1"
+
+  add: "#98e342"
+  del: "#f42d38"
+
+  empty: "#ffffff00"
+
+
+# message:
+#   error:            "#f42d38"
+#   warning:          "#98e342"
+#   info:             "#fcea60"
+
+ansi:
+  normal:
+    black:          "#000"
+    blue:           "#417ab3"
+    cyan:           "#00a7aa"
+    green:          "#5da602"
+    magenta:        "#88658d"
+    red:            "#dbabb0"
+    white:          "#f1f1f1"
+    yellow:         "#cfad00"
+  bright:
+    black:          "#676965"
+    blue:           "#83afd8"
+    cyan:           "#37e5e7"
+    green:          "#98e342"
+    magenta:        "#bc93b6"
+    red:            "#f44135"
+    white:          "#f1f1f1"
+    yellow:         "#fcea60"
+
+alpha:
+  full: "FF"
+  high: "BE"
+  mid: "7E"
+  midlow: "64"
+  low: "40"
+  toolow: "28"
+  none: "00"

@@ -1,0 +1,324 @@
+# https://code.visualstudio.com/api/references/theme-color
+
+
+# defaults
+
+contrastActiveBorder: defaults.background/alpha.none
+contrastBorder: defaults.background/alpha.none
+focusBorder: defaults.background/alpha.none
+border: defaults.background
+foreground: defaults.foreground
+descriptionForeground: "#0ff"
+
+
+
+
+
+
+widget:
+  shadow: defaults.empty
+
+# User Interface -------------------------------------------------------------
+activityBarBadge:
+  background: defaults.highlightBg
+  foreground: defaults.highlightFg
+
+extensionBadge:
+  remoteBackground: defaults.highlightBg
+  remoteForeground: defaults.highlightFg
+
+badge:
+  background: "#f42d38"
+  foreground: defaults.highLighterFg
+
+settings:
+  headerForeground: defaults.highlightBg
+  modifiedItemIndicator: defaults.highlightBg
+
+button:
+  background: defaults.highlightBg
+  foreground: defaults.highlightFg
+  hoverBackground: defaults.highlightBg/alpha.high     # not ok
+
+
+
+# Notifications -------------------------------------------------------------
+
+progressBar:
+  background: defaults.highlightBg
+
+notificationCenter:
+  border: defaults.borderAlt
+
+notificationCenterHeader:
+  foreground: defaults.foreground
+  background: defaults.backgroundAlt
+
+notificationToast:
+  border: defaults.foregroundAlt
+
+notifications:
+  background: defaults.background
+  foreground: defaults.foreground
+  border: defaults.borderAlt
+
+notificationLink:
+  foreground: _
+
+# notificationsErrorIcon:   { foreground: message.error   }
+# notificationsWarningIcon: { foreground: message.warning }
+# notificationsInfoIcon:    { foreground: message.info    }
+
+
+# TitleBar -------------------------------------------------------------------
+
+titleBar:
+  activeBackground: _
+  activeForeground: _
+  inactiveBackground: _
+  inactiveForeground: _
+  border: _
+
+# Tabs -----------------------------------------------------------------------
+
+editorGroup:
+  border: defaults.empty
+
+editorGroupHeader:
+  noTabsBackground: _
+  tabsBackground: defaults.background
+  tabsBorder: defaults.empty
+
+tab:
+  border: defaults.empty
+  activeBorder: defaults.foreground
+  activeForeground: defaults.foreground
+  activeBackground: defaults.background
+  inactiveBackground: defaults.background
+  inactiveForeground: defaults.foreground
+
+# Activity Bar (main section, icons and badges) - leftest section
+activityBar:
+  background: defaults.background
+  foreground: defaults.highlightBg
+  activeBackground: defaults.background
+  activeBorder: defaults.empty
+  activeFocusBorder: defaults.lightFg
+  border: defaults.background
+  inactiveForeground: defaults.backgroundAlt
+
+
+diffEditor:
+  insertedTextBackground: defaults.add/alpha.mid
+  insertedTextBorder: defaults.add
+  removedTextBackground: defaults.del/alpha.mid
+  removedTextBorder: defaults.del
+  border: _
+  diagonalFill: _
+
+extensionButton:
+  prominentBackground: defaults.highlightBg
+  prominentForeground: defaults.highlightFg
+
+
+# quickInputTitle:
+#   background: _
+
+pickerGroup:
+  border:  defaults.foreground
+  foreground:  defaults.foreground
+
+# welcomePage:
+#   background: _
+#   buttonBackground: _
+#   buttonHoverBackground: _
+
+# walkThrough:
+#   embeddedEditorBackground: _
+
+statusBar:
+  background: defaults.background
+  foreground: defaults.foregroundAlt
+  border: defaults.background
+
+# editorOverviewRuler:
+#   background: defaults.background
+#   border: defaults.background
+#   findMatchForeground: _
+#   rangeHighlightForeground: _
+#   selectionHighlightForeground: _
+#   wordHighlightForeground: _
+#   wordHighlightStrongForeground: _
+#   modifiedForeground: _
+#   addedForeground: _
+#   deletedForeground: _
+#   errorForeground: message.error
+#   warningForeground: message.warning
+#   infoForeground: message.info
+#   bracketMatchForeground: _
+#   currentContentForeground: _
+#   incomingContentForeground:  _
+#   commonContentForeground: _
+
+# editorGutter:
+#   modifiedBackground: _
+
+
+# searchEditor:
+#   textInputBorder: _
+#   findMatchBorder: _
+#   findMatchBackground: _
+
+editorLineNumber:
+  foreground: defaults.foregroundAlt
+
+editorCursor:
+  foreground: defaults.highlightBg
+
+editor:
+  background: defaults.background
+  foreground: defaults.foreground
+
+  # Doesn't looks line this working.
+  snippetTabstopHighlightBackground: _
+  snippetTabstopHighlightBorder: _
+  snippetFinalTabstopHighlightBackground: _
+  snippetFinalTabstopHighlightBorder: _
+  # checkout
+  stackFrameHighlightBackground: _
+  focusedStackFrameHighlightBackground:  "#000"
+  # folds (do i really need it?)
+  # foldBackground: _
+  rangeHighlightBackground: defaults.highLighterFg/alpha.toolow
+  rangeHighlightBorder: defaults.empty
+  # symbolHighlightBackground: _
+  # symbolHighlightBorder: _
+
+  lineHighlightBackground: defaults.highLighterFg/alpha.toolow
+  lineHighlightBorder: defaults.empty
+
+  hoverHighlightBackground: "#ff0"
+
+  # selection and inctive selection.
+  # foreground doesn't seams to work.
+  selectionBackground: "#00ac48"
+  inactiveSelectionBackground: "#00ac4899"
+
+  # If clicked on word -> highlight same word everywhere
+  selectionHighlightBackground: "#ff5230"
+  selectionHighlightBorder: defaults.empty
+
+  # Match we see as 1st if we search for something.
+  findMatchBackground: "#0066c8"
+  findMatchBorder: defaults.empty
+
+  # All Match we see if we search for something.
+  findMatchHighlightBackground: "#0066c899"
+  findMatchHighlightBorder: defaults.empty
+
+  findRangeHighlightBackground: "#dcdcdc"
+  findRangeHighlightBorder: defaults.empty
+
+  # wordHighlightBackground: "#ffc"
+  # wordHighlightBorder: defaults.empty
+
+  # wordHighlightStrongBackground: "#ddc"
+  # wordHighlightStrongBorder: defaults.empty
+
+editorWhitespace:
+  foreground: defaults.foregroundAlt
+
+editorRuler:
+  foreground: defaults.foregroundAlt/alpha.mid
+
+editorCodeLens:
+  foreground: defaults.foregroundAlt
+
+
+# Panel: Terminal
+
+terminal:
+  background: defaults.background
+  foreground: defaults.foreground
+  border: defaults.background
+
+  ansiBlack:   ansi.normal.black
+  ansiWhite:   ansi.normal.white
+  ansiBlue:    ansi.normal.blue
+  ansiCyan:    ansi.normal.cyan
+  ansiGreen:   ansi.normal.green
+  ansiMagenta: ansi.normal.magenta
+  ansiRed:     ansi.normal.red
+  ansiYellow:  ansi.normal.yellow
+
+  ansiBrightBlack:   ansi.bright.black
+  ansiBrightWhite:   ansi.bright.white
+  ansiBrightBlue:    ansi.bright.blue
+  ansiBrightCyan:    ansi.bright.cyan
+  ansiBrightGreen:   ansi.bright.green
+  ansiBrightMagenta: ansi.bright.magenta
+  ansiBrightRed:     ansi.bright.red
+  ansiBrightYellow:  ansi.bright.yellow
+
+terminalCursor:
+  background: defaults.highLighterFg
+  foreground: defaults.highLighterFg
+
+# Sidebar ------------------------------------------------------------------
+
+sideBar:
+  background: defaults.background
+  dropBackground: defaults.background
+
+sideBarTitle:
+  foreground: defaults.foregroundAlt
+
+sideBarSectionHeader:
+  background: defaults.background
+
+# Experimental -------------------------------------------------------------
+
+editorPane:
+  background: _
+editorLink:
+  activeForeground: _
+editorLightBulbAutoFix:
+  foreground: _
+
+textLink:
+  activeForeground: _
+  foreground: defaults.highlightBg
+
+
+listFilterWidget:
+  background: _
+  outline: _
+  noMatchesOutline: _
+
+
+# # Sidebar Explorer + Lists
+
+list:
+  # right click for a second.
+  activeSelectionBackground: defaults.backgroundAlt
+  activeSelectionForeground: defaults.highLighterFg
+  dropBackground: defaults.background
+
+  # inactive focused item.
+  focusBackground: defaults.backgroundAlt
+  focusForeground: defaults.highLighterFg
+
+  # highlightForeground: defaults.highLighterFg
+  hoverBackground: defaults.backgroundAlt
+  hoverForeground: defaults.highLightFg
+
+  # invalidItemForeground: _
+  # errorForeground: _
+  # warningForeground: _
+  # filterMatchBackground: _
+  # filterMatchBorder: _
+
+
+
+tree:
+  indentGuidesStroke: defaults.foregroundAlt
