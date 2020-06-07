@@ -1,0 +1,156 @@
+colors:
+  red:    &red     "#f42d38"
+  green:  &green   "#98e342"
+  yellow: &yellow  "#fcea60"
+  blue:   &blue    "#0281d3"
+  orange: &orange  "#FF9F2E"
+  violet: &violet  "#C668BA"
+  white:  &white   "#e1e1e1"
+  gray:   &gray    "#666666"
+
+  e1: *red
+  e2: *green
+  e3: *yellow
+  e4: *blue
+  e5: *orange
+  e6: *violet
+  e7: *white
+  e8: *gray
+
+
+alpha:
+  high: "BE"
+  mid: "7E"
+  low: "40"
+  none: "00"
+
+
+# "fontStyle": "underline"
+# "fontStyle": "bold"
+# "fontStyle": "normal"
+
+
+
+scopes:
+
+# ~~~ General/Common Grammars ~~~
+
+- name: Comments
+  settings:
+    foreground: white/a50
+    fontStyle: italic
+  scope:
+  - comment
+
+# ~~~ YAML Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- name: "YAML: Name"
+  settings:
+    foreground: green/a50
+    fontStyle: bold
+  scope:
+    - entity.name.tag.yaml
+    - meta.block-mapping.yaml string.unquoted.block.yaml
+    - meta.block-mapping.yaml string.unquoted.plain.out.yaml
+    - meta.block-mapping.yaml string.quoted.double.yaml
+    - meta.block-mapping.yaml string.quoted.single.yaml
+    - meta.block-mapping.yaml string.unquoted.block.yaml
+    - meta.block-mapping.yaml string.unquoted.directive-name.yaml
+    - meta.block-mapping.yaml string.unquoted.directive-parameter.yaml
+
+- name: "Yaml: Punctuation"
+  settings:
+    foreground: blue
+  scope:
+    - punctuation.definition.alias.yaml
+    - punctuation.definition.block.sequence.item.yaml
+    - punctuation.definition.directive.begin.yaml
+    - punctuation.definition.key-value.begin.yaml
+    - punctuation.definition.mapping.begin.yaml
+    - punctuation.definition.mapping.end.yaml
+    - punctuation.definition.sequence.begin.yaml
+    - punctuation.definition.sequence.end.yaml
+    # - punctuation.definition.string.begin.yaml
+    # - punctuation.definition.string.end.yaml
+    - punctuation.separator.key-value.mapping.yaml
+    - punctuation.separator.mapping.yaml
+    - punctuation.separator.sequence.yaml
+    - punctuation.whitespace.comment.leading.yaml
+
+- name: "Yaml: New Document"
+  settings:
+    foreground: b
+    fontStyle: bold
+  scope:
+  - entity.other.document.begin.yaml
+
+- name: "Yaml: Variable Extraction"
+  settings:
+    foreground: green
+    fontStyle: italic
+  scope:
+    - storage.type.tag-handle.yaml
+    - meta.property.yaml
+    - punctuation.definition.alias.yaml
+    - keyword.control.flow.alias.yaml
+    - variable.other.alias.yaml
+
+- name: "Yaml: Values"
+  settings:
+    foreground: white
+  scope:
+    - constant.character.escape.double-quoted.newline.yaml
+    - constant.character.escape.single-quoted.yaml
+    - constant.character.escape.yaml
+    - constant.language.merge.yaml
+    - constant.other.timestamp.yaml
+    - constant.numeric.float.yaml
+    - constant.numeric.indentation-indicator.yaml
+    - constant.numeric.integer.yaml
+    - constant.numeric.yaml-version.yaml
+    - constant.other.timestamp.yaml
+    - string.quoted.double.yaml
+    - string.quoted.single.yaml
+    - string.unquoted.block.yaml
+    - string.unquoted.directive-name.yaml
+    - string.unquoted.directive-parameter.yaml
+    - string.unquoted.plain.in.yaml
+    - string.unquoted.plain.out.yaml
+
+- name: "Yaml: Control Flow"
+  settings:
+    foreground: orange
+    fontStyle: bold
+  scope:
+    - keyword.control.flow.block-scalar.folded.yaml
+    - keyword.control.flow.block-scalar.literal.yaml
+    - meta.block-mapping.yaml
+
+- name: "Yaml: Null/True/False"
+  settings:
+    foreground: cyan
+    fontStyle: bold
+  scope:
+  - constant.language.null.yaml
+  - constant.language.boolean.yaml
+
+- name: "Yaml: Error"
+  settings:
+    foreground: red
+    fontStyle: bold
+  scope:
+  - invalid.illegal.character.anchor.yaml
+  - invalid.illegal.expected-comment-or-newline.yaml
+  - invalid.illegal.expected-newline.yaml
+  - invalid.illegal.tag-handle.yaml
+  - invalid.illegal.unrecognized.yaml
+
+# ~~~ /YAML Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- name: "Go: Errors"
+  settings:
+    foreground: red
+    fontStyle: bold
+  scope:
+  - "eee"

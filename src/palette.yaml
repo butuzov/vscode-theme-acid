@@ -1,0 +1,85 @@
+# Darkly Theme Colors
+#                          # YAML | Go | Python | JS |
+black:          "#232323"  # _    | _  | _      | _  |
+dark:           "#494949"  # _    |
+white:          "#f1f1f1"  # _    | _  | _      | _  |
+red:            "#f42d38"  # x    | _  | _      | _  |
+orange:         "#ca6e11"  # x    | _  | _      | _  |
+yellow:         "#f8ba00"  # _    | _  | _      | _  |
+green:          "#66cf43"  # x    | _  | _      | _  |
+green_dark:     "#"
+cyan:           "#00bdb1"  # x    | _  | _      | _  |
+blue:           "#0074ae"  # x    | _  | _      | _  |
+magenta:        "#ee27ba"  # _    | _  | _      | _  |
+
+none: "#fff0"
+
+# Main Color
+highBg: "#66cf43"
+highFg: "#232323"
+
+
+# Alpha
+a90 : "E6"
+a80 : "CC"
+a70 : "B3"
+a60 : "99"
+a50 : "80"
+a40 : "66"
+a30 : "4C"
+a20 : "33"
+a10 : "16"
+a00 : "00"
+
+# Old Values
+
+defaults:
+  background:        "#232323"
+  foreground:        "#e1e1e1"
+  border:            "#404040"
+
+  highlightBg:       "#66cf43"
+  highlightBgAlt:    "#f42d38"
+  highlightFg:       "#212325"
+  highlightFgAlt:    "#f1f1f1"
+
+  backgroundAlt:     "#404040"
+  foregroundAlt:     "#999999"
+  borderAlt:         "#404040"
+
+
+  highLighterFg:     "#f1f1f1"
+
+  add: "#98e342"
+  del: "#f42d38"
+
+  empty: "#00000000"
+
+ansi:
+  normal:
+    black:          "#000000"
+    white:          "#f1f1f1"
+    blue:           "#417ab3"
+    cyan:           "#00a7aa"
+    green:          "#5da602"
+    magenta:        "#88658d"
+    red:            "#dbabb0"
+    yellow:         "#cfad00"
+  bright:
+    black:          "#676965"
+    white:          "#f1f1f1"
+    red:            "#f44135"
+    blue:           "#83afd8"
+    cyan:           "#37e5e7"
+    green:          "#98e342"
+    magenta:        "#bc93b6"
+    yellow:         "#fcea60"
+
+alpha:
+  full: "FF"
+  high: "BE"
+  mid: "7E"
+  midlow: "64"
+  low: "40"
+  toolow: "28"
+  none: "00"

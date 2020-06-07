@@ -1,0 +1,684 @@
+# https://code.visualstudio.com/api/references/theme-color
+#
+# Default settings.
+
+descriptionForeground: _
+contrastActiveBorder: none
+errorForeground: "#ff0"
+contrastBorder: none
+focusBorder: none
+foreground: white
+
+# Activity Bar (main section, icons and badges) - leftest section
+activityBar:
+  activeBackground: black
+  background: black
+  foreground: highBg
+  activeBorder: black
+  activeFocusBorder: black
+  border: black
+  dropBackground: _
+  inactiveForeground: white
+
+# ActivityBarBadge
+activityBarBadge:
+  background: highBg
+  foreground: highFg
+
+# Badge
+badge:
+  background: highBg
+  foreground: highFg
+
+# Breadcrumb
+breadcrumb:
+  activeSelectionForeground: white
+  background: black
+  focusForeground: dark
+  foreground: white/a50
+
+# BreadcrumbPicker
+breadcrumbPicker:
+  background: dark
+
+# Button
+button:
+  background: green
+  foreground: black
+  hoverBackground: green/a80
+
+# Checkbox
+checkbox:
+  background: black
+  border: dark
+  foreground: white
+
+# DebugExceptionWidget
+debugExceptionWidget:
+  background: _
+  border: _
+
+# DebugIcon
+debugIcon:
+  breakpointCurrentStackframeForeground: _
+  breakpointDisabledForeground: _
+  breakpointForeground: green
+  breakpointStackframeForeground: _
+  breakpointUnverifiedForeground: _
+
+  continueForeground: _
+  disconnectForeground: _
+  pauseForeground: orange
+  restartForeground: magenta
+  startForeground: green
+  stepBackForeground: _
+  stepIntoForeground: cyan
+  stepOutForeground: green
+  stepOverForeground: green/a50
+  stopForeground: blue
+
+# DebugTokenExpression - debug output
+debugTokenExpression:
+  boolean: _
+  error: red/a80
+  name: _
+  number: _
+  string: white/a80
+  value: _
+
+# DebugToolBar
+debugToolBar:
+  background: dark
+  border: red
+
+# DebugView
+debugView:
+  exceptionLabelBackground: _
+  exceptionLabelForeground: _
+  stateLabelBackground: _
+  stateLabelForeground: _
+  valueChangedHighlight: _
+
+diffEditor:
+  border: _
+  diagonalFill: yellow
+  insertedTextBackground: green/a70
+  insertedTextBorder: none
+  removedTextBackground: red/a50
+  removedTextBorder: none
+
+# Dropdown
+dropdown:
+  background: dark
+  border: dark
+  foreground: white
+  listBackground: dark
+
+# Editor
+editor:
+  background: black
+  foreground: white/a90
+
+  findMatchBackground: blue
+  findMatchBorder: none
+
+  # Matches in search using = "Search Functionality"
+  findMatchHighlightBackground: blue/a90
+  findMatchHighlightBorder: none
+
+  findRangeHighlightBackground: none2
+  findRangeHighlightBorder: none2
+  focusedStackFrameHighlightBackground: none2
+  foldBackground: green/a30
+
+  hoverHighlightBackground: green/a40
+  lineHighlightBackground: white/a30
+
+  rangeHighlightBackground: none2
+  rangeHighlightBorder: none2
+
+  # Selection
+  selectionBackground: white/a10
+  inactiveSelectionBackground: white/a30
+
+  # selectionForeground: black
+  selectionHighlightBackground: none2
+  selectionHighlightBorder: none2
+
+  snippetFinalTabstopHighlightBackground: none2
+  snippetFinalTabstopHighlightBorder: none2
+  snippetTabstopHighlightBackground: none2
+  snippetTabstopHighlightBorder: none2
+
+  stackFrameHighlightBackground: none2
+  symbolHighlightBackground: none2
+  symbolHighlightBorder: none2
+  tokenColorCustomizations: none2
+
+  wordHighlightBackground: none2
+  wordHighlightBorder: none2
+  wordHighlightStrongBackground: none2
+  wordHighlightStrongBorder: none2
+
+# EditorBracketMatch
+editorBracketMatch:
+  background: none
+  border: none
+
+editorCodeLens: { foreground: white/a20 }
+
+# EditorCursor
+editorCursor:
+  background: black
+  foreground: green
+
+
+# EditorGroup
+editorGroup:
+  border: none
+  # dropBackground: _
+  emptyBackground: black
+  focusedEmptyBorder: none
+
+# EditorGroupHeader
+editorGroupHeader:
+  border: none
+  noTabsBackground: black
+  tabsBackground: black
+  tabsBorder: none
+
+# EditorGutter
+editorGutter:
+  addedBackground: green
+  background: black
+  commentRangeForeground: white
+  deletedBackground: red
+  # foldingControlForeground: _
+  modifiedBackground: yellow
+
+# EditorIndentGuide
+editorIndentGuide:
+  activeBackground: white/a30
+  background: white/a30
+
+# EditorInfo - squigles on errors.
+editorInfo:    { border: none, foreground: blue }
+editorWarning: { border: none, foreground: yellow}
+editorError:   { border: none, foreground: red}
+editorHint:    { border: none, foreground: green}
+
+editorLightBulb:               { foreground: yellow }
+editorLightBulbAutoFix:        { foreground: yellow }
+
+editorLineNumber:
+  activeForeground: _
+  foreground: white/a50
+
+# EditorLink
+editorLink:
+  activeForeground: _
+
+# EditorMarkerNavigation
+editorMarkerNavigation:        { background: _ }
+editorMarkerNavigationError:   { background: _ }
+editorMarkerNavigationInfo:    { background: _ }
+editorMarkerNavigationWarning: { background: _ }
+
+# EditorOverviewRuler
+editorOverviewRuler:
+  addedForeground: _
+  background: _
+  border: _
+  bracketMatchForeground: _
+  commonContentForeground: _
+  currentContentForeground: _
+  deletedForeground: _
+  errorForeground: _
+  findMatchForeground: _
+  incomingContentForeground: _
+  infoForeground: _
+  modifiedForeground: _
+  rangeHighlightForeground: _
+  selectionHighlightForeground: _
+  warningForeground: _
+  wordHighlightForeground: _
+  wordHighlightStrongForeground: _
+
+# EditorPane
+editorPane:  { background: _ }
+editorRuler: { foreground: _ }
+
+# EditorSuggestWidget
+editorSuggestWidget:
+  background: black
+  border: white/a60
+  foreground: white
+  highlightForeground: white/a90
+  selectedBackground: white/a30
+
+# EditorUnnecessaryCode
+editorUnnecessaryCode:
+  border: none
+  opacity: white/a30
+
+
+editorWhitespace: { foreground: white/a20 }
+
+# EditorWidget
+editorWidget:
+  background: dark
+  border: white/a60
+  foreground: white
+  resizeBorder: green
+
+# EditorHoverWidget - info on git status
+editorHoverWidget:
+  background: dark
+  border: white/a60
+  foreground: white
+  # statusBarBackground: "#ff0"
+
+# ExtensionBadge
+extensionBadge:
+  remoteBackground: green
+  remoteForeground: black
+
+# ExtensionButton
+extensionButton:
+  prominentBackground: green
+  prominentForeground: black
+  prominentHoverBackground: _
+
+# GitDecoration
+gitDecoration:
+  addedResourceForeground: _
+  conflictingResourceForeground: _
+  deletedResourceForeground: red
+  ignoredResourceForeground: white/a40
+  modifiedResourceForeground: yellow
+  submoduleResourceForeground: _
+  untrackedResourceForeground: green
+
+# Icon
+icon: { foreground: white/a40 }
+
+# ImagePreview
+imagePreview:
+  border: _
+# Input
+input:
+  background: white/a10
+  border: black
+  foreground: white
+  placeholderForeground: white/a50
+
+# InputOption
+inputOption:
+  activeBackground: red
+  activeBorder: none
+
+# InputValidation
+# See issue @ https://github.com/microsoft/vscode/issues/99573
+#
+inputValidation:
+  errorBackground: red
+  errorBorder: none
+  # errorForeground: dark
+
+  infoBackground: green
+  infoBorder: none
+  # infoForeground: white
+
+  warningBackground: yellow
+  warningBorder: none
+  # warningForeground: yellow
+
+# List
+list:
+  activeSelectionBackground: white/a10
+  activeSelectionForeground: white
+  inactiveSelectionBackground: white/a10
+  inactiveSelectionForeground:  white
+
+
+  hoverBackground: white/a10
+  hoverForeground: white
+
+  deemphasizedForeground: _
+  dropBackground: _
+  filterMatchBackground: _
+  filterMatchBorder: _
+  focusBackground: white/a40
+  focusForeground: white
+  inactiveFocusBackground: "#404040"
+
+  highlightForeground: highBg
+
+  invalidItemForeground: red/a20
+  errorForeground: red/a50
+  warningForeground: yellow/a50
+
+# ListFilterWidget
+listFilterWidget:
+  background: _
+  noMatchesOutline: _
+  outline: _
+# Menu
+menu:
+  background: _
+  border: _
+  foreground: _
+  selectionBackground: _
+  selectionBorder: _
+  selectionForeground: _
+  separatorBackground: _
+# Menubar
+menubar:
+  selectionBackground: _
+  selectionBorder: _
+  selectionForeground: _
+# Merge
+merge:
+  border: _
+  commonContentBackground: _
+  commonHeaderBackground: _
+  currentContentBackground: _
+  currentHeaderBackground: _
+  incomingContentBackground: _
+  incomingHeaderBackground: _
+# Minimap
+minimap:
+  background: _
+  errorHighlight: _
+  findMatchHighlight: _
+  selectionHighlight: _
+  warningHighlight: _
+
+# MinimapGutter
+minimapGutter:
+  addedBackground: _
+  deletedBackground: _
+  modifiedBackground: _
+
+# MinimapSlider
+minimapSlider:
+  activeBackground: _
+  background: _
+  hoverBackground: _
+
+
+# NotificationCenterHeader
+notificationCenterHeader:
+  background: red/a50
+  foreground: white
+
+notificationCenter: { border: dark }
+notificationLink:   { foreground: _ }
+notificationToast:  { border: dark }
+
+# Notifications
+notifications:
+  background: black
+  border: dark
+  foreground: white
+
+# NotificationsErrorIcon
+notificationsErrorIcon:   { foreground: red }
+notificationsInfoIcon:    { foreground: blue }
+notificationsWarningIcon: { foreground: yellow }
+
+# Panel
+panel:
+  background: black
+  border: dark
+
+# PanelInput
+panelInput:
+  border: _
+
+# PanelTitle
+panelTitle:
+  activeBorder: white
+  activeForeground: white
+  inactiveForeground: white/a50
+
+# PeekView
+peekView:
+  border: _
+# PeekViewEditor
+peekViewEditor:
+  background: _
+  matchHighlightBackground: _
+  matchHighlightBorder: _
+# PeekViewEditorGutter
+peekViewEditorGutter:
+  background: _
+# PeekViewResult
+peekViewResult:
+  background: _
+  fileForeground: _
+  lineForeground: _
+  matchHighlightBackground: _
+  selectionBackground: _
+  selectionForeground: _
+
+peekViewTitle:            { background: _ }
+peekViewTitleDescription: {foreground: _ }
+peekViewTitleLabel:       { foreground: _ }
+
+# PickerGroup
+pickerGroup:
+  border: _
+  foreground: white
+
+problemsErrorIcon:   { foreground: red}
+problemsInfoIcon:    { foreground: blue}
+problemsWarningIcon: { foreground: yellow}
+
+
+# ProgressBar
+progressBar: { background: green }
+
+# QuickInput
+quickInput:
+  background: dark
+  foreground: white
+
+# QuickInputTitle
+quickInputTitle: { background: white }
+scrollbar:       { shadow: none }
+
+# scrollbarSlider:
+  # activeBackground: _
+  # background: _
+  # hoverBackground: _
+
+# SearchEditor
+searchEditor:
+  findMatchBackground: _
+  findMatchBorder: _
+  textInputBorder: _
+
+# Selection doesn't works, use editor selection settings.
+# selection: { background: green }
+
+# Settings
+settings:
+  headerForeground: green
+  modifiedItemIndicator:  green
+
+  # all other input settings ae going to be inherited.
+  dropdownListBorder: black
+
+
+
+sideBar:
+  background: black
+  border: none
+  dropBackground: black
+  foreground: white
+
+sideBarSectionHeader:
+  background: black
+  foreground: white
+  border: none
+
+sideBarTitle: { foreground: white/a40 }
+
+# StatusBar
+statusBar:
+  background: dark
+  foreground: white
+  border: none
+
+  debuggingBackground: red/a90
+  debuggingForeground: white
+  debuggingBorder: none
+
+  noFolderBackground: yellow
+  noFolderForeground: black
+  noFolderBorder: none
+
+
+# StatusBarItem
+statusBarItem:
+  activeBackground: dark
+  hoverBackground: black/a50
+
+  prominentBackground: cyan
+  prominentForeground: white
+  prominentHoverBackground: blue
+
+  remoteBackground: blue
+  remoteForeground: white
+
+# SymbolIcon
+# symbolIcon:
+#   arrayForeground: white
+#   booleanForeground: white
+#   classForeground: white
+#   colorForeground: white
+#   constantForeground: white
+#   constructorForeground: white
+#   enumeratorForeground: white
+#   enumeratorMemberForeground: white
+#   eventForeground: white
+#   fieldForeground: white
+#   fileForeground: white
+#   folderForeground: white
+#   functionForeground: white
+#   interfaceForeground: white
+#   keyForeground: white
+#   keywordForeground: white
+#   methodForeground: white
+#   moduleForeground: white
+#   namespaceForeground: white
+#   nullForeground: white
+#   numberForeground: white
+#   objectForeground: white
+#   operatorForeground: white
+#   packageForeground: white
+#   propertyForeground: white
+#   referenceForeground: white
+#   snippetForeground: white
+#   stringForeground: white
+#   structForeground: white
+#   textForeground: white
+#   typeParameterForeground: white
+#   unitForeground: white
+#   variableForeground: white
+
+# Tab
+tab:
+  border: none
+  activeBackground: black
+  activeForeground: white
+  activeBorder: white
+  activeBorderTop: black
+  activeModifiedBorder: black
+  hoverBackground: dark
+  hoverBorder: white
+  hoverForeground: white
+  inactiveBackground: black
+  inactiveForeground: white
+  inactiveModifiedBorder: black
+
+  # unfocusedActiveBackground: _
+  # unfocusedActiveBorder: _
+  # unfocusedActiveBorderTop: _
+  # unfocusedActiveForeground: _
+  # unfocusedActiveModifiedBorder: _
+  # unfocusedHoverBackground: _
+  # unfocusedHoverBorder: _
+  # unfocusedHoverForeground: _
+  # unfocusedInactiveBackground: _
+  # unfocusedInactiveForeground: _
+  # unfocusedInactiveModifiedBorder: _
+
+# Terminal
+terminal:
+  background: black
+  border: none
+  foreground: white
+  # selectionBackground: _
+
+  ansiBlack: black
+  ansiWhite: white
+  ansiBlue: blue
+  ansiCyan: cyan
+  ansiGreen: green
+  ansiMagenta: magenta
+  ansiRed: red
+  ansiYellow: yellow
+
+  ansiBrightBlack: black/a50
+  ansiBrightWhite: white/a50
+  ansiBrightBlue: blue/a50
+  ansiBrightCyan: cyan/a50
+  ansiBrightGreen: green/a50
+  ansiBrightMagenta: magenta/a50
+  ansiBrightRed: red/a50
+  ansiBrightYellow: yellow/a50
+
+# TerminalCursor
+terminalCursor:
+  background: black
+  foreground: green
+
+# TextBlockQuote
+textBlockQuote:
+  background: _
+  border: _
+
+textCodeBlock: { background: _ }
+textLink:      { foreground: green }
+textPreformat: { foreground: green/a70 }
+textSeparator: { foreground: _ }
+
+# TitleBar
+titleBar:
+  activeBackground: "#404040"
+  activeForeground: "#ccc"
+  border: black
+  inactiveBackground: "#404040"
+  inactiveForeground: "#ccc"
+
+# Tree
+tree:
+  indentGuidesStroke: _
+# WalkThrough
+walkThrough:
+  embeddedEditorBackground: _
+
+# WelcomePage
+welcomePage:
+  background: _
+  buttonBackground: _
+  buttonHoverBackground: _
+
+widget: { shadow: none }
+
+# # Window
+window:
+  activeBorder: none
+  inactiveBorder: none
