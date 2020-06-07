@@ -86,7 +86,7 @@ class Theme:
         t = Theme.read(self.dest)
         if not len(t):
             t = {
-                "name": "Mryaka",
+                "name": "Acid Night - Green",
                 "type": "dark",
             }
 
@@ -149,86 +149,6 @@ def main():
             theme.generate()
         time.sleep(1)
 
-
-#     colors = "src/colors.yaml"
-#     params = "src/settings.yaml"
-
-#     syntax = "src/darkly.yaml"
-#     colors = "src/palette.yaml"
-
-#     def value_as_color(colors, value):
-#         if value == '_':
-#             param_value = color()
-#         elif "/" in value:
-#             rgb, a = value.split("/")
-#             param_value = dpath(colors, rgb) + dpath(colors, a)
-#         elif "." in value:
-#             param_value = dpath(colors, value)
-#         elif value[0] == "#":
-#             param_value = value
-#         else:
-#             param_value = value
-
-#         return param_value
-
-#     # Base theme file we changing.
-#     theme = {}
-#     try:
-#         with open("theme.json", "r") as f:
-#             theme = json.load(f)
-#     except FileNotFoundError:
-#         theme = {
-#             "name": "Mryaka",
-#             "type": "dark",
-#         }
-
-#     while True:
-
-#         # Updating theme colors
-#         if is_changed(colors) or is_changed(params):
-#             data_colors = read_yaml(colors)
-#             data_params = read_yaml(params)
-
-#             theme['colors'] = {}
-#             for section, values in data_params.items():
-
-#                 if isinstance(values, dict):
-#                     for param, value in values.items():
-#                         # print(value)
-#                         theme['colors'][f"{section}.{param}"] = value_as_color(
-#                             data_colors, value)
-#                 else:
-#                     theme['colors'][f"{section}"] = value_as_color(
-#                         data_colors, values)
-
-#             with open("theme.json", "w") as f:
-#                 print("Updating Theme  : {0}".format(datetime.now().time()))
-#                 json.dump(theme, fp=f, indent=4)
-
-#         if is_changed(syntax):
-#             data_colors = read_yaml(syntax)
-#             theme['tokenColors'] = []
-
-#             for item in data_colors.get('scopes', []):
-#                 if "settings" not in item:
-#                     continue
-
-#                 for k, v in item['settings'].items():
-#                     item['settings'][k] = value_as_color(data_colors, v)
-
-#                 theme['tokenColors'].append(item)
-
-#             with open("theme.json", "w") as f:
-#                 print("Updating Tokens : {0}".format(datetime.now().time()))
-#                 json.dump(theme, fp=f, indent=4)
-
-#         else:
-#             time.sleep(1.0)
-
-# def read_yaml(file):
-#     with open(file, "r") as f:
-#         return yaml.load(f, Loader=yaml.CLoader)
-#     return {}
 
 if __name__ == "__main__":
     main()

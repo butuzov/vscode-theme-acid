@@ -1,7 +1,7 @@
 {
-    "name": "darkly",
-    "displayName": "Darkly",
-    "description": "dark",
+    "name": "acid-night",
+    "displayName": "Acid Night",
+    "description": "acid-night",
     "version": "0.0.1",
     "publisher": "butuzov",
     "engines": {
@@ -17,7 +17,7 @@
     "contributes": {
         "themes": [
             {
-                "label": "Darkly",
+                "label": "Acid Night - Green",
                 "uiTheme": "vs-dark",
                 "path": "./theme.json"
             }
