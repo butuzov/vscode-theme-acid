@@ -44,10 +44,12 @@ scopes:
 
 # ~~~ YAML Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+# ~~~ YAML Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 - name: "YAML: Name"
   settings:
     foreground: green/a50
-    fontStyle: bold
   scope:
     - entity.name.tag.yaml
     - meta.block-mapping.yaml string.unquoted.block.yaml

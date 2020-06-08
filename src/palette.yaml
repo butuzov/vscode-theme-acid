@@ -1,21 +1,31 @@
-# Darkly Theme Colors
-#                          # YAML | Go | Python | JS |
-black:          "#232323"  # _    | _  | _      | _  |
-dark:           "#494949"  # _    |
-white:          "#f1f1f1"  # _    | _  | _      | _  |
-red:            "#f42d38"  # x    | _  | _      | _  |
-orange:         "#ca6e11"  # x    | _  | _      | _  |
-yellow:         "#f8ba00"  # _    | _  | _      | _  |
-green:          "#66cf43"  # x    | _  | _      | _  |
-cyan:           "#00bdb1"  # x    | _  | _      | _  |
-blue:           "#0074ae"  # x    | _  | _      | _  |
-magenta:        "#ee27ba"  # _    | _  | _      | _  |
+# Acid Night
+#                          # YAML | Go | Python | JS | MD
+black:          "#101010"  # _    | _  | _      | _  | _
+dark:           "#494949"  # _    | _  | _      | _  | _
+white:          "#e1e1e1"  # _    | _  | _      | _  | _
+red:            "#d63130"  # x    | _  | _      | _  | _
+orange:         "#f79723"  # x    | _  | _      | _  | _
+yellow:         "#fec52a"  # _    | _  | _      | _  | _
+green:          "#a9ba21"  # x    | _  | _      | _  | _
+cyan:           "#2db6ae"  # x    | _  | _      | _  | _
+blue:           "#389ad2"  # x    | _  | _      | _  | _
+magenta:        "#db38a6"  # _    | _  | _      | _  | _
 
 none: "#fff0"
+none2: "#fff0"
 
 # Main Color
-highBg: "#66cf43"
-highFg: "#232323"
+# highBg: "#a9ba21"
+# highFg: "#101010"
+
+highBg: "#fec52a"
+highFg: "#101010"
+
+# highBg: "#f79723"
+# highFg: "#101010"
+
+# highBg: "#d63130"
+# highFg: "#f1f1f1"
 
 
 # Alpha

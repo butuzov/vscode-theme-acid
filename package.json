@@ -2,7 +2,7 @@
     "name": "acid-night",
     "displayName": "Acid Night",
     "description": "acid-night",
-    "version": "0.0.1",
+    "version": "0.0.0",
     "publisher": "butuzov",
     "engines": {
         "vscode": "^1.45.0"
@@ -11,13 +11,15 @@
         "Themes"
     ],
     "scripts": {
-        "build": "python3 build.py",
-        "extension": "vsce package"
+        "build": "./scripts/compiler",
+        "quick_build": "./scripts/compiler --quick",
+        "extension": "vsce package",
+        "install": "code --force --install-extension  acid-night-0.0.0.vsix"
     },
     "contributes": {
         "themes": [
             {
-                "label": "Acid Night - Green",
+                "label": "Acid Night",
                 "uiTheme": "vs-dark",
                 "path": "./theme.json"
             }
@@ -25,10 +27,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/butuzov/darkly"
+        "url": "https://github.com/butuzov/acid-night"
     },
-    "homepage": "https://github.com/butuzov/darkly",
+    "homepage": "https://github.com/butuzov/acid-night",
     "bugs": {
-        "url": "https://github.com/butuzov/darkly/issues"
+        "url": "https://github.com/butuzov/acid-night/issues"
+    },
+    "devDependencies": {
+        "vsce": "^1.76.0"
     }
 }

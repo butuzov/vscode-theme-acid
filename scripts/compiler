@@ -142,13 +142,17 @@ class Theme:
         return {}
 
 
-def main():
+def main(quickMode):
     theme = Theme()
     while True:
         if theme.is_changed():
             theme.generate()
+        if quickMode:
+            return
         time.sleep(1)
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    main("--quick" in sys.argv)
