@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+
+import sys, json
+
+
+def traverse(items):
+    results = []
+
+    if isinstance(items, list):
+        for item in items:
+            results += traverse(item)
+        return results
+
+    if isinstance(items, dict):
+        for k, v in items.items():
+            # print(k, v)
+            if k == "name" and isinstance(v, str):
+                results.append(v)
+                continue
+            if isinstance(v, list):
+                results += traverse(v)
+                continue
+
+            if isinstance(v, dict):
+                results += traverse(v)
+                continue
+        return results
+
+    return results
+
+
+def main(grammar):
+
+    with open(grammar, "r") as f:
+        data = traverse(json.load(f))
+
+    [print(item) for item in sorted(list(set(data)))]
+
+
+if __name__ == "__main__":
+
+    # file = sys.argv[1]
+
+    main(sys.argv[1])

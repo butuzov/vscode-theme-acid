@@ -138,8 +138,8 @@ editor:
   rangeHighlightBorder: none2
 
   # Selection
-  selectionBackground: blue
-  inactiveSelectionBackground: blue/a50
+  # selectionBackground: blue
+  # inactiveSelectionBackground: blue/a50
 
   # selectionForeground: black
   selectionHighlightBackground: none
@@ -268,7 +268,7 @@ editorUnnecessaryCode:
   opacity: white/a30
 
 
-editorWhitespace: { foreground: white/a20 }
+editorWhitespace: { foreground: white/a40 }
 
 # EditorWidget
 editorWidget:

@@ -1,0 +1,458 @@
+cloudy_blue: "#acc2d9"         # cr(10.391)  cloudy blue
+dark_pastel_green: "#56ae57"   # cr(6.873)  dark pastel green
+dust: "#b2996e"                # cr(6.951)  dust
+electric_lime: "#a8ff04"       # cr(15.371)  electric lime
+fresh_green: "#69d84f"         # cr(10.449)  fresh green
+nasty_green: "#70b23f"         # cr(7.362)  nasty green
+really_light_blue: "#d4ffff"   # cr(17.707)  really light blue
+tea: "#65ab7c"                 # cr(6.947)  tea
+yellowish_tan: "#fcfc81"       # cr(17.554)  yellowish tan
+cement: "#a5a391"              # cr(7.471)  cement
+macaroni_and_cheese: "#efb435" # cr(10.190)  macaroni and cheese
+pinkish_tan: "#d99b82"         # cr(8.118)  pinkish tan
+toxic_green: "#61de2a"         # cr(10.861)  toxic green
+booger: "#9bb53c"              # cr(8.214)  booger
+bright_sea_green: "#05ffa6"    # cr(14.368)  bright sea green
+green_teal: "#0cb577"          # cr(7.149)  green teal
+bland: "#afa88b"               # cr(7.967)  bland
+lavender_pink: "#dd85d7"       # cr(7.618)  lavender pink
+light_moss_green: "#a6c875"    # cr(10.091)  light moss green
+light_seafoam_green: "#a7ffb5" # cr(15.955)  light seafoam green
+olive_yellow: "#c2b709"        # cr(9.123)  olive yellow
+pig_pink: "#e78ea5"            # cr(7.980)  pig pink
+desert: "#ccad60"              # cr(8.799)  desert
+dusty_lavender: "#ac86a8"      # cr(6.096)  dusty lavender
+candy_pink: "#ff63e9"          # cr(7.440)  candy pink
+light_pastel_green: "#b2fba5"  # cr(15.612)  light pastel green
+boring_green: "#63b365"        # cr(7.397)  boring green
+kiwi_green: "#8ee53f"          # cr(12.165)  kiwi green
+light_grey_green: "#b7e1a1"    # cr(12.951)  light grey green
+orange_pink: "#ff6f52"         # cr(6.928)  orange pink
+tea_green: "#bdf8a3"           # cr(15.507)  tea green
+very_light_brown: "#d3b683"    # cr(9.772)  very light brown
+egg_shell: "#fffcc4"           # cr(18.092)  egg shell
+powder_pink: "#ffb2d0"         # cr(11.350)  powder pink
+baby_shit_brown: "#ad900d"     # cr(6.134)  baby shit brown
+liliac: "#c48efd"              # cr(7.821)  liliac
+custard: "#fffd78"             # cr(17.730)  custard
+greenish_beige: "#c9d179"      # cr(11.667)  greenish beige
+manilla: "#fffa86"             # cr(17.455)  manilla
+sickly_yellow: "#d0e429"       # cr(13.417)  sickly yellow
+sunny_yellow: "#fff917"        # cr(17.042)  sunny yellow
+green/yellow: "#b5ce08"        # cr(10.685)  green/yellow
+lichen: "#8fb67b"              # cr(8.284)  lichen
+light_light_green: "#c8ffb0"   # cr(16.654)  light light green
+pale_gold: "#fdde6c"           # cr(14.350)  pale gold
+sun_yellow: "#ffdf22"          # cr(14.339)  sun yellow
+tan_green: "#a9be70"           # cr(9.317)  tan green
+butterscotch: "#fdb147"        # cr(10.467)  butterscotch
+toupe: "#c7ac7d"               # cr(8.719)  toupe
+dark_cream: "#fff39a"          # cr(16.792)  dark cream
+light_lavendar: "#efc0fe"      # cr(12.357)  light lavendar
+poison_green: "#40fd14"        # cr(13.839)  poison green
+baby_puke_green: "#b6c406"     # cr(9.862)  baby puke green
+bright_yellow_green: "#9dff00" # cr(15.161)  bright yellow green
+squash: "#f2ab15"              # cr(9.612)  squash
+light_pea_green: "#c4fe82"     # cr(16.165)  light pea green
+radioactive_green: "#2cfa1f"   # cr(13.408)  radioactive green
+baby_purple: "#ca9bf7"         # cr(8.643)  baby purple
+orangeish: "#fd8d49"           # cr(8.226)  orangeish
+sand_brown: "#cba560"          # cr(8.234)  sand brown
+tealish_green: "#0cdc73"       # cr(10.417)  tealish green
+fern: "#63a950"                # cr(6.632)  fern
+old_rose: "#c87f89"            # cr(6.207)  old rose
+pale_light_green: "#b1fc99"    # cr(15.629)  pale light green
+peachy_pink: "#ff9a8a"         # cr(9.277)  peachy pink
+rosy_pink: "#f6688e"           # cr(6.603)  rosy pink
+light_bluish_green: "#76fda8"  # cr(14.842)  light bluish green
+light_bright_green: "#53fe5c"  # cr(14.221)  light bright green
+light_neon_green: "#4efd54"    # cr(14.042)  light neon green
+light_seafoam: "#a0febf"       # cr(15.783)  light seafoam
+tiffany_blue: "#7bf2da"        # cr(1re4.091)  tiffany blue
+washed_out_green: "#bcf5a6"    # cr(15.172)  washed out green
+greyish_teal: "#719f91"        # cr(6.404)  greyish teal
+orangey_yellow: "#fdb915"      # cr(10.984)  orangey yellow
+parchment: "#fefcaf"           # cr(17.897)  parchment
+straw: "#fcf679"               # cr(16.846)  straw
+creme: "#ffffb6"               # cr(18.326)  creme
+foam_green: "#90fda9"          # cr(15.225)  foam green
+grey/green: "#86a17d"          # cr(6.710)  grey/green
+light_gold: "#fddc5c"          # cr(14.101)  light gold
+seafoam_blue: "#78d1b6"        # cr(10.502)  seafoam blue
+topaz: "#13bbaf"               # cr(7.929)  topaz
+violet_pink: "#fb5ffc"         # cr(7.377)  violet pink
+wintergreen: "#20f986"         # cr(13.547)  wintergreen
+yellow_tan: "#ffe36e"          # cr(14.913)  yellow tan
+light_yellowish_green: "#c2ff89" # cr(16.268)  light yellowish green
+sunflower_yellow: "#ffda03"    # cr(13.842)  sunflower yellow
+green/blue: "#01c08d"          # cr(8.085)  green/blue
+muted_pink: "#d1768f"          # cr(6.069)  muted pink
+booger_green: "#96b403"        # cr(7.995)  booger green
+canary: "#fdff63"              # cr(17.808)  canary
+cool_grey: "#95a3a6"           # cr(7.308)  cool grey
+coral_pink: "#ff6163"          # cr(6.469)  coral pink
+mushroom: "#ba9e88"            # cr(7.549)  mushroom
+greenblue: "#23c48b"           # cr(8.460)  greenblue
+icky_green: "#8fae22"          # cr(7.469)  icky green
+light_khaki: "#e6f2a2"         # cr(15.931)  light khaki
+pale_peach: "#ffe5ad"          # cr(15.457)  pale peach
+golden_rod: "#f9bc08"          # cr(11.072)  golden rod
+very_pale_blue: "#d6fffe"      # cr(17.748)  very pale blue
+grapefruit: "#fd5956"          # cr(6.105)  grapefruit
+sand_yellow: "#fce166"         # cr(14.585)  sand yellow
+light_green_blue: "#56fca2"    # cr(14.350)  light green blue
+warm_pink: "#fb5581"           # cr(6.085)  warm pink
+gross_green: "#a0bf16"         # cr(9.020)  gross green
+ice: "#d6fffa"                 # cr(17.703)  ice
+pale_salmon: "#ffb19a"         # cr(10.877)  pale salmon
+algae: "#54ac68"               # cr(6.774)  algae
+bluey_grey: "#89a0b0"          # cr(6.991)  bluey grey
+greeny_grey: "#7ea07a"         # cr(6.518)  greeny grey
+highlighter_green: "#1bfc06"   # cr(13.563)  highlighter green
+light_light_blue: "#cafffb"    # cr(17.399)  light light blue
+light_mint: "#b6ffbb"          # cr(16.313)  light mint
+dull_teal: "#5f9e8f"           # cr(6.136)  dull teal
+light_greenish_blue: "#63f7b4" # cr(14.034)  light greenish blue
+pinky: "#fc86aa"               # cr(8.270)  pinky
+rosa: "#fe86a4"                # cr(8.297)  rosa
+pale_mauve: "#fed0fc"          # cr(14.168)  pale mauve
+dandelion: "#fedf08"           # cr(14.286)  dandelion
+greenish_turquoise: "#00fbb0"  # cr(13.973)  greenish turquoise
+piss_yellow: "#ddd618"         # cr(12.415)  piss yellow
+bright_cyan: "#41fdfe"         # cr(15.132)  bright cyan
+algae_green: "#21c36f"         # cr(8.243)  algae green
+blush_pink: "#fe828c"          # cr(7.958)  blush pink
+lawn_green: "#4da409"          # cr(6.005)  lawn green
+putty: "#beae8a"               # cr(8.705)  putty
+dark_sand: "#a88f59"           # cr(6.103)  dark sand
+saffron: "#feb209"             # cr(10.495)  saffron
+bluegrey: "#85a3b2"            # cr(7.138)  bluegrey
+bubble_gum_pink: "#ff69af"     # cr(7.149)  bubble gum pink
+duck_egg_blue: "#c3fbf4"       # cr(16.690)  duck egg blue
+greenish_cyan: "#2afeb7"       # cr(14.455)  greenish cyan
+butter: "#ffff81"              # cr(18.000)  butter
+dusty_orange: "#f0833a"        # cr(7.257)  dusty orange
+off_yellow: "#f1f33f"          # cr(15.971)  off yellow
+pale_olive_green: "#b1d27b"    # cr(11.208)  pale olive green
+orangish: "#fc824a"            # cr(7.638)  orangish
+leaf: "#71aa34"                # cr(6.795)  leaf
+light_blue_grey: "#b7c9e2"     # cr(11.292)  light blue grey
+lavender_blue: "#8b88f8"       # cr(6.317)  lavender blue
+light_grass_green: "#9af764"   # cr(14.368)  light grass green
+light_mint_green: "#a6fbb2"    # cr(15.457)  light mint green
+sunflower: "#ffc512"           # cr(12.000)  sunflower
+carnation: "#fd798f"           # cr(7.525)  carnation
+muddy_yellow: "#bfac05"        # cr(8.259)  muddy yellow
+dark_seafoam_green: "#3eaf76"  # cr(6.882)  dark seafoam green
+lemon_lime: "#bffe28"          # cr(15.781)  lemon lime
+brown_yellow: "#b29705"        # cr(6.632)  brown yellow
+banana_yellow: "#fafe4b"       # cr(17.522)  banana yellow
+baby_green: "#8cff9e"          # cr(15.319)  baby green
+barf_green: "#94ac02"          # cr(7.393)  barf green
+eggshell_blue: "#c4fff7"       # cr(17.205)  eggshell blue
+sandy_yellow: "#fdee73"        # cr(15.991)  sandy yellow
+cool_green: "#33b864"          # cr(7.409)  cool green
+pale: "#fff9d0"                # cr(17.857)  pale
+greyblue: "#77a1b5"            # cr(6.839)  greyblue
+light_mustard: "#f7d560"       # cr(13.263)  light mustard
+pale_sky_blue: "#bdf6fe"       # cr(16.103)  pale sky blue
+turtle_green: "#75b84f"        # cr(7.904)  turtle green
+bright_olive: "#9cbb04"        # cr(8.627)  bright olive
+lemon_green: "#adf802"         # cr(14.678)  lemon green
+light_periwinkle: "#c1c6fc"    # cr(11.549)  light periwinkle
+seaweed_green: "#35ad6b"       # cr(6.650)  seaweed green
+sunshine_yellow: "#fffd37"     # cr(17.534)  sunshine yellow
+medium_pink: "#f36196"         # cr(6.306)  medium pink
+very_light_pink: "#fff4f2"     # cr(17.639)  very light pink
+bile: "#b5c306"                # cr(9.759)  bile
+faded_yellow: "#feff7f"        # cr(17.957)  faded yellow
+very_pale_green: "#cffdbc"     # cr(16.694)  very pale green
+vibrant_green: "#0add08"       # cr(10.288)  vibrant green
+bright_lime: "#87fd05"         # cr(14.567)  bright lime
+spearmint: "#1ef876"           # cr(13.355)  spearmint
+light_aquamarine: "#7bfdc7"    # cr(15.143)  light aquamarine
+light_sage: "#bcecac"          # cr(14.250)  light sage
+yellowgreen: "#bbf90f"         # cr(15.100)  yellowgreen
+baby_poo: "#ab9004"            # cr(6.089)  baby poo
+dark_seafoam: "#1fb57a"        # cr(7.199)  dark seafoam
+weird_green: "#3ae57f"         # cr(11.498)  weird green
+avocado_green: "#87a922"       # cr(7.000)  avocado green
+faded_orange: "#f0944d"        # cr(8.196)  faded orange
+hot_green: "#25ff29"           # cr(13.962)  hot green
+lime_yellow: "#d0fe1d"         # cr(16.192)  lime yellow
+mango: "#ffa62b"               # cr(9.730)  mango
+shamrock: "#01b44c"            # cr(6.915)  shamrock
+bubblegum: "#ff6cb5"           # cr(7.304)  bubblegum
+vomit_yellow: "#c7c10c"        # cr(10.020)  vomit yellow
+pale_cyan: "#b7fffa"           # cr(16.937)  pale cyan
+key_lime: "#aeff6e"            # cr(15.696)  key lime
+lightgreen: "#76ff7b"          # cr(14.819)  lightgreen
+apple: "#6ecb3c"               # cr(9.303)  apple
+baby_poop_green: "#8f9805"     # cr(6.034)  baby poop green
+green_apple: "#5edc1f"         # cr(10.629)  green apple
+yellow/green: "#c8fd3d"        # cr(15.918)  yellow/green
+leafy_green: "#51b73b"         # cr(7.415)  leafy green
+frog_green: "#58bc08"          # cr(7.801)  frog green
+vivid_green: "#2fef10"         # cr(12.205)  vivid green
+bright_light_green: "#2dfe54"  # cr(13.964)  bright light green
+fluro_green: "#0aff02"         # cr(13.875)  fluro green
+kiwi: "#9cef43"                # cr(13.444)  kiwi
+seaweed: "#18d17b"             # cr(9.462)  seaweed
+pastel_orange: "#ff964f"       # cr(8.812)  pastel orange
+yellowish_orange: "#ffab0f"    # cr(10.040)  yellowish orange
+perrywinkle: "#8f8ce7"         # cr(6.408)  perrywinkle
+tealish: "#24bca8"             # cr(8.002)  tealish
+pear: "#cbf85f"                # cr(15.518)  pear
+pinkish_orange: "#ff724c"      # cr(7.033)  pinkish orange
+dark_mint: "#48c072"           # cr(8.205)  dark mint
+greenish_tan: "#bccb7a"        # cr(10.835)  greenish tan
+turquoise_blue: "#06b1c4"      # cr(7.332)  turquoise blue
+sandy: "#f1da7a"               # cr(13.632)  sandy
+mid_green: "#50a747"           # cr(6.304)  mid green
+greyish: "#a8a495"             # cr(7.618)  greyish
+neon_yellow: "#cfff04"         # cr(16.266)  neon yellow
+banana: "#ffff7e"              # cr(17.987)  banana
+carnation_pink: "#ff7fa7"      # cr(8.013)  carnation pink
+turquoise_green: "#04f489"     # cr(12.958)  turquoise green
+buff: "#fef69e"                # cr(17.111)  buff
+fawn: "#cfaf7b"                # cr(9.123)  fawn
+pale_rose: "#fdc1c5"           # cr(12.328)  pale rose
+dark_mint_green: "#20c073"     # cr(8.014)  dark mint green
+sick_green: "#9db92c"          # cr(8.524)  sick green
+pea: "#a4bf20"                 # cr(9.105)  pea
+stone: "#ada587"               # cr(7.707)  stone
+pale_aqua: "#b8ffeb"           # cr(16.795)  pale aqua
+pale_lime_green: "#b1ff65"     # cr(15.726)  pale lime green
+light_grey_blue: "#9dbcd4"     # cr(9.582)  light grey blue
+pale_grey: "#fdfdfe"           # cr(18.712)  pale grey
+asparagus: "#77ab56"           # cr(7.014)  asparagus
+pale_lime: "#befd73"           # cr(15.841)  pale lime
+greenish_teal: "#32bf84"       # cr(8.082)  greenish teal
+light_peach: "#ffd8b1"         # cr(14.230)  light peach
+ocher: "#bf9b0c"               # cr(7.165)  ocher
+off_green: "#6ba353"           # cr(6.330)  off green
+purply_pink: "#f075e6"         # cr(7.601)  purply pink
+lightblue: "#7bc8f6"           # cr(10.357)  lightblue
+golden: "#f5bf03"              # cr(11.174)  golden
+light_beige: "#fffeb6"         # cr(18.210)  light beige
+butter_yellow: "#fffd74"       # cr(17.712)  butter yellow
+ugly_yellow: "#d0c101"         # cr(10.245)  ugly yellow
+greeny_yellow: "#c6f808"       # cr(15.246)  greeny yellow
+shamrock_green: "#02c14d"      # cr(7.915)  shamrock green
+sandy_brown: "#c4a661"         # cr(8.129)  sandy brown
+bluey_green: "#2bb179"         # cr(6.946)  bluey green
+grey_pink: "#c3909b"           # cr(7.051)  grey pink
+light_salmon: "#fea993"        # cr(10.245)  light salmon
+snot: "#acbb0d"                # cr(8.938)  snot
+easter_purple: "#c071fe"       # cr(6.371)  easter purple
+light_yellow_green: "#ccfd7f"  # cr(16.236)  light yellow green
+light_rose: "#ffc5cb"          # cr(12.772)  light rose
+slime_green: "#99cc04"         # cr(9.958)  slime green
+greeny_blue: "#42b395"         # cr(7.350)  greeny blue
+pinkish_grey: "#c8aca9"        # cr(8.995)  pinkish grey
+pale_lilac: "#e4cbff"          # cr(12.940)  pale lilac
+kermit_green: "#5cb200"        # cr(7.087)  kermit green
+wheat: "#fbdd7e"               # cr(14.263)  wheat
+yellow_ochre: "#cb9d06"        # cr(7.576)  yellow ochre
+pumpkin_orange: "#fb7d07"      # cr(7.281)  pumpkin orange
+pale_olive: "#b9cc81"          # cr(10.884)  pale olive
+light_lilac: "#edc8ff"         # cr(12.958)  light lilac
+lightish_green: "#61e160"      # cr(11.275)  lightish green
+carolina_blue: "#8ab8fe"       # cr(9.391)  carolina blue
+bright_lime_green: "#65fe08"   # cr(14.252)  bright lime green
+celadon: "#befdb7"             # cr(16.236)  celadon
+bright_sky_blue: "#02ccfe"     # cr(10.027)  bright sky blue
+celery: "#c1fd95"              # cr(16.080)  celery
+dark_lime: "#84b701"           # cr(7.929)  dark lime
+muted_green: "#5fa052"         # cr(6.011)  muted green
+robin's_egg: "#6dedfd"         # cr(13.752)  robin's egg
+bright_aqua: "#0bf9ea"         # cr(14.268)  bright aqua
+ivory: "#ffffcb"               # cr(18.495)  ivory
+very_light_purple: "#f6cefc"   # cr(13.725)  very light purple
+mustard_green: "#a8b504"       # cr(8.402)  mustard green
+dusty_green: "#76a973"         # cr(6.969)  dusty green
+minty_green: "#0bf77d"         # cr(13.237)  minty green
+jade_green: "#2baf6a"          # cr(6.741)  jade green
+bright_light_blue: "#26f7fd"   # cr(14.317)  bright light blue
+light_lime: "#aefd6c"          # cr(15.458)  light lime
+orange_yellow: "#ffad01"       # cr(10.172)  orange yellow
+ocre: "#c69c04"                # cr(7.389)  ocre
+maize: "#f4d054"               # cr(12.678)  maize
+faded_pink: "#de9dac"          # cr(8.627)  faded pink
+sandstone: "#c9ae74"           # cr(8.868)  sandstone
+light_sea_green: "#98f6b0"     # cr(14.623)  light sea green
+robin_egg_blue: "#8af1fe"      # cr(14.578)  robin egg blue
+aqua_marine: "#2ee8bb"         # cr(12.116)  aqua marine
+soft_pink: "#fdb0c0"           # cr(11.004)  soft pink
+burnt_yellow: "#d5ab09"        # cr(8.748)  burnt yellow
+camel: "#c69f59"               # cr(7.703)  camel
+greyish_pink: "#c88d94"        # cr(6.969)  greyish pink
+pale_turquoise: "#a5fbd5"      # cr(15.725)  pale turquoise
+pastel_yellow: "#fffe71"       # cr(17.815)  pastel yellow
+canary_yellow: "#fffe40"       # cr(17.665)  canary yellow
+ecru: "#feffca"                # cr(18.453)  ecru
+melon: "#ff7855"               # cr(7.310)  melon
+sickly_green: "#94b21c"        # cr(7.830)  sickly green
+silver: "#c5c9c7"              # cr(11.371)  silver
+hospital_green: "#9be5aa"      # cr(12.846)  hospital green
+amber: "#feb308"               # cr(10.567)  amber
+easter_green: "#8cfd7e"        # cr(14.915)  easter green
+bright_turquoise: "#0ffef9"    # cr(15.004)  bright turquoise
+dirty_pink: "#ca7b80"          # cr(6.029)  dirty pink
+yellowy_green: "#bff128"       # cr(14.337)  yellowy green
+dark_gold: "#b59410"           # cr(6.529)  dark gold
+pale_teal: "#82cbb2"           # cr(10.085)  pale teal
+barbie_pink: "#fe46a5"         # cr(6.009)  barbie pink
+bubblegum_pink: "#fe83cc"      # cr(8.453)  bubblegum pink
+pea_soup_green: "#94a617"      # cr(6.998)  pea soup green
+dusky_pink: "#cc7a8b"          # cr(6.091)  dusky pink
+lemon_yellow: "#fdff38"        # cr(17.697)  lemon yellow
+pistachio: "#c0fa8b"           # cr(15.659)  pistachio
+dull_yellow: "#eedc5b"         # cr(13.609)  dull yellow
+dark_lime_green: "#7ebd01"     # cr(8.303)  dark lime green
+light_lime_green: "#b9ff66"    # cr(15.904)  light lime green
+snot_green: "#9dc100"          # cr(9.114)  snot green
+yellowish: "#faee66"           # cr(15.839)  yellowish
+light_blue_green: "#7efbb3"    # cr(14.797)  light blue green
+light_mauve: "#c292a1"         # cr(7.174)  light mauve
+marigold: "#fcc006"            # cr(11.487)  marigold
+dull_orange: "#d8863b"         # cr(6.696)  dull orange
+fluorescent_green: "#08ff08"   # cr(13.875)  fluorescent green
+blush: "#f29e8e"               # cr(9.109)  blush
+soft_green: "#6fc276"          # cr(8.745)  soft green
+bright_orange: "#ff5b00"       # cr(6.112)  bright orange
+lemon: "#fdff52"               # cr(17.755)  lemon
+acid_green: "#8ffe09"          # cr(14.808)  acid green
+pale_lavender: "#eecffe"       # cr(13.580)  pale lavender
+apricot: "#ffb16d"             # cr(10.654)  apricot
+pale_violet: "#ceaefa"         # cr(10.018)  pale violet
+periwinkle_blue: "#8f99fb"     # cr(7.353)  periwinkle blue
+light_sky_blue: "#c6fcff"      # cr(17.002)  light sky blue
+bright_teal: "#01f9c6"         # cr(13.920)  bright teal
+brownish_yellow: "#c9b003"     # cr(8.781)  brownish yellow
+pea_soup: "#929901"            # cr(6.141)  pea soup
+puke_yellow: "#c2be0e"         # cr(9.661)  puke yellow
+avocado: "#90b134"             # cr(7.721)  avocado
+lighter_green: "#75fd63"       # cr(14.480)  lighter green
+electric_green: "#21fc0d"      # cr(13.582)  electric green
+golden_yellow: "#fec615"       # cr(12.049)  golden yellow
+bright_yellow: "#fffd01"       # cr(17.484)  bright yellow
+light_lavender: "#dfc5fe"      # cr(12.279)  light lavender
+dark_peach: "#de7e5d"          # cr(6.565)  dark peach
+eggshell: "#ffffd4"            # cr(18.574)  eggshell
+yellow_brown: "#b79400"        # cr(6.567)  yellow brown
+neon_blue: "#04d9ff"           # cr(11.208)  neon blue
+light_tan: "#fbeeac"           # cr(16.239)  light tan
+ice_blue: "#d7fffe"            # cr(17.775)  ice blue
+very_light_blue: "#d5ffff"     # cr(17.734)  very light blue
+pastel_pink: "#ffbacd"         # cr(11.918)  pastel pink
+very_light_green: "#d1ffbd"    # cr(16.984)  very light green
+dull_pink: "#d5869d"           # cr(6.998)  dull pink
+vomit_green: "#89a203"         # cr(6.553)  vomit green
+dusty_pink: "#d58a94"          # cr(7.149)  dusty pink
+faded_green: "#7bb274"         # cr(7.665)  faded green
+pale_brown: "#b1916e"          # cr(6.471)  pale brown
+medium_green: "#39ad48"        # cr(6.562)  medium green
+light_aqua: "#8cffdb"          # cr(15.799)  light aqua
+light_olive_green: "#a4be5c"   # cr(9.147)  light olive green
+greenish_grey: "#96ae8d"       # cr(7.913)  greenish grey
+jade: "#1fa774"                # cr(6.194)  jade
+dark_beige: "#ac9362"          # cr(6.435)  dark beige
+light_magenta: "#fa5ff7"       # cr(7.286)  light magenta
+sky: "#82cafc"                 # cr(10.692)  sky
+light_cyan: "#acfffc"          # cr(16.725)  light cyan
+yellow_orange: "#fcb001"       # cr(10.281)  yellow orange
+orchid: "#c875c4"              # cr(6.158)  orchid
+dirty_yellow: "#cdc50a"        # cr(10.495)  dirty yellow
+rose_pink: "#f7879a"           # cr(8.051)  rose pink
+aqua_green: "#12e193"          # cr(11.067)  aqua green
+salmon_pink: "#fe7b7c"         # cr(7.553)  salmon pink
+tangerine: "#ff9408"           # cr(8.598)  tangerine
+pumpkin: "#e17701"             # cr(6.196)  pumpkin
+baby_pink: "#ffb7ce"           # cr(11.699)  baby pink
+greyish_green: "#82a67d"       # cr(6.975)  greyish green
+green_yellow: "#c9ff27"        # cr(16.138)  green yellow
+pastel_purple: "#caa0ff"       # cr(9.043)  pastel purple
+aqua_blue: "#02d8e9"           # cr(10.871)  aqua blue
+sage_green: "#88b378"          # cr(7.940)  sage green
+grass: "#5cac2d"               # cr(6.697)  grass
+pastel_blue: "#a2bffe"         # cr(10.344)  pastel blue
+bluish_green: "#10a674"        # cr(6.094)  bluish green
+green_blue: "#06b48b"          # cr(7.165)  green blue
+pale_orange: "#ffa756"         # cr(9.886)  pale orange
+vomit: "#a2a415"               # cr(7.118)  vomit
+light_turquoise: "#7ef4cc"     # cr(14.221)  light turquoise
+apple_green: "#76cd26"         # cr(9.538)  apple green
+dull_green: "#74a662"          # cr(6.679)  dull green
+powder_blue: "#b1d1fc"         # cr(12.134)  powder blue
+off_white: "#ffffe4"           # cr(18.728)  off white
+azure: "#069af3"               # cr(6.272)  azure
+light_olive: "#acbf69"         # cr(9.429)  light olive
+yellowish_green: "#b0dd16"     # cr(11.957)  yellowish green
+greenish_yellow: "#cdfd02"     # cr(15.984)  greenish yellow
+light_violet: "#d6b4fc"        # cr(10.683)  light violet
+greenish: "#40a368"            # cr(6.029)  greenish
+coral: "#fc5a50"               # cr(6.085)  coral
+cream: "#ffffc2"               # cr(18.420)  cream
+sage: "#87ae73"                # cr(7.547)  sage
+grey_green: "#789b73"          # cr(6.100)  grey green
+white: "#ffffff"               # cr(19.022)  white
+robin's_egg_blue: "#98eff9"    # cr(14.538)  robin's egg blue
+light_yellow: "#fffe7a"        # cr(17.853)  light yellow
+leaf_green: "#5ca904"          # cr(6.460)  leaf green
+light_grey: "#d8dcd6"          # cr(13.703)  light grey
+puke: "#a5a502"                # cr(7.230)  puke
+pale_purple: "#b790d4"         # cr(7.205)  pale purple
+pale_yellow: "#ffff84"         # cr(18.016)  pale yellow
+ochre: "#bf9005"               # cr(6.527)  ochre
+mustard_yellow: "#d2bd0a"      # cr(9.986)  mustard yellow
+pale_pink: "#ffcfdc"           # cr(13.777)  pale pink
+light_teal: "#90e4c1"          # cr(12.730)  light teal
+goldenrod: "#fac205"           # cr(11.580)  goldenrod
+dark_yellow: "#d5b60a"         # cr(9.533)  dark yellow
+seafoam: "#80f9ad"             # cr(14.558)  seafoam
+spring_green: "#a9f971"        # cr(14.924)  spring green
+sand: "#e2ca76"                # cr(11.725)  sand
+pastel_green: "#b0ff9d"        # cr(15.975)  pastel green
+mint: "#9ffeb0"                # cr(15.650)  mint
+light_orange: "#fdaa48"        # cr(9.982)  light orange
+chartreuse: "#c1f80a"          # cr(15.125)  chartreuse
+taupe: "#b9a281"               # cr(7.743)  taupe
+pea_green: "#8eab12"           # cr(7.232)  pea green
+puke_green: "#9aae07"          # cr(7.638)  puke green
+kelly_green: "#02ab2e"         # cr(6.221)  kelly green
+seafoam_green: "#7af9ab"       # cr(14.462)  seafoam green
+khaki: "#aaa662"               # cr(7.554)  khaki
+mint_green: "#8fff9f"          # cr(15.373)  mint green
+gold: "#dbb40c"                # cr(9.553)  gold
+baby_blue: "#a2cffe"           # cr(11.678)  baby blue
+yellow_green: "#c0fb2d"        # cr(15.469)  yellow green
+pale_blue: "#d0fefe"           # cr(17.473)  pale blue
+aquamarine: "#04d8b2"          # cr(10.389)  aquamarine
+neon_green: "#0cff0c"          # cr(13.880)  neon green
+light_pink: "#ffd1df"          # cr(13.984)  light pink
+mustard: "#ceb301"             # cr(9.123)  mustard
+lime: "#aaff32"                # cr(15.453)  lime
+sea_green: "#53fca1"           # cr(14.317)  sea green
+periwinkle: "#8e82fe"          # cr(6.136)  periwinkle
+peach: "#ffb07c"               # cr(10.647)  peach
+pale_green: "#c7fdb5"          # cr(16.437)  pale green
+lilac: "#cea2fd"               # cr(9.248)  lilac
+beige: "#e6daa6"               # cr(13.536)  beige
+salmon: "#ff796c"              # cr(7.431)  salmon
+bright_green: "#01ff07"        # cr(13.866)  bright green
+aqua: "#13eac9"                # cr(12.355)  aqua
+cyan: "#00ffff"                # cr(15.170)  cyan
+tan: "#d1b26f"                 # cr(9.337)  tan
+lavender: "#c79fef"            # cr(8.726)  lavender
+turquoise: "#06c2ac"           # cr(8.442)  turquoise
+light_purple: "#bf77f6"        # cr(6.507)  light purple
+lime_green: "#89fe05"          # cr(14.712)  lime green
+grey: "#929591"                # cr(6.277)  grey
+sky_blue: "#75bbfd"            # cr(9.313)  sky blue
+yellow: "#ffff14"              # cr(17.723)  yellow
+light_green: "#96f97b"         # cr(14.614)  light green
+orange: "#f97306"              # cr(6.777)  orange
+light_blue: "#95d0fc"          # cr(11.509)  light blue
+pink: "#ff81c0"                # cr(8.292)  pink
+green: "#15b01a"               # cr(6.572)  green

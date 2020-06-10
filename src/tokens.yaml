@@ -1,158 +1,364 @@
-colors:
-  red:    &red     "#f42d38"
-  green:  &green   "#98e342"
-  yellow: &yellow  "#fcea60"
-  blue:   &blue    "#0281d3"
-  orange: &orange  "#FF9F2E"
-  violet: &violet  "#C668BA"
-  white:  &white   "#e1e1e1"
-  gray:   &gray    "#666666"
-
-  e1: *red
-  e2: *green
-  e3: *yellow
-  e4: *blue
-  e5: *orange
-  e6: *violet
-  e7: *white
-  e8: *gray
+# This document desribes a grammar syntaxes for different languages,
+# 1st) using simple rules of predefined grammar
+# 2nd) using custom rules for specifics of grammars.
+#
+# FontStyle can be underline/bold/italic/normal or combinations.
 
 
-alpha:
-  high: "BE"
-  mid: "7E"
-  low: "40"
-  none: "00"
+# Preredefinitions of grammars
+# colors https://colorswall.com/colors/xkcd
+
+formats:
+  - comment: &comment
+      settings:
+        foreground: white/a60
+        fontStyle: italic
+
+  # Variable name or map key
+  - name: &name
+      settings: { foreground: yellow         }
+
+  - name_quotes: &name_quotes
+      settings: { foreground: yellow/a50      }
+
+  - strings: &strings
+      settings: { foreground: green        }
+
+  - strings_quotes: &strings_quotes
+      settings: { foreground: green/a50    }
+
+  - escape: &escape
+      settings: { foreground: blue }
 
 
-# "fontStyle": "underline"
-# "fontStyle": "bold"
-# "fontStyle": "normal"
+  - nums: &nums
+      settings: { foreground: blue }
+
+  - const: &const
+      settings:
+        foreground: blue
+        fontStyle: bold
+
+  - const: &null
+      settings:
+        foreground: blue
+        fontStyle: bold
+
+  - bool: &bool
+      settings:
+        foreground: blue
+        fontStyle: bold
+
+  - strings: &dates
+      settings:
+        fontStyle: underline
+
+  - structs: &structs
+      settings: { foreground: "#e1e1e1"   }
+
+  - puncts: &puncts
+      settings: { foreground: cyan  }
+
+  - invalid_input: &invalid_input
+      settings:
+        foreground: red
+        fontStyle: bold
+
+  - OTHER: &other
+      settings:
+        foreground: "#d63130"
+
+  # language syntax
+
+  - import: &import
+      settings: { foreground: orange }
+
+  - import_smt: &import_smt
+      settings:
+        foreground: orange
+
+  - async: &async
+      settings:
+        foreground: red
+
+  - flow: &flow
+      settings:
+        foreground: yellow
+
+  - builtin: &builtin
+      settings:
+        foreground: blue
+
+
+  - keywords: &keywords
+      settings:
+        foreground: orange
 
 
 
-scopes:
+grammars:
 
-# ~~~ General/Common Grammars ~~~
+  - # ~~~ JSON Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- name: Comments
-  settings:
-    foreground: white/a50
-    fontStyle: italic
-  scope:
-  - comment
+    - name: json/name
+      <<: *name
+      scope:
+      - string.json support.type.property-name.json
 
-# ~~~ YAML Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    - name: json/name/quotes
+      <<: *name_quotes
+      scope:
+      - punctuation.support.type.property-name.begin.json
+      - punctuation.support.type.property-name.end.json
 
+    - name: "json/punctuation/structs"
+      <<: *structs
+      scope:
+      - punctuation.definition.dictionary.begin.json
+      - punctuation.definition.dictionary.end.json
+      - punctuation.separator.dictionary.key-value.json
+      - punctuation.separator.dictionary.pair.json
+      - punctuation.definition.array.begin.json
+      - punctuation.definition.array.end.json
 
-# ~~~ YAML Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    - name: "json/punctuation"
+      <<: *puncts
+      scope:
+      - punctuation.separator.array.json
 
-- name: "YAML: Name"
-  settings:
-    foreground: green/a50
-  scope:
-    - entity.name.tag.yaml
-    - meta.block-mapping.yaml string.unquoted.block.yaml
-    - meta.block-mapping.yaml string.unquoted.plain.out.yaml
-    - meta.block-mapping.yaml string.quoted.double.yaml
-    - meta.block-mapping.yaml string.quoted.single.yaml
-    - meta.block-mapping.yaml string.unquoted.block.yaml
-    - meta.block-mapping.yaml string.unquoted.directive-name.yaml
-    - meta.block-mapping.yaml string.unquoted.directive-parameter.yaml
+    - name: "json/number"
+      <<: *nums
+      scope:
+      - constant.numeric.json
 
-- name: "Yaml: Punctuation"
-  settings:
-    foreground: blue
-  scope:
-    - punctuation.definition.alias.yaml
-    - punctuation.definition.block.sequence.item.yaml
-    - punctuation.definition.directive.begin.yaml
-    - punctuation.definition.key-value.begin.yaml
-    - punctuation.definition.mapping.begin.yaml
-    - punctuation.definition.mapping.end.yaml
-    - punctuation.definition.sequence.begin.yaml
-    - punctuation.definition.sequence.end.yaml
-    # - punctuation.definition.string.begin.yaml
-    # - punctuation.definition.string.end.yaml
-    - punctuation.separator.key-value.mapping.yaml
-    - punctuation.separator.mapping.yaml
-    - punctuation.separator.sequence.yaml
-    - punctuation.whitespace.comment.leading.yaml
+    - name: "json/strings"
+      <<: *strings
+      scope:
+      - string.quoted.double.json
 
-- name: "Yaml: New Document"
-  settings:
-    foreground: b
-    fontStyle: bold
-  scope:
-  - entity.other.document.begin.yaml
+    - name: "json/strings/quotes"
+      <<: *strings_quotes
+      scope:
+      - punctuation.definition.string.begin.json
+      - punctuation.definition.string.end.json
 
-- name: "Yaml: Variable Extraction"
-  settings:
-    foreground: green
-    fontStyle: italic
-  scope:
-    - storage.type.tag-handle.yaml
-    - meta.property.yaml
-    - punctuation.definition.alias.yaml
-    - keyword.control.flow.alias.yaml
-    - variable.other.alias.yaml
+    - name: "json/strings/escape"
+      <<: *escape
+      scope: constant.character.escape.json
 
-- name: "Yaml: Values"
-  settings:
-    foreground: white
-  scope:
-    - constant.character.escape.double-quoted.newline.yaml
-    - constant.character.escape.single-quoted.yaml
-    - constant.character.escape.yaml
-    - constant.language.merge.yaml
-    - constant.other.timestamp.yaml
-    - constant.numeric.float.yaml
-    - constant.numeric.indentation-indicator.yaml
-    - constant.numeric.integer.yaml
-    - constant.numeric.yaml-version.yaml
-    - constant.other.timestamp.yaml
-    - string.quoted.double.yaml
-    - string.quoted.single.yaml
-    - string.unquoted.block.yaml
-    - string.unquoted.directive-name.yaml
-    - string.unquoted.directive-parameter.yaml
-    - string.unquoted.plain.in.yaml
-    - string.unquoted.plain.out.yaml
+    - name: "json/constants"
+      <<: *const
+      scope: constant.language.json
 
-- name: "Yaml: Control Flow"
-  settings:
-    foreground: orange
-    fontStyle: bold
-  scope:
-    - keyword.control.flow.block-scalar.folded.yaml
-    - keyword.control.flow.block-scalar.literal.yaml
-    - meta.block-mapping.yaml
+    - name: "json/constants"
+      <<: *const
+      scope: constant.language.json
 
-- name: "Yaml: Null/True/False"
-  settings:
-    foreground: cyan
-    fontStyle: bold
-  scope:
-  - constant.language.null.yaml
-  - constant.language.boolean.yaml
+    - name: "json/invalid"
+      <<: *invalid_input
+      scope:
+      - invalid.illegal.expected-array-separator.json
+      - invalid.illegal.expected-dictionary-separator.json
+      - invalid.illegal.unrecognized-string-escape.json
 
-- name: "Yaml: Error"
-  settings:
-    foreground: red
-    fontStyle: bold
-  scope:
-  - invalid.illegal.character.anchor.yaml
-  - invalid.illegal.expected-comment-or-newline.yaml
-  - invalid.illegal.expected-newline.yaml
-  - invalid.illegal.tag-handle.yaml
-  - invalid.illegal.unrecognized.yaml
+    - name: "json/other"
+      <<: *other
+      scope:
+      - source.json
 
-# ~~~ /YAML Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  - # ~~~ YAML Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    - name: "yaml/comment"
+      <<: *comment
+      scope: comment.line.number-sign.yaml
+
+    - name: "yaml/name"
+      <<: *name
+      scope:
+      - entity.name.tag.yaml
+      - meta.flow-pair.key.yaml
+      - string.quoted.double.yaml meta.flow-mapping.yaml
+
+    - name: "yaml/block"
+      <<: *strings
+      scope: string.unquoted.block.yaml
 
 
-- name: "Go: Errors"
-  settings:
-    foreground: red
-    fontStyle: bold
-  scope:
-  - "eee"
+    - name: "yaml/string/item"
+      <<: *strings
+      scope:
+      - string.quoted.double.yaml
+      - string.quoted.single.yaml
+      - string.unquoted.plain.out.yaml
+      - string.unquoted.plain.in.yaml
+      - string.unquoted.directive-parameter.yaml
+
+    - name: "yaml/string/quotes"
+      <<: *strings_quotes
+      scope:
+      - punctuation.definition.string.begin.yaml
+      - punctuation.definition.string.end.yaml
+
+    - name: "yaml/string/escape"
+      <<: *escape
+      scope:
+      - constant.character.escape.double-quoted.newline.yaml
+      - constant.character.escape.single-quoted.yaml
+      - constant.character.escape.yaml
+
+    - name: "yaml/anchors"
+      settings:
+        foreground: white
+        fontStyle: italic
+      scope:
+      - entity.name.type.anchor.yaml
+      - variable.other.alias.yaml
+
+    - name: "yaml/anchors/punctuation"
+      settings:
+        foreground: yellow
+        fontStyle: bold italic
+      scope:
+      - punctuation.definition.anchor.yaml
+      - punctuation.definition.alias.yaml
+
+
+    - name: "yaml/punctuation/flow"
+      <<: *structs
+      scope:
+      - meta.flow-mapping.yaml
+      - meta.flow-sequence.yaml
+
+    - name: "yaml/punctuation/puncts"
+      <<: *puncts
+      scope:
+      - punctuation.separator.mapping.yaml
+      - punctuation.separator.sequence.yaml
+      - punctuation.definition.block.sequence.item.yaml
+      - punctuation.separator.key-value.mapping.yaml
+      - meta.block-mapping.yaml
+
+    - name: "yaml/punctuation/merge"
+      settings:
+        foreground: green
+      scope: constant.language.merge.yaml
+
+    - name: "yaml/invalid"
+      <<: *invalid_input
+      scope:
+      - invalid.illegal.character.anchor.yaml
+      - invalid.illegal.expected-comment-or-newline.yaml
+      - invalid.illegal.expected-newline.yaml
+      - invalid.illegal.tag-handle.yaml
+      - invalid.illegal.unrecognized.yaml
+
+    - name: "yaml/types/nums"
+      <<: *nums
+      scope:
+      - constant.numeric.integer.yaml
+      - constant.numeric.float.yaml
+
+    - name: "yaml/types/null"
+      <<: *null
+      scope:
+      - constant.language.null.yaml
+
+    - name: "yaml/types/bool"
+      <<: *bool
+      scope:
+      - constant.language.boolean.yaml
+
+    - name: "yaml/types/date"
+      settings:
+        foreground: blue
+        fontStyle: underline
+      scope: constant.other.timestamp.yaml
+
+    - name: "yaml/open-close"
+      settings:
+        foreground: yellow
+        fontStyle: bold italic
+      scope:
+      - entity.other.document.begin.yaml
+      - entity.other.document.end.yaml
+
+    - name: "yaml/other"
+      <<: *other
+      scope: source.yaml
+
+  - # ~~~ Go Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+    - name: "go/comment"
+      <<: *comment
+      scope:
+      - comment.block.go
+      - comment.line.double-slash.go
+
+    - name: "go/package/name"
+      <<: *name
+      scope:
+      - entity.name.package.go
+      - entity.alias.import.go
+      - entity.name.function.go
+      - entity.name.import.go
+      - entity.name.package.go
+      - entity.name.type.go
+      - support.function.go
+
+    - name: "go/builtins"
+      <<: *builtin
+      scope:
+      - support.function.builtin.go
+
+    - name: "go/async"
+      <<: *async
+      scope:
+      - keyword.channel.go
+      - keyword.operator.channel.go
+
+    - name: "go/flow"
+      <<: *flow
+      scope:
+      - keyword.control.go
+
+    - name: "go/keywords"
+      <<: *keywords
+      scope:
+      - keyword.import.go
+      - keyword.const.go
+      - keyword.function.go
+      - keyword.interface.go
+      - keyword.map.go
+      - keyword.package.go
+      - keyword.struct.go
+      - keyword.type.go
+      - keyword.var.go
+      - punctuation.definition.imports.begin.bracket.round.go
+      - punctuation.definition.imports.end.bracket.round.go
+
+    - name: "go/puncts"
+      <<: *puncts
+      scope:
+      - keyword.operator.address.go
+      - keyword.operator.arithmetic.bitwise.go
+      - keyword.operator.arithmetic.go
+      - keyword.operator.assignment.go
+      - keyword.operator.comparison.go
+      - keyword.operator.decrement.go
+      - keyword.operator.ellipsis.go
+      - keyword.operator.increment.go
+      - keyword.operator.logical.go
+
+
+    - name: "go/variable"
+      <<: *name
+      scope:
+      - variable.other.assignment.go
+
+  - # ~~~ Python Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # - name: "python/import"
+
+    #   scope:
+    #   - id

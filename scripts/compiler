@@ -107,14 +107,18 @@ class Theme:
         # updating tokens
         t['tokenColors'] = []
         if self._tokens:
-            for item in self._tokens.get('scopes', []):
-                if "settings" not in item:
+            for items in self._tokens.get('grammars', []):
+                if not isinstance(items, list):
                     continue
 
-                for k, v in item['settings'].items():
-                    item['settings'][k] = self.pick(v)
+                for item in items:
+                    if "settings" not in item:
+                        continue
 
-                t['tokenColors'].append(item)
+                    for k, v in item['settings'].items():
+                        item['settings'][k] = self.pick(v)
+
+                    t['tokenColors'].append(item)
 
         with open(self.dest, "w") as f:
             print("Same theme       : {0}".format(datetime.now().time()))
@@ -147,8 +151,10 @@ def main(quickMode):
     while True:
         if theme.is_changed():
             theme.generate()
+
         if quickMode:
             return
+
         time.sleep(1)
 
 
