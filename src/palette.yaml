@@ -1,35 +1,27 @@
 # Acid Night
 #
-black:             "#101010"
+black:             "#282828"
 dark:              "#494949"
-white:   &white    "#C0CCDB"
+white:   &white    "#e1e1e1"
 
-red:     &red      "#fc5a50" # cr(6.085)   coral
-orange:  &orange   "#ff5b00" # cr(6.112)   bright orange
-yellow:  &yellow   "#ffab0f" # cr(10.040)  yellowish orange
-green:   &green    "#DAC25C" # cr(10)
-cyan:    &cyan     "#02ccfe" # cr(10.027)  bright sky blue
-blue:    &blue     "#069af3" # cr(6.272)   azure
-magenta: &magenta  "#fe46a5" # cr(6.009)  barbie pink
+red:         &red      "#e74c3c" # !!!
+orange:      &orange   "#f39c12" # <
+yellow:      &yellow   "#f1c40f" # <
+green:       &green    "#99cf54" # <
+cyan:        &cyan     "#06b1c4"
+blue:        &blue     "#3498db" # <
+magenta:     &magenta  "#9b59b6"
+
 
 none: "#fff0"
 
 # this color is indicator of unchecked values we don't want to show right now.
 none2: "#fff0"
 
+
 # Main Color
-# highBg: "#a9ba21"
-# highFg: "#101010"
-
-# highBg: "#fec52a"
-# highFg: "#101010"
-
-# highBg: "#f79723"
-# highFg: "#101010"
-
-highBg: "#d63130"
-highFg: "#f1f1f1"
-
+highBg: "#a9ba21"
+highFg: "#101010"
 
 # Alpha
 a90 : "E6"
@@ -42,4 +34,3 @@ a30 : "4C"
 a20 : "33"
 a10 : "16"
 a00 : "00"
-

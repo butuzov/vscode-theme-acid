@@ -1,0 +1,16 @@
+
+- name: "Calm"
+  colors:
+    blue:    '#66ce79'
+    green:   '#edef52'
+    magenta: '#99cf54'
+    orange:  '#70a5ce'
+    yellow:  '#d1c783'
+
+- name: "Bland"
+  colors:
+    blue:    '#70a5ce'
+    green:   '#C7C89D'
+    magenta: '#98AF5D'
+    orange:  '#b1d7e2'
+    yellow:  '#F5EBA7'

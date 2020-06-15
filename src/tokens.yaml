@@ -9,356 +9,787 @@
 # colors https://colorswall.com/colors/xkcd
 
 formats:
-  - comment: &comment
+
+  - comment: &comment                                                     # DONE
       settings:
         foreground: white/a60
         fontStyle: italic
 
-  # Variable name or map key
-  - name: &name
-      settings: { foreground: yellow         }
+  - keywords: &keywords
+      settings:
+        foreground: green
 
-  - name_quotes: &name_quotes
-      settings: { foreground: yellow/a50      }
+  # function keyword or other
+  - function: &function                                                   # DONE
+      settings:
+        foreground: yellow
 
-  - strings: &strings
-      settings: { foreground: green        }
+  # self, this, internal instance access
+  - this: &this                                                           # DONE
+      settings:
+        foreground: green
 
-  - strings_quotes: &strings_quotes
-      settings: { foreground: green/a50    }
-
-  - escape: &escape
-      settings: { foreground: blue }
-
-
-  - nums: &nums
-      settings: { foreground: blue }
-
-  - const: &const
+  # function names
+  - function_name: &function_name                                         # DONE
       settings:
         foreground: blue
-        fontStyle: bold
 
-  - const: &null
+  # variable / block or other.
+  - name: &name                                                           # DONE
       settings:
-        foreground: blue
-        fontStyle: bold
+        foreground: green
 
-  - bool: &bool
+  # async related stuff
+  - async: &async                                                         # DONE
       settings:
-        foreground: blue
-        fontStyle: bold
+        foreground: green
 
-  - strings: &dates
+
+
+  - type: &type
       settings:
-        fontStyle: underline
+        foreground: yellow
 
-  - structs: &structs
-      settings: { foreground: "#e1e1e1"   }
+  - variable: &variable                                                   # DONE
+      settings:
+        foreground: white
 
-  - puncts: &puncts
-      settings: { foreground: cyan  }
-
-  - invalid_input: &invalid_input
+  - variable_punctuations: &variable_punctuations
       settings:
         foreground: red
-        fontStyle: bold
+        fontStyle: italic bold underline
 
-  - OTHER: &other
+  - builtin: &builtin                                                     # DONE
       settings:
-        foreground: "#d63130"
+        foreground: blue
+        fontStyle: underline
 
-  # language syntax
+  - punctuation: &punctuation                                             # DONE
+      settings:
+        foreground: white
 
-  - import: &import
-      settings: { foreground: orange }
-
-  - import_smt: &import_smt
+  - operator: &operator                                                   # DONE
       settings:
         foreground: orange
 
-  - async: &async
+  - import: &import
       settings:
-        foreground: red
+        foreground: yellow
+
+  - import_entity: &import_entity
+      settings:
+        foreground: orange
+        fontStyle:  underline
 
   - flow: &flow
       settings:
         foreground: yellow
 
-  - builtin: &builtin
+  - class: &class
       settings:
         foreground: blue
 
-
-  - keywords: &keywords
+  - type_number: &type_number                                             # DONE
       settings:
-        foreground: orange
+        foreground: blue/a80
 
-
-
-grammars:
-
-  - # ~~~ JSON Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    - name: json/name
-      <<: *name
-      scope:
-      - string.json support.type.property-name.json
-
-    - name: json/name/quotes
-      <<: *name_quotes
-      scope:
-      - punctuation.support.type.property-name.begin.json
-      - punctuation.support.type.property-name.end.json
-
-    - name: "json/punctuation/structs"
-      <<: *structs
-      scope:
-      - punctuation.definition.dictionary.begin.json
-      - punctuation.definition.dictionary.end.json
-      - punctuation.separator.dictionary.key-value.json
-      - punctuation.separator.dictionary.pair.json
-      - punctuation.definition.array.begin.json
-      - punctuation.definition.array.end.json
-
-    - name: "json/punctuation"
-      <<: *puncts
-      scope:
-      - punctuation.separator.array.json
-
-    - name: "json/number"
-      <<: *nums
-      scope:
-      - constant.numeric.json
-
-    - name: "json/strings"
-      <<: *strings
-      scope:
-      - string.quoted.double.json
-
-    - name: "json/strings/quotes"
-      <<: *strings_quotes
-      scope:
-      - punctuation.definition.string.begin.json
-      - punctuation.definition.string.end.json
-
-    - name: "json/strings/escape"
-      <<: *escape
-      scope: constant.character.escape.json
-
-    - name: "json/constants"
-      <<: *const
-      scope: constant.language.json
-
-    - name: "json/constants"
-      <<: *const
-      scope: constant.language.json
-
-    - name: "json/invalid"
-      <<: *invalid_input
-      scope:
-      - invalid.illegal.expected-array-separator.json
-      - invalid.illegal.expected-dictionary-separator.json
-      - invalid.illegal.unrecognized-string-escape.json
-
-    - name: "json/other"
-      <<: *other
-      scope:
-      - source.json
-
-  - # ~~~ YAML Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    - name: "yaml/comment"
-      <<: *comment
-      scope: comment.line.number-sign.yaml
-
-    - name: "yaml/name"
-      <<: *name
-      scope:
-      - entity.name.tag.yaml
-      - meta.flow-pair.key.yaml
-      - string.quoted.double.yaml meta.flow-mapping.yaml
-
-    - name: "yaml/block"
-      <<: *strings
-      scope: string.unquoted.block.yaml
-
-
-    - name: "yaml/string/item"
-      <<: *strings
-      scope:
-      - string.quoted.double.yaml
-      - string.quoted.single.yaml
-      - string.unquoted.plain.out.yaml
-      - string.unquoted.plain.in.yaml
-      - string.unquoted.directive-parameter.yaml
-
-    - name: "yaml/string/quotes"
-      <<: *strings_quotes
-      scope:
-      - punctuation.definition.string.begin.yaml
-      - punctuation.definition.string.end.yaml
-
-    - name: "yaml/string/escape"
-      <<: *escape
-      scope:
-      - constant.character.escape.double-quoted.newline.yaml
-      - constant.character.escape.single-quoted.yaml
-      - constant.character.escape.yaml
-
-    - name: "yaml/anchors"
+  - type_float: &type_float                                               # DONE
       settings:
-        foreground: white
-        fontStyle: italic
-      scope:
-      - entity.name.type.anchor.yaml
-      - variable.other.alias.yaml
+        foreground: magenta
 
-    - name: "yaml/anchors/punctuation"
+  - type_int: &type_int                                                   # DONE
       settings:
-        foreground: yellow
-        fontStyle: bold italic
-      scope:
-      - punctuation.definition.anchor.yaml
-      - punctuation.definition.alias.yaml
+        foreground: blue
 
-
-    - name: "yaml/punctuation/flow"
-      <<: *structs
-      scope:
-      - meta.flow-mapping.yaml
-      - meta.flow-sequence.yaml
-
-    - name: "yaml/punctuation/puncts"
-      <<: *puncts
-      scope:
-      - punctuation.separator.mapping.yaml
-      - punctuation.separator.sequence.yaml
-      - punctuation.definition.block.sequence.item.yaml
-      - punctuation.separator.key-value.mapping.yaml
-      - meta.block-mapping.yaml
-
-    - name: "yaml/punctuation/merge"
-      settings:
-        foreground: green
-      scope: constant.language.merge.yaml
-
-    - name: "yaml/invalid"
-      <<: *invalid_input
-      scope:
-      - invalid.illegal.character.anchor.yaml
-      - invalid.illegal.expected-comment-or-newline.yaml
-      - invalid.illegal.expected-newline.yaml
-      - invalid.illegal.tag-handle.yaml
-      - invalid.illegal.unrecognized.yaml
-
-    - name: "yaml/types/nums"
-      <<: *nums
-      scope:
-      - constant.numeric.integer.yaml
-      - constant.numeric.float.yaml
-
-    - name: "yaml/types/null"
-      <<: *null
-      scope:
-      - constant.language.null.yaml
-
-    - name: "yaml/types/bool"
-      <<: *bool
-      scope:
-      - constant.language.boolean.yaml
-
-    - name: "yaml/types/date"
+  - type_date: &type_date                                                 # DONE
       settings:
         foreground: blue
         fontStyle: underline
-      scope: constant.other.timestamp.yaml
 
-    - name: "yaml/open-close"
+  - type_boolean: &type_boolean                                           # DONE
+      settings:
+        foreground: green
+
+  - type_null: &type_null                                                 # DONE
+      settings:
+        foreground: green
+
+  - illegal: &illegal                                                     # DONE
+      settings:
+        foreground:  red
+        fontStyle:  underline
+
+  - escape: &escape                                                       # DONE
+      settings:
+        foreground: blue
+
+  - type_string: &type_string                                             # DONE
       settings:
         foreground: yellow
-        fontStyle: bold italic
-      scope:
-      - entity.other.document.begin.yaml
-      - entity.other.document.end.yaml
 
-    - name: "yaml/other"
-      <<: *other
-      scope: source.yaml
+  - type_string_quotes: &type_string_quotes                               # DONE
+      settings:
+        foreground: yellow/a60
 
-  - # ~~~ Go Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  - type_string_quotes: &type_string_placeholder                          # DONE
+      settings:
+        foreground: white
+
+################################################################################
+#
+################################################################################
+
+grammars:
+
+- # GRAMMAR ~~~ YAML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: json/comments
+    <<: *comment
+    scope:
+    - comment.block.documentation.json
+    - comment.block.json
+    - comment.line.double-slash.js
+
+  - name: json/escape
+    <<: *escape
+    scope:
+    - constant.character.escape.json
+
+  - name: json/name
+    <<: *name
+    scope:
+    - string.json support.type.property-name.json
+
+  - name: json/name/quotes
+    settings:
+      foreground: green/a60
+    scope:
+    - punctuation.support.type.property-name.end.json
+    - punctuation.support.type.property-name.begin.json
+
+  - name: json/punctuation
+    <<: *punctuation
+    scope:
+    - punctuation.definition.array.begin.json
+    - punctuation.definition.array.end.json
+    - punctuation.definition.dictionary.begin.json
+    - punctuation.definition.dictionary.end.json
+    - punctuation.separator.array.json
+    - punctuation.separator.dictionary.key-value.json
+
+  - name: json/type_number
+    <<: *type_number
+    scope:
+    - constant.numeric.json
+
+  - name: json/type_null
+    <<: *type_null
+    scope:
+    - constant.language.json
+
+  - name: json/illegal
+    <<: *illegal
+    scope:
+    - invalid.illegal.expected-array-separator.json
+    - invalid.illegal.expected-dictionary-separator.json
+    - invalid.illegal.unrecognized-string-escape.json
+
+  - name: json/type_string
+    <<: *type_string
+    scope:
+    - string.quoted.double.json
+
+  - name: json/type_string_quotes
+    <<: *type_string_quotes
+    scope:
+    - punctuation.definition.string.begin.json
+    - punctuation.definition.string.end.json
+
+- # GRAMMAR ~~~ JSON ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: yaml/comments
+    <<: *comment
+    scope:
+    - comment.line.number-sign.yaml
+
+  - name: yaml/document
+    <<: *name
+    scope:
+    - entity.other.document.begin.yaml
+    - entity.other.document.end.yaml
+
+  - name: yaml/name
+    <<: *name
+    scope:
+    - entity.name.tag.yaml
+
+  - name: yaml/variable
+    <<: *variable
+    scope:
+    - entity.name.type.anchor.yaml
+    - variable.other.alias.yaml
+
+  - name: yaml/variable/operators
+    <<: *operator
+    scope:
+    - punctuation.definition.anchor.yaml
+    - punctuation.definition.alias.yaml
+    - keyword.control.flow.block-scalar.folded.yaml
+    - keyword.control.flow.block-scalar.literal.yaml
+    - storage.modifier.chomping-indicator.yaml
+
+  - name: yaml/date
+    <<: *type_date
+    scope:
+    - constant.other.timestamp.yaml
+
+  - name: yaml/builtin
+    <<: *builtin
+    scope:
+    - storage.type.tag-handle.yaml
+
+  - name: yaml/punctuation
+    <<: *punctuation
+    scope:
+    - constant.language.merge.yaml
+    - punctuation.separator.key-value.mapping.yaml
+    - punctuation.separator.key-value.mapping.yaml
+    - punctuation.separator.mapping.yaml
+    - punctuation.separator.sequence.yaml
+    - punctuation.definition.directive.begin.yaml
+    - punctuation.definition.key-value.begin.yaml
+    - punctuation.definition.mapping.begin.yaml
+    - punctuation.definition.mapping.end.yaml
+    - punctuation.definition.sequence.begin.yaml
+    - punctuation.definition.sequence.end.yaml
+    - punctuation.definition.block.sequence.item.yaml
+
+  - name: yaml/type_number
+    <<: *type_number
+    scope:
+    - constant.numeric.indentation-indicator.yaml
+    - constant.numeric.yaml-version.yaml
+
+  - name: yaml/type_float
+    <<: *type_float
+    scope:
+    - constant.numeric.float.yaml
+
+  - name: yaml/type_int
+    <<: *type_int
+    scope:
+    - constant.numeric.integer.yaml
+
+  - name: yaml/type_boolean
+    <<: *type_boolean
+    scope:
+    - constant.language.boolean.yaml
+
+  - name: yaml/type_null
+    <<: *type_null
+    scope:
+    - constant.language.null.yaml
+
+  - name: yaml/escape
+    <<: *escape
+    scope:
+    - constant.character.escape.double-quoted.newline.yaml
+    - constant.character.escape.single-quoted.yaml
+    - constant.character.escape.yaml
+
+  - name: yaml/illegal
+    <<: *illegal
+    scope:
+    - invalid.illegal.character.anchor.yaml
+    - invalid.illegal.expected-comment-or-newline.yaml
+    - invalid.illegal.expected-newline.yaml
+    - invalid.illegal.tag-handle.yaml
+    - invalid.illegal.unrecognized.yaml
+
+
+  - name: yaml/type_string
+    <<: *type_string
+    scope:
+    - string.unquoted.plain.out.yaml
+    - string.unquoted.plain.in.yaml
+    - string.unquoted.block.yaml
+    - string.quoted.double.yaml
+    - string.quoted.single.yaml
+
+  - name: yaml/type_string_quotes
+    <<: *type_string_quotes
+    scope:
+    - punctuation.definition.string.begin.yaml
+    - punctuation.definition.string.end.yaml
+    - punctuation.definition.string.endmaps.yaml
+
+- # GRAMMAR ~~~ Go ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: go/comment
+    <<: *comment
+    scope:
+    - comment.line.double-slash.go
+    - comment.block.go
+
+  - name: go/package
+    settings:
+      foreground: blue
+    scope:
+    - keyword.package.go
+
+  - name: go/package
+    settings:
+      foreground: blue
+      fontStyle: underline
+    scope:
+    - entity.name.package.go
+
+
+  - name: go/keywords
+    <<: *keywords
+    scope:
+    - keyword.var.go
+    - keyword.type.go
+    - keyword.channel.go
+    - keyword.struct.go
+    - keyword.const.go
+    - keyword.interface.go
+
+  - name: go/chan
+    <<: *async
+    scope:
+    - keyword.channel.go
+    - keyword.operator.channel.go
 
 
 
-    - name: "go/comment"
-      <<: *comment
-      scope:
-      - comment.block.go
-      - comment.line.double-slash.go
+  - name: go/function
+    <<: *function
+    scope:
+    - keyword.function.go
 
-    - name: "go/package/name"
-      <<: *name
-      scope:
-      - entity.name.package.go
-      - entity.alias.import.go
-      - entity.name.function.go
-      - entity.name.import.go
-      - entity.name.package.go
-      - entity.name.type.go
-      - support.function.go
+  - name: go/function/name
+    <<: *function_name
+    scope:
+    - entity.name.function.go
+    - support.function.go
 
-    - name: "go/builtins"
-      <<: *builtin
-      scope:
-      - support.function.builtin.go
+  - name: go/builtin
+    <<: *builtin
+    scope:
+    - support.function.builtin.go
 
-    - name: "go/async"
-      <<: *async
-      scope:
-      - keyword.channel.go
-      - keyword.operator.channel.go
+  - name: go/types
+    <<: *type
+    scope:
+    - storage.type.numeric.go
+    - storage.type.rune.go
+    - storage.type.uintptr.go
+    - storage.type.string.go
+    - storage.type.error.go
+    - storage.type.byte.go
+    - storage.type.boolean.go
 
-    - name: "go/flow"
-      <<: *flow
-      scope:
-      - keyword.control.go
+  - name: go/operator
+    <<: *operator
+    scope:
+    - keyword.operator.arithmetic.go
+    - keyword.operator.address.go
+    - keyword.operator.assignment.go
+    - keyword.operator.comparison.go
+    - keyword.operator.decrement.go
+    - keyword.operator.increment.go
+    - keyword.operator.ellipsis.go
+    - punctuation.terminator.go
+    - keyword.operator.logical.go
+    - keyword.operator.arithmetic.bitwise.go
 
-    - name: "go/keywords"
-      <<: *keywords
-      scope:
-      - keyword.import.go
-      - keyword.const.go
-      - keyword.function.go
-      - keyword.interface.go
-      - keyword.map.go
-      - keyword.package.go
-      - keyword.struct.go
-      - keyword.type.go
-      - keyword.var.go
-      - punctuation.definition.imports.begin.bracket.round.go
-      - punctuation.definition.imports.end.bracket.round.go
+  - name: go/import
+    <<: *import
+    scope:
+    - keyword.import.go
 
-    - name: "go/puncts"
-      <<: *puncts
-      scope:
-      - keyword.operator.address.go
-      - keyword.operator.arithmetic.bitwise.go
-      - keyword.operator.arithmetic.go
-      - keyword.operator.assignment.go
-      - keyword.operator.comparison.go
-      - keyword.operator.decrement.go
-      - keyword.operator.ellipsis.go
-      - keyword.operator.increment.go
-      - keyword.operator.logical.go
+  - name: go/import_entity
+    <<: *import_entity
+    scope:
+    - entity.alias.import.go
+    - entity.name.import.go
+
+  - name: go/escape
+    <<: *escape
+    scope:
+    - constant.character.escape.go
+
+  - name: go/flow
+    <<: *flow
+    scope:
+    - keyword.control.go
+    - keyword.map.go
+
+  - name: go/type_float
+    <<: *type_float
+    scope:
+    - constant.numeric.floating-point.go
+
+  - name: go/type_int
+    <<: *type_int
+    scope:
+    - constant.numeric.integer.go
+
+  - name: go/type_boolean
+    <<: *type_boolean
+    scope:
+    - constant.language.go
+
+  - name: go/type_null
+    <<: *type_null
+    scope:
+    - constant.language.go
+
+  - name: go/illegal
+    <<: *illegal
+    scope:
+    - invalid.illegal.identifier.go
+    - invalid.illegal.numeric.go
+    - invalid.illegal.receive-channel.go
+    - invalid.illegal.send-channel.go
+    - invalid.illegal.slice.go
+    - invalid.illegal.unknown-escape.go
+    - invalid.illegal.unknown-rune.go
+
+  - name: go/type_string
+    <<: *type_string
+    scope:
+    - string.quoted.double.go
+    - string.quoted.raw.go
+    - string.quoted.rune.go
+
+  - name: go/type_string_quotes
+    <<: *type_string_quotes
+    scope:
+    - punctuation.definition.string.begin.go
+    - punctuation.definition.string.end.go
+
+  - name: go/type/string/placeholder
+    <<: *type_string_placeholder
+    scope:
+    - constant.other.placeholder.go
+
+- # GRAMMAR ~~~ Python ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: python/comment
+    <<: *comment
+    scope:
+    - q
+
+  - name: python/keywords
+    <<: *keywords
+    scope:
+    - q
+
+  - name: python/reset
+    <<: *punctuation
+    scope:
+    - punctuation.definition.inheritance.begin.python
+    - punctuation.definition.inheritance.end.python
+
+  - name: python/function
+    <<: *function
+    scope:
+    - storage.type.function.python
+    - storage.type.class.python
+    - storage.type.function.lambda.python
+
+  - name: python/decorator
+    settings:
+      foreground: green
+    scope:
+    - entity.name.function.decorator.python
+    - meta.function.decorator.python
 
 
-    - name: "go/variable"
-      <<: *name
-      scope:
-      - variable.other.assignment.go
+  - name: python/function/name
+    <<: *function_name
+    scope:
+    - entity.name.function.python
+    - meta.function-call.generic.python
+    - support.function.magic.python
 
-  - # ~~~ Python Grammar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # - name: "python/import"
+  - name: python/async
+    <<: *async
+    scope:
+    - storage.type.function.async.python
 
-    #   scope:
-    #   - id
+  - name: python/type
+    <<: *type
+    scope:
+    - support.type.python
+
+  - name: python/builtin
+    <<: *builtin
+    scope:
+    - support.function.builtin.python
+
+  - name: python/punctuation
+    <<: *punctuation
+    scope:
+    - punctuation.separator.colon.python
+    - punctuation.separator.element.python
+
+  - name: python/import
+    <<: *import
+    scope:
+    - keyword.control.import.python
+
+  - name: python/import_entity
+    <<: *import_entity
+    scope:
+    - q
+
+  - name: python/operator
+    <<: *operator
+    scope:
+    - keyword.operator.bitwise.python
+    - keyword.operator.comparison.python
+    - keyword.operator.assignment.python
+    - keyword.operator.arithmetic.python
+    - keyword.operator.logical.python
+    - punctuation.definition.decorator.python
+
+  - name: python/flow
+    <<: *flow
+    scope:
+    - keyword.control.flow.python
+    - keyword.operator.logical.python
+
+  - name: python/escape
+    <<: *escape
+    scope:
+    - constant.character.escape.python
+    - constant.character.escape.regexp
+
+  - name: python/this
+    <<: *this
+    scope:
+    - variable.language.special.self.python
+    - variable.parameter.function.language.special.self.python
+    - variable.language.special.cls.python
+
+  - name: python/class
+    <<: *class
+    scope:
+    - entity.name.type.class.python
+    - entity.other.inherited-class.python
+
+  - name: python/type_number
+    <<: *type_number
+    scope:
+    - constant.numeric.hex.python
+    - constant.numeric.oct.python
+    - constant.numeric.bin.python
+    - constant.numeric.python
+
+  - name: python/type_float
+    <<: *type_float
+    scope:
+    - constant.numeric.float.python
+
+  - name: python/type_int
+    <<: *type_int
+    scope:
+    - constant.numeric.dec.python
+
+
+
+  - name: python/type/none
+    <<: *type_null
+    scope:
+    - constant.language.python
+
+  - name: python/illegal
+    <<: *illegal
+    scope:
+    - invalid.deprecated.backtick.python
+    - invalid.deprecated.prefix.python
+    - invalid.deprecated.semicolon.python
+    - invalid.illegal.annotation.python
+    - invalid.illegal.brace.python
+    - invalid.illegal.dec.python
+    - invalid.illegal.decorator.python
+    - invalid.illegal.line.continuation.python
+    - invalid.illegal.name.python
+    - invalid.illegal.newline.python
+    - invalid.illegal.operator.python
+    - invalid.illegal.prefix.python
+    - keyword.illegal.name.python
+
+  - name: python/type_string
+    <<: *type_string
+    scope:
+    - string.quoted.single.python
+
+  - name: python/type_string_quotes
+    <<: *type_string_quotes
+    scope:
+    - punctuation.definition.string.begin.python
+    - punctuation.definition.string.end.python
+
+  - name: python/type/string/placeholder
+    <<: *type_string_placeholder
+    scope:
+    - constant.character.format.placeholder.other.python
+
+- # GRAMMAR ~~~ HashiCorpLangauge ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: hcl/comments
+    <<: *comment
+    scope:
+    - comment.block.terraform
+    - comment.line.terraform
+
+  - name: hcl/name
+    <<: *name
+    scope:
+    - storage.type.terraform
+    - entity.name.label.terraform
+    - punctuation.section.block.begin.terraform
+    - punctuation.section.block.end.terraform
+
+  - name: hcl/variable
+    <<: *variable
+    scope:
+    - variable.declaration.terraform
+    - variable.function.terraform
+    - variable.other.member.terraform
+    - variable.other.readwrite.terraform
+
+  - name: hcl/builtin
+    <<: *builtin
+    scope:
+    - support.function.builtin.terraform
+
+  - name: hcl/operator
+    settings:
+      foreground: blue
+    scope:
+    - keyword.operator.accessor.terraform
+    - keyword.operator.arithmetic.terraform
+    - keyword.operator.assignment.terraform
+    - keyword.operator.heredoc.terraform
+    - keyword.operator.logical.terraform
+    - keyword.operator.splat.terraform
+    - keyword.operator.template.left.trim.terraform
+    - keyword.operator.template.right.trim.terraform
+    - keyword.operator.terraform
+    - keyword.operator.word.terraform
+
+  - name: hcl/escape
+    <<: *escape
+    scope:
+    - constant.character.escape.terraform
+
+  - name: hcl/type_float
+    <<: *type_float
+    scope:
+    - constant.numeric.float.terraform
+
+  - name: hcl/type_int
+    <<: *type_int
+    scope:
+    - constant.numeric.integer.terraform
+
+  - name: hcl/type_null
+    <<: *type_null
+    scope:
+    - constant.language.terraform
+
+  - name: hcl/type_string
+    <<: *type_string
+    scope:
+    - string.quoted.double.terraform
+
+  - name: hcl/type_string_quotes
+    <<: *type_string_quotes
+    scope:
+    - punctuation.definition.string.begin.terraform
+    - punctuation.definition.string.end.terraform
+
+- # GRAMMAR ~~~ Markdown ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: md
+    settings:
+      foreground: white
+    scope:
+    - text.html.markdown
+
+
+  - name: "md/bold"
+    settings:
+      foreground: blue
+      fontStyle: bold
+    scope:
+    - markup.bold.markdown
+
+  - name: "md/italic"
+    settings:
+      foreground: blue
+      fontStyle: italic
+    scope:
+    - markup.italic.markdown
+
+  - name: "md/list"
+    settings:
+      foreground: yellow
+    scope:
+    - punctuation.definition.list.begin.markdown
+    - punctuation.definition.quote.begin.markdown
+
+
+  - name: "md/link(href)"
+    settings:
+      foreground: yellow
+      fontStyle: underline
+    scope:
+    - markup.underline.link.markdown
+
+  - name: "md/link(href)"
+    settings:
+      foreground: green
+      fontStyle: underline
+    scope:
+    - markup.underline.link.markdown
+
+  - name: "md/link(text)"
+    settings:
+      foreground: green
+    scope:
+    - string.other.link.title.markdown
+
+
+  - name: md/header
+    settings:
+      foreground: red
+    scope:
+    - punctuation.definition.heading.markdown
+
+
+  - name: "md: "
+    settings:
+      foreground: green
+      fontStyle: italic
+    scope:
+    - punctuation.definition.markdown
+
+  - name: "md/quote"
+    settings:
+      foreground: white
+      fontStyle: italic
+    scope:
+    - markup.quote.markdown
+
+  - name: "md/quote"
+    settings:
+      foreground: white
+      fontStyle: italic
+    scope:
+    - markup.inline.raw.string.markdown

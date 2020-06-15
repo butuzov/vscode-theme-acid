@@ -69,13 +69,13 @@ debugIcon:
   continueForeground: _
   disconnectForeground: _
   pauseForeground: orange
-  restartForeground: magenta
+  restartForeground: green
   startForeground: green
-  stepBackForeground: "#ff676b"
-  stepIntoForeground: cyan
-  stepOutForeground: green
-  stepOverForeground: green/a50
-  stopForeground: blue
+  stepBackForeground: _
+  stepIntoForeground: blue
+  stepOutForeground: blue
+  stepOverForeground: orange
+  stopForeground: red
 
 # DebugTokenExpression - debug output
 debugTokenExpression:
@@ -297,12 +297,12 @@ extensionButton:
 
 # GitDecoration
 gitDecoration:
-  addedResourceForeground: _
-  conflictingResourceForeground: _
+  addedResourceForeground: white
+  conflictingResourceForeground: orange
   deletedResourceForeground: red
   ignoredResourceForeground: white/a40
   modifiedResourceForeground: yellow
-  submoduleResourceForeground: _
+  submoduleResourceForeground: cyan
   untrackedResourceForeground: green
 
 # Icon
@@ -354,7 +354,7 @@ list:
   filterMatchBackground: _
   filterMatchBorder: _
   focusBackground: white/a40
-  focusForeground: black
+  focusForeground: "#c9db36"
   inactiveFocusBackground: dark
 
   highlightForeground: highBg
@@ -448,17 +448,17 @@ panelTitle:
   inactiveForeground: white/a50
 
 # PeekView
-peekView:
-  border: white
+peekView: { border: white }
+
 # PeekViewEditor
 peekViewEditor:
   background: red
   matchHighlightBackground: _
   matchHighlightBorder: _
+
 # PeekViewEditorGutter
-peekViewEditorGutter:
-  background: _
-# PeekViewResult
+peekViewEditorGutter: { background: _ }
+
 peekViewResult:
   background: _
   fileForeground: _
