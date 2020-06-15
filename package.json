@@ -1,39 +1,50 @@
 {
-    "name": "acid-night",
-    "displayName": "Acid Night",
-    "description": "acid-night",
-    "version": "0.0.0",
-    "publisher": "butuzov",
-    "engines": {
-        "vscode": "^1.45.0"
-    },
-    "categories": [
-        "Themes"
-    ],
-    "scripts": {
-        "build": "./scripts/compiler",
-        "quick_build": "./scripts/compiler --quick",
-        "extension": "vsce package",
-        "install": "code --force --install-extension  acid-night-0.0.0.vsix"
-    },
-    "contributes": {
-        "themes": [
-            {
-                "label": "Acid Night",
-                "uiTheme": "vs-dark",
-                "path": "./theme.json"
-            }
-        ]
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/butuzov/acid-night"
-    },
-    "homepage": "https://github.com/butuzov/acid-night",
-    "bugs": {
-        "url": "https://github.com/butuzov/acid-night/issues"
-    },
-    "devDependencies": {
-        "vsce": "^1.76.0"
-    }
+  "name": "acid-night",
+  "displayName": "Acid Night",
+  "description": "acid-night",
+  "engines": {
+    "vscode": "^1.45.0"
+  },
+  "icon": "icon.png",
+  "publisher": "butuzov",
+  "version": "0.0.0",
+  "categories": [
+    "Themes"
+  ],
+  "scripts": {
+    "build": "./scripts/compiler",
+    "quick_build": "./scripts/compiler --quick",
+    "extension": "vsce package",
+    "install": "code --force --install-extension  acid-night-0.0.0.vsix"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Acid Night",
+        "uiTheme": "vs-dark",
+        "path": "./themes/theme.json"
+      },
+      {
+        "label": "Acid Night - Calm",
+        "uiTheme": "vs-dark",
+        "path": "./themes/theme-calm.json"
+      },
+      {
+        "label": "Acid Night - Bland",
+        "uiTheme": "vs-dark",
+        "path": "./themes/theme-bland.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/butuzov/acid-night"
+  },
+  "homepage": "https://github.com/butuzov/acid-night",
+  "bugs": {
+    "url": "https://github.com/butuzov/acid-night/issues"
+  },
+  "devDependencies": {
+    "vsce": "^1.76.0"
+  }
 }
