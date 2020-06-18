@@ -1,4 +1,12 @@
 
+- name: "Bland"
+  colors:
+    blue:    '#64a7da'
+    green:   '#9cb953'
+    magenta: '#bfbd70'
+    orange:  '#abdae8'
+    yellow:  '#fffb91'
+
 - name: "Calm"
   colors:
     blue:    '#66ce79'
@@ -7,10 +15,10 @@
     orange:  '#70a5ce'
     yellow:  '#d1c783'
 
-- name: "Bland"
+- name: "Special"
   colors:
-    blue:    '#70a5ce'
-    green:   '#98AF5D'
-    magenta: '#C7C89D'
-    orange:  '#b1d7e2'
-    yellow:  '#F5EBA7'
+    blue:    '#81c784'
+    green:   '#abdae8'
+    magenta: '#9cb953'
+    orange:  '#64a7da'
+    yellow:  '#fffb91'

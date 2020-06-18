@@ -44,8 +44,6 @@ formats:
       settings:
         foreground: green
 
-
-
   - type: &type
       settings:
         foreground: yellow
@@ -88,6 +86,11 @@ formats:
   - class: &class
       settings:
         foreground: blue
+
+  - class_modifier: &class_modifier
+      settings:
+        foreground: orange
+        fontStyle:  underline
 
   - type_number: &type_number                                             # DONE
       settings:
@@ -140,6 +143,37 @@ formats:
 ################################################################################
 
 grammars:
+- # GRAMMAR ~~~ Common  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "common/comment"
+    <<: *comment
+    scope:
+    - comment
+
+  - name: common/type_string
+    <<: *type_string
+    scope:
+    - string
+
+  - name: common/illegal
+    <<: *illegal
+    scope:
+    - illegal
+
+  - name: common/type_boolean
+    <<: *type_boolean
+    scope:
+    - constant.numeric
+
+  - name: common/builtin
+    <<: *builtin
+    scope:
+    - q
+
+  - name: common/this
+    <<: *this
+    scope:
+    - variable.language.this
 
 - # GRAMMAR ~~~ YAML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -729,6 +763,7 @@ grammars:
       fontStyle: bold
     scope:
     - markup.bold.markdown
+    - punctuation.definition.bold.markdown
 
   - name: "md/italic"
     settings:
@@ -736,6 +771,7 @@ grammars:
       fontStyle: italic
     scope:
     - markup.italic.markdown
+    - punctuation.definition.italic.markdown
 
   - name: "md/list"
     settings:
@@ -773,7 +809,7 @@ grammars:
     - punctuation.definition.heading.markdown
 
 
-  - name: "md: "
+  - name: "md/def"
     settings:
       foreground: green
       fontStyle: italic
@@ -793,3 +829,206 @@ grammars:
       fontStyle: italic
     scope:
     - markup.inline.raw.string.markdown
+    - markup.fenced_code.block.markdown
+
+- # GRAMMAR ~~~ TypeScript ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "ts/docs"
+    settings:
+      foreground: yellow
+    scope:
+    - storage.type.class.jsdoc
+
+  - name: "ts/docs"
+    settings:
+      foreground: green
+    scope:
+    - variable.other.jsdoc
+
+  - name: ts/keywords
+    <<: *keywords
+    scope:
+    - keyword.control.export.ts
+    - storage.type.ts
+    - keyword.operator.assignment.ts
+    - keyword.operator.assignment.compound.ts
+    - keyword.generator.asterisk.ts
+    - keyword.operator.arithmetic.ts
+    - keyword.operator.assignment.ts
+    - keyword.operator.bitwise.ts
+    - keyword.operator.comparison.ts
+    - keyword.operator.decrement.ts
+
+  - name: ts/function
+    <<: *function
+    scope:
+    - storage.type.function.ts
+
+  - name: ts/functions/name
+    <<: *function_name
+    scope:
+    - entity.name.function.ts
+
+  - name: ts/type
+    <<: *type
+    scope:
+    - support.type.primitive.ts
+    - entity.name.type.ts
+
+  - name: ts/variable
+    <<: *variable
+    scope:
+    - variable.other.property.ts
+    - variable.parameter.ts
+    - variable.other.readwrite.ts
+
+  - name: ts/variable/other
+    settings:
+      foreground: orange
+    scope:
+    - variable.other.object.ts
+
+  - name: ts/variable/other/property
+    settings:
+      foreground: green
+    scope:
+    - variable.other.object.property.ts
+    - variable.other.constant.property.ts
+
+  - name: ts/builtin
+    <<: *builtin
+    scope:
+    - support.class.console.ts
+    - support.type.builtin.ts
+
+  - name: ts/import
+    <<: *import
+    scope:
+    - keyword.control.import.ts
+    - keyword.control.from.ts
+    - keyword.control.require.ts
+
+  - name: ts/import_entity
+    <<: *import_entity
+    scope:
+    - variable.other.readwrite.alias.ts
+    - meta.import.ts string.quoted.single.ts
+    - meta.import-equals.external.ts string.quoted.single.ts
+
+  - name: ts/import/entity/quotes
+    settings:
+      foreground: white
+      fontStyle: regular
+    scope:
+    - meta.import.ts punctuation.definition.string.begin.ts
+    - meta.import.ts punctuation.definition.string.end.ts
+    - meta.import-equals.external.ts punctuation.definition.string.end.ts
+    - meta.import-equals.external.ts punctuation.definition.string.begin.ts
+
+  - name: ts/this
+    <<: *this
+    scope:
+    - variable.language.this.ts
+
+  - name: ts/new
+    settings:
+      foreground: blue
+    scope:
+    - keyword.operator.new.ts
+
+  - name: "ts/enums"
+    settings:
+      foreground: green
+    scope:
+    - variable.other.enummember.ts
+
+  - name: ts/operator
+    <<: *operator
+    scope:
+    - keyword.operator.optional.ts
+    - keyword.operator.comparison.ts
+    - keyword.operator.ternary.ts
+    - keyword.operator.logical.ts
+    - punctuation.terminator.statement.ts
+    - punctuation.separator.comma.ts
+    - keyword.operator.type.annotation.ts
+    - keyword.operator.increment.ts
+
+  - name: ts/flow
+    <<: *flow
+    scope:
+    - storage.type.function.arrow.ts
+    - keyword.control.switch.ts
+    - keyword.control.loop.ts
+    - keyword.control.flow.ts
+    - keyword.control.conditional.ts
+    - keyword.control.as.ts
+    - keyword.control.with.ts
+    - keyword.control.trycatch.ts
+
+  - name: ts/escape
+    <<: *escape
+    scope:
+    - constant.character.escape.ts
+    - constant.character.escape.backslash.regexp
+
+  - name: ts/async
+    <<: *async
+    scope:
+    - keyword.operator.expression.awaited.ts
+
+  - name: ts/type_number
+    <<: *type_number
+    scope:
+    - constant.numeric.decimal.ts
+
+  - name: ts/type_boolean
+    <<: *type_boolean
+    scope:
+    - constant.language.boolean.false.ts
+    - constant.language.boolean.true.ts
+
+  - name: ts/type_null
+    <<: *type_null
+    scope:
+    - constant.language.null.ts
+
+  - name: ts/class
+    <<: *function
+    scope:
+    - storage.type.enum.ts
+    - storage.type.class.ts
+    - storage.type.interface.ts
+
+  - name: ts/class/name
+    <<: *function_name
+    scope:
+    - entity.name.type.enum.ts
+    - entity.name.type.class.ts
+
+  - name: ts/class/modifier
+    <<: *class_modifier
+    scope:
+    - storage.modifier.ts
+
+
+  - name: ts/type_string
+    <<: *type_string
+    scope:
+    - string.quoted.double.ts
+    - string.quoted.single.ts
+    - string.template.ts
+
+  - name: ts/type/string/regexp
+    settings:
+      foreground: green
+    scope:
+    - string.regexp.ts
+
+- # GRAMMAR ~~~ Docker ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "docker/keywords"
+    <<: *keywords
+    scope:
+    - keyword.operator.dockerfile
+    - keyword.other.special-method.dockerfile

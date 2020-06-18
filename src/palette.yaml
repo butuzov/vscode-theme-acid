@@ -1,6 +1,6 @@
 # Acid Night
 #
-black:             "#282828"
+black:             "#242424"
 dark:              "#494949"
 white:   &white    "#e1e1e1"
 
@@ -9,7 +9,7 @@ orange:      &orange   "#f39c12" # <
 yellow:      &yellow   "#f1c40f" # <
 green:       &green    "#99cf54" # <
 cyan:        &cyan     "#06b1c4"
-blue:        &blue     "#3498db" # <
+blue:        &blue     "#5e98e2" # <
 magenta:     &magenta  "#9b59b6"
 
 

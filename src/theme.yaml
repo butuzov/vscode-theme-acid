@@ -4,7 +4,7 @@
 
 descriptionForeground: _
 contrastActiveBorder: none
-errorForeground: _
+errorForeground: red
 contrastBorder: none
 focusBorder: none
 foreground: white
@@ -264,8 +264,8 @@ editorSuggestWidget:
 
 # EditorUnnecessaryCode
 editorUnnecessaryCode:
-  border: none
-  opacity: white/a30
+  border: red
+  opacity: white/a50
 
 
 editorWhitespace: { foreground: white/a40 }
@@ -351,10 +351,12 @@ list:
 
   deemphasizedForeground: red
   dropBackground: dark
-  filterMatchBackground: _
-  filterMatchBorder: _
+
+  filterMatchBackground: dark
+  filterMatchBorder: green
+
   focusBackground: white/a40
-  focusForeground: "#c9db36"
+  focusForeground: highBg
   inactiveFocusBackground: dark
 
   highlightForeground: highBg
@@ -365,9 +367,10 @@ list:
 
 # ListFilterWidget
 listFilterWidget:
-  background: _
-  noMatchesOutline: _
-  outline: _
+  background: dark
+  noMatchesOutline: red
+  outline: green
+
 # Menu
 menu:
   background: _
@@ -377,11 +380,13 @@ menu:
   selectionBorder: _
   selectionForeground: _
   separatorBackground: _
+
 # Menubar
 menubar:
   selectionBackground: _
   selectionBorder: _
   selectionForeground: _
+
 # Merge
 merge:
   border: _
@@ -414,7 +419,7 @@ minimapSlider:
 
 # NotificationCenterHeader
 notificationCenterHeader:
-  background: red/a50
+  background: dark
   foreground: white
 
 notificationCenter: { border: dark }
