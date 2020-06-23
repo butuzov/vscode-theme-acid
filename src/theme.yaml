@@ -1,15 +1,25 @@
 # https://code.visualstudio.com/api/references/theme-color
-#
-# Default settings.
 
-descriptionForeground: _
+
+# Default settings used everywhere.
 contrastActiveBorder: none
 errorForeground: red
 contrastBorder: none
 focusBorder: none
 foreground: white
 
-# Activity Bar (main section, icons and badges) - leftest section
+# UI - Editor
+editor:
+  background: black
+  foreground: white/a90
+
+# In `opacity` only alpha will be used. Border is large dashed border color.
+editorUnnecessaryCode:
+  border: red
+  opacity: white/a50
+
+
+# UI - ActivityBar
 activityBar:
   activeBackground: black
   background: black
@@ -17,510 +27,34 @@ activityBar:
   activeBorder: black
   activeFocusBorder: black
   border: black
-  dropBackground: _
   inactiveForeground: white/a80
 
-# ActivityBarBadge
 activityBarBadge:
   background: highBg
   foreground: highFg
 
-# Badge
 badge:
   background: highBg
   foreground: highFg
 
-# Breadcrumb
-breadcrumb:
-  activeSelectionForeground: white
-  background: black
-  focusForeground: dark
-  foreground: white/a50
-
-# BreadcrumbPicker
-breadcrumbPicker:
-  background: dark
-
-# Button
 button:
   background: highBg
   foreground: highFg
   hoverBackground: highBg/a80
 
-# Checkbox
-checkbox:
-  background: black
-  border: dark
-  foreground: white
-
-# DebugExceptionWidget
-debugExceptionWidget:
-  background: _
-  border: _
-
-# DebugIcon
-debugIcon:
-  breakpointCurrentStackframeForeground: _
-  breakpointDisabledForeground: _
-  breakpointForeground: green
-  breakpointStackframeForeground: _
-  breakpointUnverifiedForeground: _
-
-  continueForeground: _
-  disconnectForeground: _
-  pauseForeground: orange
-  restartForeground: green
-  startForeground: green
-  stepBackForeground: _
-  stepIntoForeground: blue
-  stepOutForeground: blue
-  stepOverForeground: orange
-  stopForeground: red
-
-# DebugTokenExpression - debug output
-debugTokenExpression:
-  boolean: red
-  error: red/a80
-  name: none
-  number: green/a50
-  string: white/a80
-  value: white/a80
-
-# DebugToolBar
-debugToolBar:
-  background: dark
-  border: red
-
-# DebugView
-debugView:
-  exceptionLabelBackground: _
-  exceptionLabelForeground: _
-  stateLabelBackground: _
-  stateLabelForeground: _
-  valueChangedHighlight: _
-
-diffEditor:
-  border: _
-  diagonalFill: yellow
-  insertedTextBackground: green/a20
-  # insertedTextBorder: green/a70
-  removedTextBackground: red/a20
-  # removedTextBorder: none
-
-# Dropdown
-dropdown:
-  background: dark
-  border: dark
-  foreground: white
-  listBackground: dark
-
-# Editor
-editor:
-  background: black
-  foreground: white/a90
-
-
-  # Matches in search using = "Search Functionality"
-  findMatchBackground: red
-  findMatchBorder: none
-  findMatchHighlightBackground: none
-  findMatchHighlightBorder: red
-
-  findRangeHighlightBackground: none2
-  findRangeHighlightBorder: none2
-  focusedStackFrameHighlightBackground: none2
-  foldBackground: green/a30
-
-  hoverHighlightBackground: green/a40
-  lineHighlightBackground: white/a30
-
-  rangeHighlightBackground: none2
-  rangeHighlightBorder: none2
-
-  # Selection
-  # selectionBackground: blue
-  # inactiveSelectionBackground: blue/a50
-
-  # selectionForeground: black
-  selectionHighlightBackground: none
-  selectionHighlightBorder: blue
-
-  snippetFinalTabstopHighlightBackground: none2
-  snippetFinalTabstopHighlightBorder: none2
-  snippetTabstopHighlightBackground: none2
-  snippetTabstopHighlightBorder: none2
-
-  stackFrameHighlightBackground: none2
-  symbolHighlightBackground: none2
-  symbolHighlightBorder: none2
-  tokenColorCustomizations: none2
-
-  wordHighlightBackground: none
-  wordHighlightBorder: none
-  wordHighlightStrongBackground: none
-  wordHighlightStrongBorder: none
-
-# EditorBracketMatch
-editorBracketMatch:
-  background: none
-  border: none
-
-editorCodeLens: { foreground: white/a20 }
-
-# EditorCursor
-editorCursor:
-  background: black
-  foreground: highBg
-
-
-# EditorGroup
-editorGroup:
-  border: none
-  # dropBackground: _
-  emptyBackground: black
-  focusedEmptyBorder: none
-
-# EditorGroupHeader
-editorGroupHeader:
-  border: none
-  noTabsBackground: black
-  tabsBackground: black
-  tabsBorder: none
-
-# EditorGutter
-editorGutter:
-  addedBackground: green
-  background: black
-  commentRangeForeground: white
-  deletedBackground: red
-  # foldingControlForeground: red
-  modifiedBackground: yellow
-
-# EditorIndentGuide
-editorIndentGuide:
-  activeBackground: white/a30
-  background: white/a30
-
-# EditorInfo - squigles on errors.
-editorInfo:    { border: none, foreground: blue }
-editorWarning: { border: none, foreground: yellow}
-editorError:   { border: none, foreground: red}
-editorHint:    { border: none, foreground: green}
-
-editorLightBulb:               { foreground: yellow }
-editorLightBulbAutoFix:        { foreground: yellow }
-
-editorLineNumber:
-  activeForeground: black
-  foreground: white/a50
-
-# EditorLink
-editorLink: {  activeForeground: _ }
-
-# EditorMarkerNavigation -
-# UI is visible if you click on mistyped word (with wiggles)
-# and UI is shown to you. see also Editor(Info/Warning/Error)
-editorMarkerNavigation:        { background: dark }
-editorMarkerNavigationError:   { background: red/a80 }
-editorMarkerNavigationInfo:    { background: green/a80 }
-editorMarkerNavigationWarning: { background: yellow/a80 }
-
-# EditorOverviewRuler
-editorOverviewRuler:
-  background: white
-  border: black
-  bracketMatchForeground: none
-  commonContentForeground: none
-  currentContentForeground: none
-  findMatchForeground: none
-  incomingContentForeground: none
-
-  # left side of the ruler
-  deletedForeground: red
-  modifiedForeground: yellow
-  addedForeground: green
-
-  # right side of the ruler
-  errorForeground: red
-  warningForeground: yellow
-  infoForeground: green
-
-  rangeHighlightForeground: none
-  selectionHighlightForeground: none
-  wordHighlightForeground: none
-  wordHighlightStrongForeground: none
-
-# EditorPane
-editorPane:  { background: _ }
-editorRuler: { foreground: red }
-
-# EditorSuggestWidget
-editorSuggestWidget:
-  background: black
-  border: white/a60
-  foreground: white
-  highlightForeground: white/a90
-  selectedBackground: white/a30
-
-# EditorUnnecessaryCode
-editorUnnecessaryCode:
-  border: red
-  opacity: white/a50
-
-
-editorWhitespace: { foreground: white/a40 }
-
-# EditorWidget
-editorWidget:
-  background: dark
-  border: none
-  foreground: white
-  resizeBorder: highBg
-
-# EditorHoverWidget - info on git status
-editorHoverWidget:
-  background: dark
-  border: white/a60
-  foreground: white
-  # statusBarBackground: "#ff0"
-
-# ExtensionBadge
-extensionBadge:
-  remoteBackground: green
-  remoteForeground: black
-
-# ExtensionButton
 extensionButton:
   prominentBackground: highBg
   prominentForeground: highFg
   prominentHoverBackground: highBg
 
-# GitDecoration
-gitDecoration:
-  addedResourceForeground: white
-  conflictingResourceForeground: orange
-  deletedResourceForeground: red
-  ignoredResourceForeground: white/a40
-  modifiedResourceForeground: yellow
-  submoduleResourceForeground: cyan
-  untrackedResourceForeground: green
 
-# Icon
-icon: { foreground: white/a40 }
-
-# ImagePreview
-imagePreview:
-  border: _
-# Input
-input:
-  background: white/a10
-  border: black
-  foreground: white
-  placeholderForeground: white/a50
-
-# InputOption
-inputOption:
-  activeBackground: red
-  activeBorder: none
-
-# InputValidation
-# See issue @ https://github.com/microsoft/vscode/issues/99573
-#
-inputValidation:
-  errorBackground: red
-  errorBorder: none
-  # errorForeground: dark
-
-  infoBackground:  green
-  infoBorder: none
-  # infoForeground: white
-
-  warningBackground: yellow
-  warningBorder: none
-  # warningForeground: yellow
-
-# List
-list:
-  activeSelectionBackground: white/a10
-  activeSelectionForeground: white
-  inactiveSelectionBackground: white/a10
-  inactiveSelectionForeground:  white
-
-  hoverBackground: white/a10
-  hoverForeground: white
-
-  deemphasizedForeground: red
-  dropBackground: dark
-
-  filterMatchBackground: dark
-  filterMatchBorder: green
-
-  focusBackground: white/a40
-  focusForeground: highBg
-  inactiveFocusBackground: dark
-
-  highlightForeground: highBg
-
-  invalidItemForeground: red/a20
-  errorForeground: red/a50
-  warningForeground: yellow/a50
-
-# ListFilterWidget
-listFilterWidget:
-  background: dark
-  noMatchesOutline: red
-  outline: green
-
-# Menu
-menu:
-  background: _
-  border: _
-  foreground: _
-  selectionBackground: _
-  selectionBorder: _
-  selectionForeground: _
-  separatorBackground: _
-
-# Menubar
-menubar:
-  selectionBackground: _
-  selectionBorder: _
-  selectionForeground: _
-
-# Merge
-merge:
-  border: _
-  commonContentBackground: _
-  commonHeaderBackground: _
-  currentContentBackground: _
-  currentHeaderBackground: _
-  incomingContentBackground: _
-  incomingHeaderBackground: _
-# Minimap
-minimap:
-  background: black
-  errorHighlight: red
-  findMatchHighlight: blue
-  selectionHighlight: orange
-  warningHighlight: yellow
-
-# MinimapGutter
-minimapGutter:
-  addedBackground: green
-  deletedBackground: red
-  modifiedBackground: yellow
-
-# MinimapSlider
-minimapSlider:
-  activeBackground: _
-  background: _
-  hoverBackground: _
-
-
-# NotificationCenterHeader
-notificationCenterHeader:
-  background: dark
-  foreground: white
-
-notificationCenter: { border: dark }
-notificationLink:   { foreground: _ }
-notificationToast:  { border: dark }
-
-# Notifications
-notifications:
-  background: black
-  border: dark
-  foreground: white
-
-# NotificationsErrorIcon
-notificationsErrorIcon:   { foreground: red }
-notificationsInfoIcon:    { foreground: blue }
-notificationsWarningIcon: { foreground: yellow }
-
-# Panel
-panel:
-  background: black
-  border: dark
-
-# PanelInput
-panelInput:
-  border: _
-
-# PanelTitle
-panelTitle:
-  activeBorder: white
-  activeForeground: white
-  inactiveForeground: white/a50
-
-# PeekView
-peekView: { border: white }
-
-# PeekViewEditor
-peekViewEditor:
-  background: red
-  matchHighlightBackground: _
-  matchHighlightBorder: _
-
-# PeekViewEditorGutter
-peekViewEditorGutter: { background: _ }
-
-peekViewResult:
-  background: _
-  fileForeground: _
-  lineForeground: _
-  matchHighlightBackground: _
-  selectionBackground: _
-  selectionForeground: _
-
-peekViewTitle:            { background: dark }
-peekViewTitleDescription: { foreground: white/a60 }
-peekViewTitleLabel:       { foreground: white }
-
-# PickerGroup
-pickerGroup:
-  border: highBg
-  foreground: highBg
+progressBar: { background: highBg }
 
 problemsErrorIcon:   { foreground: red}
 problemsInfoIcon:    { foreground: blue}
 problemsWarningIcon: { foreground: yellow}
 
-
-# ProgressBar
-progressBar: { background: highBg }
-
-# QuickInput
-quickInput:
-  background: dark
-  foreground: white
-
-# QuickInputTitle
-quickInputTitle: { background: white }
-scrollbar:       { shadow: none }
-
-# scrollbarSlider:
-  # activeBackground: _
-  # background: _
-  # hoverBackground: _
-
-# SearchEditor
-searchEditor:
-  findMatchBackground: _
-  findMatchBorder: _
-  textInputBorder: _
-
-# Selection doesn't works, use editor selection settings.
-# selection: { background: green }
-
-# Settings
-settings:
-  headerForeground: highBg
-  modifiedItemIndicator:  highBg
-
-  # all other input settings ae going to be inherited.
-  dropdownListBorder: black
-
-
+# UI - Sidebar
 
 sideBar:
   background: black
@@ -528,14 +62,25 @@ sideBar:
   dropBackground: black
   foreground: white
 
+sideBarTitle:
+  foreground: white/a40
+
 sideBarSectionHeader:
   background: black
   foreground: white
   border: none
 
-sideBarTitle: { foreground: white/a40 }
+# UI - TitleBar
 
-# StatusBar
+titleBar:
+  activeBackground: dark
+  activeForeground: white
+  border: black
+  inactiveBackground: dark
+  inactiveForeground: white
+
+# UI - StatusBar and status bar items
+
 statusBar:
   background: dark
   foreground: white
@@ -549,8 +94,6 @@ statusBar:
   noFolderForeground: black
   noFolderBorder: none
 
-
-# StatusBarItem
 statusBarItem:
   activeBackground: dark
   hoverBackground: black/a50
@@ -562,134 +105,116 @@ statusBarItem:
   remoteBackground: blue
   remoteForeground: white
 
-# SymbolIcon
-# symbolIcon:
-#   arrayForeground: white
-#   booleanForeground: white
-#   classForeground: white
-#   colorForeground: white
-#   constantForeground: white
-#   constructorForeground: white
-#   enumeratorForeground: white
-#   enumeratorMemberForeground: white
-#   eventForeground: white
-#   fieldForeground: white
-#   fileForeground: white
-#   folderForeground: white
-#   functionForeground: white
-#   interfaceForeground: white
-#   keyForeground: white
-#   keywordForeground: white
-#   methodForeground: white
-#   moduleForeground: white
-#   namespaceForeground: white
-#   nullForeground: white
-#   numberForeground: white
-#   objectForeground: white
-#   operatorForeground: white
-#   packageForeground: white
-#   propertyForeground: white
-#   referenceForeground: white
-#   snippetForeground: white
-#   stringForeground: white
-#   structForeground: white
-#   textForeground: white
-#   typeParameterForeground: white
-#   unitForeground: white
-#   variableForeground: white
-
-# Tab
+# Tabs used for tabs descriptions
 tab:
   border: none
   activeBackground: black
-  activeForeground: white
-  activeBorder: white
+  activeForeground: highBg
+  activeBorder: black
   activeBorderTop: black
   activeModifiedBorder: black
-  hoverBackground: dark
-  hoverBorder: white
-  hoverForeground: white
+  hoverBackground: black
+  hoverBorder: black
+  hoverForeground: yellow
   inactiveBackground: black
-  inactiveForeground: white
+  inactiveForeground: white/a60
   inactiveModifiedBorder: black
 
-  # unfocusedActiveBackground: _
-  # unfocusedActiveBorder: _
-  # unfocusedActiveBorderTop: _
-  # unfocusedActiveForeground: _
-  # unfocusedActiveModifiedBorder: _
-  # unfocusedHoverBackground: _
-  # unfocusedHoverBorder: _
-  # unfocusedHoverForeground: _
-  # unfocusedInactiveBackground: _
-  # unfocusedInactiveForeground: _
-  # unfocusedInactiveModifiedBorder: _
+  unfocusedActiveBackground: black
+  unfocusedActiveBorder: black
+  unfocusedActiveBorderTop: black
+  unfocusedActiveForeground: white/a80
+  unfocusedActiveModifiedBorder:  black
 
-# Terminal
+editorGroupHeader:
+  border: none
+  noTabsBackground: black
+  tabsBackground: black
+  tabsBorder: none
+
+# Text Colors
+
+# Terminal colors appears in terminal panel, the colors are manual so they can fit
+# to settings i am using by default daily.
 terminal:
   background: black
   border: none
   foreground: white
-  # selectionBackground: _
 
-  ansiBlack: black
-  ansiWhite: white
-  ansiBlue: blue
-  ansiCyan: cyan
-  ansiGreen: green
-  ansiMagenta: magenta
-  ansiRed: red
-  ansiYellow: yellow
+  ansiBlack: "#000000"
+  ansiWhite: "#f1f1f1"
+  ansiRed: "#dbabb0"
+  ansiGreen: "#5da602"
+  ansiYellow: "#cfad00"
+  ansiBlue: "#417ab3"
+  ansiMagenta: "#88658d"
+  ansiCyan: "#00a7aa"
 
-  ansiBrightBlack: black/a50
-  ansiBrightWhite: white/a50
-  ansiBrightBlue: blue/a50
-  ansiBrightCyan: cyan/a50
-  ansiBrightGreen: green/a50
-  ansiBrightMagenta: magenta/a50
-  ansiBrightRed: red/a50
-  ansiBrightYellow: yellow/a50
+  ansiBrightBlack: "#676965"
+  ansiBrightWhite: "#f1f1f1"
+  ansiBrightRed: "#f44135"
+  ansiBrightGreen: "#98e342"
+  ansiBrightYellow: "#fcea60"
+  ansiBrightBlue: "#83afd8"
+  ansiBrightMagenta: "#bc93b6"
+  ansiBrightCyan: "#37e5e7"
 
-# TerminalCursor
 terminalCursor:
   background: black
   foreground: highBg
 
-# TextBlockQuote
+
+# Texts and links and ui elements
+textCodeBlock: { background: black }
+textLink:      { foreground: highBg }
+textPreformat: { foreground: "#d9d965" }
+
 textBlockQuote:
   background: dark
   border: highBg
 
-textCodeBlock: { background: black }
-textLink:      { foreground: white }
-textPreformat: { foreground: highBg/a70 }
-textSeparator: { foreground: _ }
+icon:
+  foreground: white/a40
 
-# TitleBar
-titleBar:
-  activeBackground: "#404040"
-  activeForeground: "#ccc"
-  border: black
-  inactiveBackground: "#404040"
-  inactiveForeground: "#ccc"
+dropdown:
+  background: dark
+  border: dark
+  foreground: white
+  listBackground: dark
 
-# Tree
-tree:
-  indentGuidesStroke: white/a50
+settings:
+  modifiedItemIndicator:  highBg
+  dropdownListBorder: highBg
 
-# WalkThrough
-walkThrough:
-  embeddedEditorBackground: _
+list:
+  # activeSelectionBackground: white/a10
+  # activeSelectionForeground: white
+  # inactiveSelectionBackground: white/a10
+  # inactiveSelectionForeground:  white
 
-# WelcomePage
-welcomePage:
-  background: _
-  buttonBackground: _
-  buttonHoverBackground: _
+  hoverBackground: white/a10
+  hoverForeground: white
 
-widget: { shadow: none }
+  # deemphasizedForeground: red
+  # dropBackground: dark
 
-# # Window
-window:
-  activeBorder: none
-  inactiveBorder: none
+  # filterMatchBackground: dark
+  # filterMatchBorder: green
+
+  focusBackground: white/a10
+  focusForeground: white
+  # inactiveFocusBackground: dark
+
+  highlightForeground: green
+
+  # invalidItemForeground: red/a20
+  # errorForeground: red/a50
+  # warningForeground: yellow/a50
+
+pickerGroup:
+  border: highBg
+  foreground: highBg
+
+# Extra
+widget:    { shadow: none }
+scrollbar: { shadow: none }

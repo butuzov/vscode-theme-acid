@@ -1,269 +1,917 @@
-# This document desribes a grammar syntaxes for different languages,
+# This document describes a grammar syntaxes for different languages.
 # 1st) using simple rules of predefined grammar
 # 2nd) using custom rules for specifics of grammars.
-#
-# FontStyle can be underline/bold/italic/normal or combinations.
 
-
-# Preredefinitions of grammars
 # colors https://colorswall.com/colors/xkcd
 
-formats:
-
-  - comment: &comment                                                     # DONE
-      settings:
-        foreground: white/a60
-        fontStyle: italic
-
-  - keywords: &keywords
-      settings:
-        foreground: green
-
-  # function keyword or other
-  - function: &function                                                   # DONE
-      settings:
-        foreground: yellow
-
-  # self, this, internal instance access
-  - this: &this                                                           # DONE
-      settings:
-        foreground: green
-
-  # function names
-  - function_name: &function_name                                         # DONE
-      settings:
-        foreground: blue
-
-  # variable / block or other.
-  - name: &name                                                           # DONE
-      settings:
-        foreground: green
-
-  # async related stuff
-  - async: &async                                                         # DONE
-      settings:
-        foreground: green
-
-  - type: &type
-      settings:
-        foreground: yellow
-
-  - variable: &variable                                                   # DONE
-      settings:
-        foreground: white
-
-  - variable_punctuations: &variable_punctuations
-      settings:
-        foreground: red
-        fontStyle: italic bold underline
-
-  - builtin: &builtin                                                     # DONE
-      settings:
-        foreground: blue
-        fontStyle: underline
-
-  - punctuation: &punctuation                                             # DONE
-      settings:
-        foreground: white
-
-  - operator: &operator                                                   # DONE
-      settings:
-        foreground: orange
-
-  - import: &import
-      settings:
-        foreground: yellow
-
-  - import_entity: &import_entity
-      settings:
-        foreground: orange
-        fontStyle:  underline
-
-  - flow: &flow
-      settings:
-        foreground: yellow
-
-  - class: &class
-      settings:
-        foreground: blue
-
-  - class_modifier: &class_modifier
-      settings:
-        foreground: orange
-        fontStyle:  underline
-
-  - type_number: &type_number                                             # DONE
-      settings:
-        foreground: blue/a80
-
-  - type_float: &type_float                                               # DONE
-      settings:
-        foreground: magenta
-
-  - type_int: &type_int                                                   # DONE
-      settings:
-        foreground: blue
-
-  - type_date: &type_date                                                 # DONE
-      settings:
-        foreground: blue
-        fontStyle: underline
-
-  - type_boolean: &type_boolean                                           # DONE
-      settings:
-        foreground: green
-
-  - type_null: &type_null                                                 # DONE
-      settings:
-        foreground: green
-
-  - illegal: &illegal                                                     # DONE
-      settings:
-        foreground:  red
-        fontStyle:  underline
-
-  - escape: &escape                                                       # DONE
-      settings:
-        foreground: blue
-
-  - type_string: &type_string                                             # DONE
-      settings:
-        foreground: yellow
-
-  - type_string_quotes: &type_string_quotes                               # DONE
-      settings:
-        foreground: yellow/a60
-
-  - type_string_quotes: &type_string_placeholder                          # DONE
-      settings:
-        foreground: white
-
-################################################################################
+# In order to simplify merging `style` is corresponding to settings
+#  Example 1:
+#  style: 'uibn@color/alpha'
+#    u - underline
+#    b - bold
+#    i - italic
+#    n - normal
 #
-################################################################################
+# Example 2:
+# style: "#404020'
+
+formats:
+  comment: &comment                                                       # DONE
+    style: i@syntax.white/a50
+
+  keywords: &keywords                                                     # FIXME
+    style: ibu@red
+
+  keywords_control: &keywords_control                                     # DONE
+    style: syntax.red_lite
+
+  # ~~ Name ~~~~~~
+
+  name: &name                                                             # DONE
+    style: syntax.blue_lite
+
+  # ~~ Functions ~~
+
+  function_definition: &function_definition                               # DONE
+    style: syntax.green
+
+  function_arrow: &function_arrow                                         # FIXME
+    style: syntax.blue
+
+  function_name: &function_name                                           # DONE
+    style: syntax.blue_lite
+
+  function_name: &function_builtin                                        # DONE
+    style: u@syntax.blue_lite
+
+  function_name: &function_parameters                                     # DONE
+    style: i@syntax.white
+
+
+  # ~~ Import ~~
+
+  import: &import                                                         # DONE
+    style: syntax.red_lite
+  import_name: &import_name                                               # DONE
+    style: syntax.white
+
+
+  operator: &operator                                                     # DONE
+    style: syntax.blue
+
+  operator_assignment: &operator_assignment                               # DONE
+    style: syntax.green
+  operator_math: &operator_math                                           # DONE
+    style: syntax.blue_lite
+  operator_compare: &operator_compare                                     # DONE
+    style: syntax.green
+  operator_bitwise: &operator_bitwise                                     # DONE
+    style: syntax.green
+  operator_other: &operator_other                                         # DONE
+    style: syntax.blue
+
+  punctuation: &punctuation                                               # FIXME
+    style: syntax.white
+
+  punctuation_braces: &punctuation_braces                                 # FIXME
+    style: syntax.white
+
+
+  constant: &constant                                                     # FIXME
+    style: ibu@red
+  constant_language: &constant_language                                   # DONE
+    style: b@syntax.blue
+  constant_other: &constant_other                                         # FIXME
+    style: ibu@red
+  constant_string: &constant_string                                       # FIXME
+    style: ibu@red
+
+  constant_number: &constant_number                                       # FIXME
+    style: syntax.blue
+  constant_int: &constant_int                                             # FIXME
+    style: syntax.blue
+  constant_float: &constant_float                                         # FIXME
+    style: syntax.blue
+
+  # ~~~ Objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  class: &class                                                           # DONE
+    style: syntax.green
+  class_name: &class_name                                                 # DONE
+    style: ui@syntax.blue_lite
+  class_name_inherited: &class_name_inherited                             # DONE
+    style: i@syntax.blue_lite
+
+  class_this: &class_this                                                 # DONE
+    style: syntax.yellow
+
+  class_access_modifier: &class_access_modifier                           # DONE
+    style: i@syntax.blue
+
+  class_new: &class_new                                                   # FIXME
+    style: ibu@red
+
+  storage_dict: &storage_dict                                             # FIXME
+    style: ibu@red
+
+  storage_array: &storage_array                                           # FIXME
+    style: ibu@red
+
+  variable: &variable                                                     # DONE
+    style: syntax.blue
+
+  # ~~~ Type System ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  type: &type                                                             # DONE
+    style: syntax.yellow_lite/a80
+  variable_name: &variable_name                                           # DONE
+    style: syntax.blue_lite
+  var_type_nil: &var_type_nil                                             # DONE
+    style: syntax.blue_lite
+  var_type_bool: &var_type_bool                                           # DONE
+    style: syntax.blue_lite
+
+  var_type_int: &var_type_int                                             # DONE
+    style: syntax.blue
+  var_type_float: &var_type_float                                         # DONE
+    style: syntax.blue
+  var_type_number: &var_type_number                                       # DONE
+    style: syntax.blue
+
+  # ~~ Strings ~~
+
+  string: &string                                                         # DONE
+    style: syntax.yellow_lite
+  string_quotes: &string_quotes                                           # DONE
+    style: syntax.yellow/a70
+  string_placeholder: &string_placeholder                                 # DONE
+    style: syntax.white
+  constant_escape: &constant_escape                                       # DONE
+    style: syntax.white
+
+  # ~~ Misc ~~
+
+  illegal: &illegal                                                       # DONE
+    style: bu@red
 
 grammars:
-- # GRAMMAR ~~~ Common  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - name: "common/comment"
+- # GRAMMAR ~~~ Common  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "comment"
     <<: *comment
     scope:
     - comment
 
-  - name: common/type_string
-    <<: *type_string
-    scope:
-    - string
-
-  - name: common/illegal
+  - name: "illegal"
     <<: *illegal
     scope:
-    - illegal
+    - invalid.illegal
 
-  - name: common/type_boolean
-    <<: *type_boolean
+  - name: var/type/number
+    <<: *var_type_number
+    scope: constant.numeric
+
+  - name: var/type/float
+    <<: *var_type_float
+    scope: constant.numeric.float
+
+  - name: var/type/int
+    <<: *var_type_number
+    scope: constant.numeric.integer
+
+  - name: var/type/bool
+    <<: *var_type_bool
+    scope: constant.language.boolean
+
+  - name: var/type/nil
+    <<: *var_type_nil
+    scope: constant.language.null
+
+  # ~~~ Operators ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: operator/operator
+    <<: *operator
     scope:
-    - constant.numeric
+    - keyword.operator.address
 
-  - name: common/builtin
-    <<: *builtin
+  - name: operator/math
+    <<: *operator_math
     scope:
-    - q
+    - keyword.operator.arithmetic
+    - keyword.operator.increment
+    - keyword.operator.decrement
 
-  - name: common/this
-    <<: *this
+  - name: operator/compare
+    <<: *operator_compare
     scope:
-    - variable.language.this
+    - keyword.operator.comparison
 
-- # GRAMMAR ~~~ YAML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  - name: json/comments
-    <<: *comment
+  - name: operator/operator_bitwise
+    <<: *operator_bitwise
     scope:
-    - comment.block.documentation.json
-    - comment.block.json
-    - comment.line.double-slash.js
+    - keyword.operator.arithmetic.bitwise
+    - keyword.operator.bitwise
 
-  - name: json/escape
-    <<: *escape
+
+  - name: operator/operator_assignment
+    <<: *operator_assignment
     scope:
-    - constant.character.escape.json
+    - keyword.operator.assignment
+
+  # ~~~ Constants ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: control/flow
+    <<: *keywords_control
+    scope:
+    - keyword.control
+
+
+  # ~~~ Constants ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: constant/language
+    <<: *constant_language
+    scope: constant.language
+
+  # ~~~ Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: string
+    <<: *string
+    scope:
+    - string.unquoted
+    - string.quoted
+    - string.template
+
+  - name: string/quotes
+    <<: *string_quotes
+    scope:
+    - punctuation.definition.string.begin
+    - punctuation.definition.string.end
+
+  - name: string/placeholder
+    <<: *string_placeholder
+    scope:
+    - constant.character.format.placeholder
+
+  # ~~~ Imports, Keywords and Flow ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: import
+    <<: *import
+    scope:
+    - keyword.control.import
+
+  - name: constant/escape
+    <<: *constant_escape
+    scope: constant.character.escape
+
+  # ~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: function/definition
+    <<: *function_definition
+    scope: storage.type.function
+
+  - name: function/name
+    <<: *function_name
+    scope: entity.name.function
+
+  - name: function/builtin
+    <<: *function_builtin
+    scope: support.function.builtin
+
+  - name: function/parameters
+    <<: *function_parameters
+    scope:
+    - meta.function.parameters
+
+  # ~~~ Objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: class
+    <<: *class
+    scope: storage.type.class
+
+  - name: class/name
+    <<: *class_name
+    scope: entity.name.type.class
+
+  - name: class/name/inherited
+    <<: *class_name_inherited
+    scope: entity.other.inherited-class
+
+  - name: "class/this"
+    <<: *class_this
+    scope:
+    - variable.parameter.function.language.special.self
+    - variable.language.special.self
+
+  - name: class/access/modifier
+    <<: *class_access_modifier
+    scope:
+    - storage.modifier
+
+  # ~~~ Punctuation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: punctuation.definition.parameters
+    <<: *punctuation_braces
+    settings:
+      fontStyle: normal
+    scope:
+    - punctuation.definition.parameters.begin
+    - punctuation.definition.parameters.end
+
+- # GRAMMAR ~~~ Documentation Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: doc/type
+    settings:
+      foreground: syntax.yellow_lite
+    scope:
+    - keyword.other.type.php
+    - comment.block.documentation.phpdoc.php support.class.php
+
+    # TODO REVIEW EXAMPLES
+    - constant.language.access-type.jsdoc
+    - constant.language.symbol-type.jsdoc
+    - constant.other.description.jsdoc
+    - constant.other.email.link.underline.jsdoc
+    - entity.name.tag.inline.jsdoc
+    - keyword.operator.assignment.jsdoc
+    - keyword.operator.control.jsdoc
+    - meta.example.jsdoc
+    - entity.name.type.instance.jsdoc
+
+  - name: doc/at
+    settings:
+      foreground: syntax.blue_lite
+    scope:
+    - storage.type.class.jsdoc
+    - keyword.other.phpdoc.php
+
+  - name: doc/type/var
+    settings:
+      foreground: syntax.green
+    scope:
+    - variable.other.jsdoc
+
+- # GRAMMAR ~~~ Python ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    <<: *punctuation
+    scope: source.python
+
+  - name: "python/function/lambda"
+    <<: *function_definition
+    scope:
+    - storage.type.function.lambda.python
+
+  - name: "python/function/dunders"
+    <<: *function_name
+    settings:
+      fontStyle: italic
+    scope:
+    - support.function.magic
+    - support.variable.magic.python
+
+  - name: python/function/name"
+    <<: *function_name
+    scope:
+    - meta.function-call.generic.python
+
+  - name: punctuation.definition.parameters
+    <<: *punctuation_braces
+    settings:
+      fontStyle: italic
+    scope:
+    - variable.parameter.function.language.python
+
+  - name: python/type
+    <<: *type
+    scope:
+    - meta.function.parameters.python support.type.python
+    - meta.function.python support.type.python
+
+  - name: class/this
+    <<: *class_this
+    scope:
+    - variable.parameter.function.language.special.self.python
+    - variable.language.special.self
+
+  - name: python/class/inheritance/punctuation
+    <<: *class_name_inherited
+    scope:
+    - support.type.python
+
+  - name: python/decorator
+    settings:
+      foreground: blue
+      fontStyle: bold
+    scope:
+    - punctuation.definition.decorator.python
+    - entity.name.function.decorator.python
+
+  - name: python/type/call/normalization
+    settings:
+      foreground: syntax.blue
+      fontStyle: normal
+    scope:
+    - meta.function-call.python support.type.python
+
+  - name: python/flow
+    <<: *keywords_control
+    scope:
+    - keyword.operator.logical
+
+- # GRAMMAR ~~~ Go ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    <<: *punctuation
+    scope: source.go
+
+  - name: go/package
+    settings:
+      foreground: syntax.blue_lite
+      fontStyle: underline
+    scope: entity.name.package.go
+
+
+  - name: "go/import"
+    <<: *import
+    scope:
+    - keyword.import.go
+
+  - name: "go/import/name"
+    <<: *import_name
+    scope:
+    - entity.name.import
+
+  - name: "go/definitions"
+    <<: *function_definition
+    scope:
+    - keyword.function.go
+    - keyword.var.go
+    - keyword.const.go
+    - keyword.map.go
+    - keyword.type.go
+
+  - name: "go/definitions"
+    settings:
+      foreground: syntax.green_lite
+    scope:
+    - keyword.struct.go
+    - keyword.interface.go
+
+  - name: "go/type"
+    <<: *type
+    scope:
+    - entity.name.type.go
+    - storage.type.string.go
+    - storage.type.boolean.go
+    - storage.type.byte.go
+    - storage.type.error.go
+    - storage.type.numeric.go
+    - storage.type.rune.go
+    - storage.type.uintptr.go
+
+  - name: "go/function"
+    <<: *function_name
+    scope:
+    - support.function.go
+
+  - name: "go/operator/other"
+    <<: *operator_other
+    settings:
+      fontStyle: bold
+    scope:
+    - keyword.operator.ellipsis.go
+    - keyword.operator.address.go
+
+  - name: "go/async"
+    settings:
+      foreground: syntax.blue_lite
+    scope:
+    - keyword.operator.channel.go
+    - keyword.channel.go
+
+- # GRAMMAR ~~~ PHP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    <<: *punctuation
+    scope: source.php
+
+  - name: php/include/reset
+    <<: *punctuation
+    scope:
+    - meta.include.php string.quoted.double.php
+
+  - name: php/names
+    <<: *function_name
+    scope:
+    - entity.name.type.interface.php
+    - entity.name.type.trait.php
+
+  - name: php/entities
+    <<: *function_definition
+    scope:
+    - storage.type.interface.php
+    - storage.type.trait.php
+    - support.class.exception.php
+
+  - name: php/types
+    <<: *type
+    scope:
+    - storage.type.php
+
+  - name: php/var/$
+    <<: *operator_other
+    settings:
+      fontStyle: bold
+    scope:
+    - storage.modifier.reference.php
+    - punctuation.definition.variable.php
+    - punctuation.definition.arrow.php
+    - keyword.operator.key.php
+
+  - name: php/this/new
+    <<: *class_this
+    settings:
+      fontStyle: bold
+    scope:
+    - variable.language.this.php
+    - keyword.other.new.php
+
+  - name: php/types/nullable
+    <<: *type
+    scope:
+    - keyword.operator.nullable-type.php
+
+  - name: php/control/keywords
+    <<: *keywords_control
+    scope:
+    - keyword.other.use.php
+
+  - name: php/function
+    <<: *function_name
+    scope:
+    - meta.use.php support.class.php
+    - meta.function-call.php entity.name.function.php
+    - meta.function-call.php support.function.alias.php
+    - meta.function-call.php support.function.apc.php
+    - meta.function-call.php support.function.array.php
+    - meta.function-call.php support.function.basic_functions.php
+    - meta.function-call.php support.function.bcmath.php
+    - meta.function-call.php support.function.blenc.php
+    - meta.function-call.php support.function.bz2.php
+    - meta.function-call.php support.function.calendar.php
+    - meta.function-call.php support.function.classobj.php
+    - meta.function-call.php support.function.com.php
+    - meta.function-call.php support.function.construct.output.php
+    - meta.function-call.php support.function.construct.php
+    - meta.function-call.php support.function.ctype.php
+    - meta.function-call.php support.function.curl.php
+    - meta.function-call.php support.function.datetime.php
+    - meta.function-call.php support.function.dba.php
+    - meta.function-call.php support.function.dbx.php
+    - meta.function-call.php support.function.dir.php
+    - meta.function-call.php support.function.eio.php
+    - meta.function-call.php support.function.enchant.php
+    - meta.function-call.php support.function.ereg.php
+    - meta.function-call.php support.function.errorfunc.php
+    - meta.function-call.php support.function.exec.php
+    - meta.function-call.php support.function.exif.php
+    - meta.function-call.php support.function.fann.php
+    - meta.function-call.php support.function.file.php
+    - meta.function-call.php support.function.fileinfo.php
+    - meta.function-call.php support.function.filter.php
+    - meta.function-call.php support.function.fpm.php
+    - meta.function-call.php support.function.funchand.php
+    - meta.function-call.php support.function.gettext.php
+    - meta.function-call.php support.function.gmp.php
+    - meta.function-call.php support.function.hash.php
+    - meta.function-call.php support.function.http.php
+    - meta.function-call.php support.function.iconv.php
+    - meta.function-call.php support.function.iisfunc.php
+    - meta.function-call.php support.function.image.php
+    - meta.function-call.php support.function.info.php
+    - meta.function-call.php support.function.interbase.php
+    - meta.function-call.php support.function.intl.php
+    - meta.function-call.php support.function.json.php
+    - meta.function-call.php support.function.ldap.php
+    - meta.function-call.php support.function.libxml.php
+    - meta.function-call.php support.function.magic.php
+    - meta.function-call.php support.function.mail.php
+    - meta.function-call.php support.function.math.php
+    - meta.function-call.php support.function.mbstring.php
+    - meta.function-call.php support.function.mcrypt.php
+    - meta.function-call.php support.function.memcache.php
+    - meta.function-call.php support.function.mhash.php
+    - meta.function-call.php support.function.mongo.php
+    - meta.function-call.php support.function.mysql.php
+    - meta.function-call.php support.function.mysqli.php
+    - meta.function-call.php support.function.mysqlnd-memcache.php
+    - meta.function-call.php support.function.mysqlnd-ms.php
+    - meta.function-call.php support.function.mysqlnd-qc.php
+    - meta.function-call.php support.function.mysqlnd-uh.php
+    - meta.function-call.php support.function.network.php
+    - meta.function-call.php support.function.nsapi.php
+    - meta.function-call.php support.function.oci8.php
+    - meta.function-call.php support.function.opcache.php
+    - meta.function-call.php support.function.openssl.php
+    - meta.function-call.php support.function.output.php
+    - meta.function-call.php support.function.password.php
+    - meta.function-call.php support.function.pcntl.php
+    - meta.function-call.php support.function.pgsql.php
+    - meta.function-call.php support.function.php_apache.php
+    - meta.function-call.php support.function.php_dom.php
+    - meta.function-call.php support.function.php_ftp.php
+    - meta.function-call.php support.function.php_imap.php
+    - meta.function-call.php support.function.php_mssql.php
+    - meta.function-call.php support.function.php_odbc.php
+    - meta.function-call.php support.function.php_pcre.php
+    - meta.function-call.php support.function.php_spl.php
+    - meta.function-call.php support.function.php_zip.php
+    - meta.function-call.php support.function.posix.php
+    - meta.function-call.php support.function.proctitle.php
+    - meta.function-call.php support.function.pspell.php
+    - meta.function-call.php support.function.readline.php
+    - meta.function-call.php support.function.recode.php
+    - meta.function-call.php support.function.rrd.php
+    - meta.function-call.php support.function.sem.php
+    - meta.function-call.php support.function.session.php
+    - meta.function-call.php support.function.shmop.php
+    - meta.function-call.php support.function.simplexml.php
+    - meta.function-call.php support.function.snmp.php
+    - meta.function-call.php support.function.soap.php
+    - meta.function-call.php support.function.sockets.php
+    - meta.function-call.php support.function.sqlite.php
+    - meta.function-call.php support.function.sqlsrv.php
+    - meta.function-call.php support.function.stats.php
+    - meta.function-call.php support.function.streamsfuncs.php
+    - meta.function-call.php support.function.string.php
+    - meta.function-call.php support.function.sybase.php
+    - meta.function-call.php support.function.taint.php
+    - meta.function-call.php support.function.tidy.php
+    - meta.function-call.php support.function.tokenizer.php
+    - meta.function-call.php support.function.trader.php
+    - meta.function-call.php support.function.uopz.php
+    - meta.function-call.php support.function.url.php
+    - meta.function-call.php support.function.var.php
+    - meta.function-call.php support.function.wddx.php
+    - meta.function-call.php support.function.xhprof.php
+    - meta.function-call.php support.function.xml.php
+    - meta.function-call.php support.function.xmlrpc.php
+    - meta.function-call.php support.function.xmlwriter.php
+    - meta.function-call.php support.function.zlib.php
+
+  - name: php/builtin
+    <<: *function_builtin
+    scope:
+    - support.function.construct.output.php
+    - support.function.basic_functions.php
+    - meta.array.php support.function.construct.php
+    - support.class.builtin.php
+
+- # GRAMMAR ~~~ HCL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: hcl/name
+    desc: "Block Names"
+    <<: *name
+    scope:
+    - storage.type.terraform
+    - entity.name.label.terraform
+
+  - name: hcl/variable
+    desc: "Variables defined in blocks"
+    settings:
+      foreground: syntax.green
+    scope:
+    - variable.declaration.terraform
+
+  - name: hcl/variable
+    desc: "Interpolated Variables"
+    settings:
+      fontStyle: underline
+    scope:
+    - string.quoted variable.other.member.terraform
+    - string.quoted variable.other.readwrite.terraform
+
+  - name: hcl/variable
+    desc: "Constant in Interpolated Variables"
+    settings:
+      foreground: syntax.blue
+      fontStyle: underline
+    scope:
+    - string.quoted support.constant.terraform
+
+- # GRAMMAR ~~~ Docker ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "docker/keywords"
+    settings:
+      foreground: syntax.yellow
+    scope:
+    - keyword.operator.dockerfile
+    - keyword.other.special-method.dockerfile
+
+- # GRAMMAR ~~~ HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- # GRAMMAR ~~~ JavaScript ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- # GRAMMAR ~~~ TypeScript ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    <<: *punctuation
+    scope: source.ts
+
+  - name: ts/import
+    <<: *import
+    scope:
+    - keyword.control.from.ts
+    - keyword.control.require.ts
+
+  - name: ts/import/all
+    <<: *import
+    settings:
+      fontStyle: bold underline
+    scope:
+    - constant.language.import-export-all.ts
+
+  - name: ts/operators
+    <<: *operator
+    scope:
+    - keyword.operator.ternary.ts
+    - keyword.operator.spread.ts
+
+  - name: ts/operators
+    <<: *operator_assignment
+    scope:
+    - keyword.operator.expression.of.ts
+    - keyword.operator.type.ts
+    - keyword.operator.expression.typeof.ts
+    - keyword.operator.optional.ts
+
+  - name: ts/type
+    <<: *type
+    scope:
+    - entity.name.type.ts
+    - support.type.primitive.ts
+    - entity.name.type.alias.ts
+    - entity.name.type.enum.ts
+    - entity.name.type.interface.ts
+    - entity.name.type.ts
+
+  - name: ts/type/generics/braces
+    settings:
+      foreground: syntax.blue
+      fontStyle: bold
+    scope:
+    - punctuation.definition.typeparameters.begin.ts
+    - punctuation.definition.typeparameters.end.ts
+    - meta.brace.angle.ts
+
+
+  - name: ts/objects/this
+    <<: *class_this
+    scope:
+    - keyword.operator.new.ts
+    - variable.language.this.ts
+
+  - name: ts/module
+    settings:
+      foreground: syntax.yellow
+    scope:
+    - entity.name.type.module.ts
+    - variable.other.object.ts
+
+  - name: ts/functions/name
+    <<: *function_name
+    scope:
+    - support.function.json.ts
+
+  - name: ts/functions/parameters
+    <<: *punctuation_braces
+    settings:
+      fontStyle: italic
+    scope:
+    - variable.parameter.ts
+
+  - name: ts/definitions"
+    <<: *function_definition
+    scope:
+    - storage.type.type.ts
+    - meta.var.expr.ts storage.type.ts
+    - storage.type.enum.ts
+    - storage.type.interface.ts
+
+  - name: ts/builtin
+    <<: *function_builtin
+    scope:
+    - support.class.builtin.ts
+    - support.class.console.ts
+    - support.class.error.ts
+    - support.class.promise.ts
+    - support.type.builtin.ts
+    - support.constant.json.ts
+
+
+
+- # GRAMMAR ~~~ CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- # GRAMMAR ~~~ LESS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- # GRAMMAR ~~~ SCSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- # GRAMMAR ~~~ MARKDOWN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: &highlight
+      foreground: highBg
+
+  - name: md/reset
+    settings:
+      foreground: syntax.white
+    scope:
+    - text.html.markdown
+    - punctuation.definition.string.begin.markdown
+    - punctuation.definition.string.end.markdown
+
+  - name: md/bold
+    settings:
+      <<: *highlight
+      fontStyle: bold
+    scope: markup.bold.markdown
+
+  - name: md/italic
+    settings:
+      <<: *highlight
+      fontStyle: italic
+    scope: markup.italic.markdown
+
+  - name: md/quote/quote
+    settings:
+      fontStyle: italic
+    scope: markup.quote.markdown
+
+  - name: md/quote/quote
+    settings:
+      foreground: syntax.white/a50
+    scope: markup.raw.block.markdown
+
+  - name: md/image
+    settings:
+      <<: *highlight
+      fontStyle: bold
+    scope:
+    - meta.image.inline.markdown
+
+  - name: md/highlight
+    settings:
+      <<: *highlight
+    scope:
+    # links
+    - string.other.link.title.markdown
+    - markup.underline.link.markdown
+    # headers
+    - punctuation.definition.heading.markdown
+    # list
+    - punctuation.definition.list.begin.markdown
+    # inline code
+    - markup.inline.raw.string.markdown
+    # code blocks
+    - markup.fenced_code.block.markdown punctuation.definition.markdown
+    # quote begins
+    - punctuation.definition.quote.begin.markdown
+
+
+- # GRAMMAR ~~~ JSON ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: json/name
-    <<: *name
+    <<: *variable_name
     scope:
     - string.json support.type.property-name.json
 
-  - name: json/name/quotes
-    settings:
-      foreground: green/a60
-    scope:
-    - punctuation.support.type.property-name.end.json
-    - punctuation.support.type.property-name.begin.json
-
-  - name: json/punctuation
-    <<: *punctuation
-    scope:
-    - punctuation.definition.array.begin.json
-    - punctuation.definition.array.end.json
-    - punctuation.definition.dictionary.begin.json
-    - punctuation.definition.dictionary.end.json
-    - punctuation.separator.array.json
-    - punctuation.separator.dictionary.key-value.json
-
-  - name: json/type_number
-    <<: *type_number
-    scope:
-    - constant.numeric.json
-
-  - name: json/type_null
-    <<: *type_null
+  - name: "json/constant"
+    <<: *var_type_bool
+    <<: *var_type_nil
     scope:
     - constant.language.json
 
-  - name: json/illegal
-    <<: *illegal
-    scope:
-    - invalid.illegal.expected-array-separator.json
-    - invalid.illegal.expected-dictionary-separator.json
-    - invalid.illegal.unrecognized-string-escape.json
-
-  - name: json/type_string
-    <<: *type_string
-    scope:
-    - string.quoted.double.json
-
-  - name: json/type_string_quotes
-    <<: *type_string_quotes
-    scope:
-    - punctuation.definition.string.begin.json
-    - punctuation.definition.string.end.json
-
-- # GRAMMAR ~~~ JSON ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  - name: yaml/comments
-    <<: *comment
-    scope:
-    - comment.line.number-sign.yaml
+- # GRAMMAR ~~~ YAML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: yaml/document
-    <<: *name
+    settings:
+      foreground: syntax.blue
     scope:
     - entity.other.document.begin.yaml
     - entity.other.document.end.yaml
 
   - name: yaml/name
-    <<: *name
-    scope:
-    - entity.name.tag.yaml
+    <<: *variable_name
+    scope: entity.name.tag.yaml
 
-  - name: yaml/variable
-    <<: *variable
-    scope:
-    - entity.name.type.anchor.yaml
-    - variable.other.alias.yaml
+  - name: yaml/vat/type/date
+    <<: *variable_name
+    settings:
+      fontStyle: underline
+    scope: constant.other.timestamp.yaml
 
-  - name: yaml/variable/operators
+  - name: yaml/operator
     <<: *operator
     scope:
     - punctuation.definition.anchor.yaml
@@ -271,764 +919,18 @@ grammars:
     - keyword.control.flow.block-scalar.folded.yaml
     - keyword.control.flow.block-scalar.literal.yaml
     - storage.modifier.chomping-indicator.yaml
-
-  - name: yaml/date
-    <<: *type_date
-    scope:
-    - constant.other.timestamp.yaml
-
-  - name: yaml/builtin
-    <<: *builtin
-    scope:
-    - storage.type.tag-handle.yaml
-
-  - name: yaml/punctuation
-    <<: *punctuation
-    scope:
     - constant.language.merge.yaml
-    - punctuation.separator.key-value.mapping.yaml
-    - punctuation.separator.key-value.mapping.yaml
-    - punctuation.separator.mapping.yaml
-    - punctuation.separator.sequence.yaml
-    - punctuation.definition.directive.begin.yaml
-    - punctuation.definition.key-value.begin.yaml
-    - punctuation.definition.mapping.begin.yaml
-    - punctuation.definition.mapping.end.yaml
-    - punctuation.definition.sequence.begin.yaml
-    - punctuation.definition.sequence.end.yaml
-    - punctuation.definition.block.sequence.item.yaml
 
-  - name: yaml/type_number
-    <<: *type_number
-    scope:
-    - constant.numeric.indentation-indicator.yaml
-    - constant.numeric.yaml-version.yaml
-
-  - name: yaml/type_float
-    <<: *type_float
-    scope:
-    - constant.numeric.float.yaml
-
-  - name: yaml/type_int
-    <<: *type_int
-    scope:
-    - constant.numeric.integer.yaml
-
-  - name: yaml/type_boolean
-    <<: *type_boolean
-    scope:
-    - constant.language.boolean.yaml
-
-  - name: yaml/type_null
-    <<: *type_null
-    scope:
-    - constant.language.null.yaml
-
-  - name: yaml/escape
-    <<: *escape
-    scope:
-    - constant.character.escape.double-quoted.newline.yaml
-    - constant.character.escape.single-quoted.yaml
-    - constant.character.escape.yaml
-
-  - name: yaml/illegal
-    <<: *illegal
-    scope:
-    - invalid.illegal.character.anchor.yaml
-    - invalid.illegal.expected-comment-or-newline.yaml
-    - invalid.illegal.expected-newline.yaml
-    - invalid.illegal.tag-handle.yaml
-    - invalid.illegal.unrecognized.yaml
-
-
-  - name: yaml/type_string
-    <<: *type_string
-    scope:
-    - string.unquoted.plain.out.yaml
-    - string.unquoted.plain.in.yaml
-    - string.unquoted.block.yaml
-    - string.quoted.double.yaml
-    - string.quoted.single.yaml
-
-  - name: yaml/type_string_quotes
-    <<: *type_string_quotes
-    scope:
-    - punctuation.definition.string.begin.yaml
-    - punctuation.definition.string.end.yaml
-    - punctuation.definition.string.endmaps.yaml
-
-- # GRAMMAR ~~~ Go ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  - name: go/comment
-    <<: *comment
-    scope:
-    - comment.line.double-slash.go
-    - comment.block.go
-
-  - name: go/package
+  - name: yaml/operator
     settings:
-      foreground: blue
-    scope:
-    - keyword.package.go
-
-  - name: go/package
-    settings:
-      foreground: blue
-      fontStyle: underline
-    scope:
-    - entity.name.package.go
-
-
-  - name: go/keywords
-    <<: *keywords
-    scope:
-    - keyword.var.go
-    - keyword.type.go
-    - keyword.channel.go
-    - keyword.struct.go
-    - keyword.const.go
-    - keyword.interface.go
-
-  - name: go/chan
-    <<: *async
-    scope:
-    - keyword.channel.go
-    - keyword.operator.channel.go
-
-
-
-  - name: go/function
-    <<: *function
-    scope:
-    - keyword.function.go
-
-  - name: go/function/name
-    <<: *function_name
-    scope:
-    - entity.name.function.go
-    - support.function.go
-
-  - name: go/builtin
-    <<: *builtin
-    scope:
-    - support.function.builtin.go
-
-  - name: go/types
-    <<: *type
-    scope:
-    - storage.type.numeric.go
-    - storage.type.rune.go
-    - storage.type.uintptr.go
-    - storage.type.string.go
-    - storage.type.error.go
-    - storage.type.byte.go
-    - storage.type.boolean.go
-
-  - name: go/operator
-    <<: *operator
-    scope:
-    - keyword.operator.arithmetic.go
-    - keyword.operator.address.go
-    - keyword.operator.assignment.go
-    - keyword.operator.comparison.go
-    - keyword.operator.decrement.go
-    - keyword.operator.increment.go
-    - keyword.operator.ellipsis.go
-    - punctuation.terminator.go
-    - keyword.operator.logical.go
-    - keyword.operator.arithmetic.bitwise.go
-
-  - name: go/import
-    <<: *import
-    scope:
-    - keyword.import.go
-
-  - name: go/import_entity
-    <<: *import_entity
-    scope:
-    - entity.alias.import.go
-    - entity.name.import.go
-
-  - name: go/escape
-    <<: *escape
-    scope:
-    - constant.character.escape.go
-
-  - name: go/flow
-    <<: *flow
-    scope:
-    - keyword.control.go
-    - keyword.map.go
-
-  - name: go/type_float
-    <<: *type_float
-    scope:
-    - constant.numeric.floating-point.go
-
-  - name: go/type_int
-    <<: *type_int
-    scope:
-    - constant.numeric.integer.go
-
-  - name: go/type_boolean
-    <<: *type_boolean
-    scope:
-    - constant.language.go
-
-  - name: go/type_null
-    <<: *type_null
-    scope:
-    - constant.language.go
-
-  - name: go/illegal
-    <<: *illegal
-    scope:
-    - invalid.illegal.identifier.go
-    - invalid.illegal.numeric.go
-    - invalid.illegal.receive-channel.go
-    - invalid.illegal.send-channel.go
-    - invalid.illegal.slice.go
-    - invalid.illegal.unknown-escape.go
-    - invalid.illegal.unknown-rune.go
-
-  - name: go/type_string
-    <<: *type_string
-    scope:
-    - string.quoted.double.go
-    - string.quoted.raw.go
-    - string.quoted.rune.go
-
-  - name: go/type_string_quotes
-    <<: *type_string_quotes
-    scope:
-    - punctuation.definition.string.begin.go
-    - punctuation.definition.string.end.go
-
-  - name: go/type/string/placeholder
-    <<: *type_string_placeholder
-    scope:
-    - constant.other.placeholder.go
-
-- # GRAMMAR ~~~ Python ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  - name: python/comment
-    <<: *comment
-    scope:
-    - q
-
-  - name: python/keywords
-    <<: *keywords
-    scope:
-    - q
-
-  - name: python/reset
-    <<: *punctuation
-    scope:
-    - punctuation.definition.inheritance.begin.python
-    - punctuation.definition.inheritance.end.python
-
-  - name: python/function
-    <<: *function
-    scope:
-    - storage.type.function.python
-    - storage.type.class.python
-    - storage.type.function.lambda.python
-
-  - name: python/decorator
-    settings:
-      foreground: green
-    scope:
-    - entity.name.function.decorator.python
-    - meta.function.decorator.python
-
-
-  - name: python/function/name
-    <<: *function_name
-    scope:
-    - entity.name.function.python
-    - meta.function-call.generic.python
-    - support.function.magic.python
-
-  - name: python/async
-    <<: *async
-    scope:
-    - storage.type.function.async.python
-
-  - name: python/type
-    <<: *type
-    scope:
-    - support.type.python
-
-  - name: python/builtin
-    <<: *builtin
-    scope:
-    - support.function.builtin.python
-
-  - name: python/punctuation
-    <<: *punctuation
-    scope:
-    - punctuation.separator.colon.python
-    - punctuation.separator.element.python
-
-  - name: python/import
-    <<: *import
-    scope:
-    - keyword.control.import.python
-
-  - name: python/import_entity
-    <<: *import_entity
-    scope:
-    - q
-
-  - name: python/operator
-    <<: *operator
-    scope:
-    - keyword.operator.bitwise.python
-    - keyword.operator.comparison.python
-    - keyword.operator.assignment.python
-    - keyword.operator.arithmetic.python
-    - keyword.operator.logical.python
-    - punctuation.definition.decorator.python
-
-  - name: python/flow
-    <<: *flow
-    scope:
-    - keyword.control.flow.python
-    - keyword.operator.logical.python
-
-  - name: python/escape
-    <<: *escape
-    scope:
-    - constant.character.escape.python
-    - constant.character.escape.regexp
-
-  - name: python/this
-    <<: *this
-    scope:
-    - variable.language.special.self.python
-    - variable.parameter.function.language.special.self.python
-    - variable.language.special.cls.python
-
-  - name: python/class
-    <<: *class
-    scope:
-    - entity.name.type.class.python
-    - entity.other.inherited-class.python
-
-  - name: python/type_number
-    <<: *type_number
-    scope:
-    - constant.numeric.hex.python
-    - constant.numeric.oct.python
-    - constant.numeric.bin.python
-    - constant.numeric.python
-
-  - name: python/type_float
-    <<: *type_float
-    scope:
-    - constant.numeric.float.python
-
-  - name: python/type_int
-    <<: *type_int
-    scope:
-    - constant.numeric.dec.python
-
-
-
-  - name: python/type/none
-    <<: *type_null
-    scope:
-    - constant.language.python
-
-  - name: python/illegal
-    <<: *illegal
-    scope:
-    - invalid.deprecated.backtick.python
-    - invalid.deprecated.prefix.python
-    - invalid.deprecated.semicolon.python
-    - invalid.illegal.annotation.python
-    - invalid.illegal.brace.python
-    - invalid.illegal.dec.python
-    - invalid.illegal.decorator.python
-    - invalid.illegal.line.continuation.python
-    - invalid.illegal.name.python
-    - invalid.illegal.newline.python
-    - invalid.illegal.operator.python
-    - invalid.illegal.prefix.python
-    - keyword.illegal.name.python
-
-  - name: python/type_string
-    <<: *type_string
-    scope:
-    - string.quoted.single.python
-
-  - name: python/type_string_quotes
-    <<: *type_string_quotes
-    scope:
-    - punctuation.definition.string.begin.python
-    - punctuation.definition.string.end.python
-
-  - name: python/type/string/placeholder
-    <<: *type_string_placeholder
-    scope:
-    - constant.character.format.placeholder.other.python
-
-- # GRAMMAR ~~~ HashiCorpLangauge ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  - name: hcl/comments
-    <<: *comment
-    scope:
-    - comment.block.terraform
-    - comment.line.terraform
-
-  - name: hcl/name
-    <<: *name
-    scope:
-    - storage.type.terraform
-    - entity.name.label.terraform
-    - punctuation.section.block.begin.terraform
-    - punctuation.section.block.end.terraform
-
-  - name: hcl/variable
-    <<: *variable
-    scope:
-    - variable.declaration.terraform
-    - variable.function.terraform
-    - variable.other.member.terraform
-    - variable.other.readwrite.terraform
-
-  - name: hcl/builtin
-    <<: *builtin
-    scope:
-    - support.function.builtin.terraform
-
-  - name: hcl/operator
-    settings:
-      foreground: blue
-    scope:
-    - keyword.operator.accessor.terraform
-    - keyword.operator.arithmetic.terraform
-    - keyword.operator.assignment.terraform
-    - keyword.operator.heredoc.terraform
-    - keyword.operator.logical.terraform
-    - keyword.operator.splat.terraform
-    - keyword.operator.template.left.trim.terraform
-    - keyword.operator.template.right.trim.terraform
-    - keyword.operator.terraform
-    - keyword.operator.word.terraform
-
-  - name: hcl/escape
-    <<: *escape
-    scope:
-    - constant.character.escape.terraform
-
-  - name: hcl/type_float
-    <<: *type_float
-    scope:
-    - constant.numeric.float.terraform
-
-  - name: hcl/type_int
-    <<: *type_int
-    scope:
-    - constant.numeric.integer.terraform
-
-  - name: hcl/type_null
-    <<: *type_null
-    scope:
-    - constant.language.terraform
-
-  - name: hcl/type_string
-    <<: *type_string
-    scope:
-    - string.quoted.double.terraform
-
-  - name: hcl/type_string_quotes
-    <<: *type_string_quotes
-    scope:
-    - punctuation.definition.string.begin.terraform
-    - punctuation.definition.string.end.terraform
-
-- # GRAMMAR ~~~ Markdown ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  - name: md
-    settings:
-      foreground: white
-    scope:
-    - text.html.markdown
-
-
-  - name: "md/bold"
-    settings:
-      foreground: blue
-      fontStyle: bold
-    scope:
-    - markup.bold.markdown
-    - punctuation.definition.bold.markdown
-
-  - name: "md/italic"
-    settings:
-      foreground: blue
+      foreground: syntax.white
       fontStyle: italic
     scope:
-    - markup.italic.markdown
-    - punctuation.definition.italic.markdown
+    - entity.name.type.anchor.yaml
+    - variable.other.alias.yaml
 
-  - name: "md/list"
+  - name:  yaml/tags
     settings:
-      foreground: yellow
-    scope:
-    - punctuation.definition.list.begin.markdown
-    - punctuation.definition.quote.begin.markdown
-
-
-  - name: "md/link(href)"
-    settings:
-      foreground: yellow
-      fontStyle: underline
-    scope:
-    - markup.underline.link.markdown
-
-  - name: "md/link(href)"
-    settings:
-      foreground: green
-      fontStyle: underline
-    scope:
-    - markup.underline.link.markdown
-
-  - name: "md/link(text)"
-    settings:
-      foreground: green
-    scope:
-    - string.other.link.title.markdown
-
-
-  - name: md/header
-    settings:
-      foreground: red
-    scope:
-    - punctuation.definition.heading.markdown
-
-
-  - name: "md/def"
-    settings:
-      foreground: green
+      foreground: syntax.yellow
       fontStyle: italic
-    scope:
-    - punctuation.definition.markdown
-
-  - name: "md/quote"
-    settings:
-      foreground: white
-      fontStyle: italic
-    scope:
-    - markup.quote.markdown
-
-  - name: "md/quote"
-    settings:
-      foreground: white
-      fontStyle: italic
-    scope:
-    - markup.inline.raw.string.markdown
-    - markup.fenced_code.block.markdown
-
-- # GRAMMAR ~~~ TypeScript ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  - name: "ts/docs"
-    settings:
-      foreground: yellow
-    scope:
-    - storage.type.class.jsdoc
-
-  - name: "ts/docs"
-    settings:
-      foreground: green
-    scope:
-    - variable.other.jsdoc
-
-  - name: ts/keywords
-    <<: *keywords
-    scope:
-    - keyword.control.export.ts
-    - storage.type.ts
-    - keyword.operator.assignment.ts
-    - keyword.operator.assignment.compound.ts
-    - keyword.generator.asterisk.ts
-    - keyword.operator.arithmetic.ts
-    - keyword.operator.assignment.ts
-    - keyword.operator.bitwise.ts
-    - keyword.operator.comparison.ts
-    - keyword.operator.decrement.ts
-
-  - name: ts/function
-    <<: *function
-    scope:
-    - storage.type.function.ts
-
-  - name: ts/functions/name
-    <<: *function_name
-    scope:
-    - entity.name.function.ts
-
-  - name: ts/type
-    <<: *type
-    scope:
-    - support.type.primitive.ts
-    - entity.name.type.ts
-
-  - name: ts/variable
-    <<: *variable
-    scope:
-    - variable.other.property.ts
-    - variable.parameter.ts
-    - variable.other.readwrite.ts
-
-  - name: ts/variable/other
-    settings:
-      foreground: orange
-    scope:
-    - variable.other.object.ts
-
-  - name: ts/variable/other/property
-    settings:
-      foreground: green
-    scope:
-    - variable.other.object.property.ts
-    - variable.other.constant.property.ts
-
-  - name: ts/builtin
-    <<: *builtin
-    scope:
-    - support.class.console.ts
-    - support.type.builtin.ts
-
-  - name: ts/import
-    <<: *import
-    scope:
-    - keyword.control.import.ts
-    - keyword.control.from.ts
-    - keyword.control.require.ts
-
-  - name: ts/import_entity
-    <<: *import_entity
-    scope:
-    - variable.other.readwrite.alias.ts
-    - meta.import.ts string.quoted.single.ts
-    - meta.import-equals.external.ts string.quoted.single.ts
-
-  - name: ts/import/entity/quotes
-    settings:
-      foreground: white
-      fontStyle: regular
-    scope:
-    - meta.import.ts punctuation.definition.string.begin.ts
-    - meta.import.ts punctuation.definition.string.end.ts
-    - meta.import-equals.external.ts punctuation.definition.string.end.ts
-    - meta.import-equals.external.ts punctuation.definition.string.begin.ts
-
-  - name: ts/this
-    <<: *this
-    scope:
-    - variable.language.this.ts
-
-  - name: ts/new
-    settings:
-      foreground: blue
-    scope:
-    - keyword.operator.new.ts
-
-  - name: "ts/enums"
-    settings:
-      foreground: green
-    scope:
-    - variable.other.enummember.ts
-
-  - name: ts/operator
-    <<: *operator
-    scope:
-    - keyword.operator.optional.ts
-    - keyword.operator.comparison.ts
-    - keyword.operator.ternary.ts
-    - keyword.operator.logical.ts
-    - punctuation.terminator.statement.ts
-    - punctuation.separator.comma.ts
-    - keyword.operator.type.annotation.ts
-    - keyword.operator.increment.ts
-
-  - name: ts/flow
-    <<: *flow
-    scope:
-    - storage.type.function.arrow.ts
-    - keyword.control.switch.ts
-    - keyword.control.loop.ts
-    - keyword.control.flow.ts
-    - keyword.control.conditional.ts
-    - keyword.control.as.ts
-    - keyword.control.with.ts
-    - keyword.control.trycatch.ts
-
-  - name: ts/escape
-    <<: *escape
-    scope:
-    - constant.character.escape.ts
-    - constant.character.escape.backslash.regexp
-
-  - name: ts/async
-    <<: *async
-    scope:
-    - keyword.operator.expression.awaited.ts
-
-  - name: ts/type_number
-    <<: *type_number
-    scope:
-    - constant.numeric.decimal.ts
-
-  - name: ts/type_boolean
-    <<: *type_boolean
-    scope:
-    - constant.language.boolean.false.ts
-    - constant.language.boolean.true.ts
-
-  - name: ts/type_null
-    <<: *type_null
-    scope:
-    - constant.language.null.ts
-
-  - name: ts/class
-    <<: *function
-    scope:
-    - storage.type.enum.ts
-    - storage.type.class.ts
-    - storage.type.interface.ts
-
-  - name: ts/class/name
-    <<: *function_name
-    scope:
-    - entity.name.type.enum.ts
-    - entity.name.type.class.ts
-
-  - name: ts/class/modifier
-    <<: *class_modifier
-    scope:
-    - storage.modifier.ts
-
-
-  - name: ts/type_string
-    <<: *type_string
-    scope:
-    - string.quoted.double.ts
-    - string.quoted.single.ts
-    - string.template.ts
-
-  - name: ts/type/string/regexp
-    settings:
-      foreground: green
-    scope:
-    - string.regexp.ts
-
-- # GRAMMAR ~~~ Docker ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  - name: "docker/keywords"
-    <<: *keywords
-    scope:
-    - keyword.operator.dockerfile
-    - keyword.other.special-method.dockerfile
+    scope: storage.type.tag-handle.yaml

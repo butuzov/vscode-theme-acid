@@ -23,21 +23,6 @@
         "label": "Acid Night",
         "uiTheme": "vs-dark",
         "path": "./themes/theme.json"
-      },
-      {
-        "label": "Acid Night - Calm",
-        "uiTheme": "vs-dark",
-        "path": "./themes/theme-calm.json"
-      },
-      {
-        "label": "Acid Night - Bland",
-        "uiTheme": "vs-dark",
-        "path": "./themes/theme-bland.json"
-      },
-      {
-        "label": "Acid Night - Special",
-        "uiTheme": "vs-dark",
-        "path": "./themes/theme-special.json"
       }
     ]
   },

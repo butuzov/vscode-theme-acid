@@ -8,12 +8,14 @@ VSC Night Theme with bright colors for Go/Python/PHP development.
  - [x] Highlighting Grammar for YAML
  - [x] Highlighting Grammar for JSON
  - [x] WIP: Highlighting Grammar for Python
+ - [x] WIP: Highlighting Grammar for PHP
  - [ ] Highlighting Grammar for Jinja Templates
  - [x] Highlighting Grammar for Go
  - [ ] Highlighting Grammar for Go Templates
  - [x] Highlighting Grammar for HCL (terraform)
  - [ ] Highlighting Grammar for HTML
  - [ ] Highlighting Grammar for JS
+ - [x] Highlighting Grammar for Markdown
  - [x] WIP: Highlighting Grammar for TypeScript
  - [ ] Highlighting Grammar for CSS
  - [ ] Highlighting Grammar for LESS
@@ -21,7 +23,7 @@ VSC Night Theme with bright colors for Go/Python/PHP development.
  - [x] Highlighting Grammar for Dockerfile
  - [ ] Maybe: Highlighting Grammar for Ruby
  - [x] Explorer Tree Defined coloring (currently partially random colors)
- - [x] Replace random colors by defined colors.
+ - [ ] REJECTED: Replace random colors by defined colors.
  - [ ] Fix for the microsoft/vscode#99573
  - [ ] CI/CD: theme-[color].json generation only for CI procedure.
  - [ ] CI/CD: GitHub Actions (once it ready to see world).
