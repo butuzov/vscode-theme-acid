@@ -5,7 +5,7 @@
   "engines": {
     "vscode": "^1.45.0"
   },
-  "icon": "icon.svg",
+  "icon": "icon.png",
   "publisher": "butuzov",
   "version": "0.0.0",
   "categories": [
