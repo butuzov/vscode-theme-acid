@@ -1,6 +1,6 @@
 # Acid (WIP)
 
-![](icon.svg)
+![](https://butuzov.github.io/acid/preview.png)
 
 Dark VSC Theme with opionated coloring for Go/Python/PHP development.
 
@@ -31,7 +31,7 @@ Dark VSC Theme with opionated coloring for Go/Python/PHP development.
  - [ ] CI/CD: GitHub Actions (once it ready to see world).
 
 
-## Build
+## Dev Build
 
 ```bash
 # Compile, build and install

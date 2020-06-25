@@ -20,7 +20,7 @@
   "contributes": {
     "themes": [
       {
-        "label": "Acid Night",
+        "label": "Acid",
         "uiTheme": "vs-dark",
         "path": "./themes/theme.json"
       }
