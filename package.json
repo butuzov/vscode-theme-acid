@@ -1,11 +1,11 @@
 {
-  "name": "acid-night",
-  "displayName": "Acid Night",
-  "description": "acid-night",
+  "name": "acid",
+  "displayName": "Acid",
+  "description": "acid",
   "engines": {
     "vscode": "^1.45.0"
   },
-  "icon": "icon.png",
+  "icon": "icon.svg",
   "publisher": "butuzov",
   "version": "0.0.0",
   "categories": [
@@ -15,7 +15,7 @@
     "build": "./scripts/compiler",
     "quick_build": "./scripts/compiler --quick",
     "extension": "vsce package",
-    "install": "code --force --install-extension  acid-night-0.0.0.vsix"
+    "install": "code --force --install-extension  acid-0.0.0.vsix"
   },
   "contributes": {
     "themes": [
@@ -28,11 +28,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/butuzov/acid-night"
+    "url": "https://github.com/butuzov/acid"
   },
-  "homepage": "https://github.com/butuzov/acid-night",
+  "homepage": "https://github.com/butuzov/acid",
   "bugs": {
-    "url": "https://github.com/butuzov/acid-night/issues"
+    "url": "https://github.com/butuzov/acid/issues"
   },
   "devDependencies": {
     "vsce": "^1.76.0"

@@ -46,10 +46,10 @@ syntax:
   red:             "#ff0000"
   yellow_lite:     "#ffd866"
   yellow:          "#f1c40f"
-  green_lite:      "#99cf54"
+  green_lite:      "#a0d787"
   green:           "#81c784"
   blue_lite:       "#abdae8"
-  blue:            "#8ab8fe"
+  blue:            "#3f96b3"
 
   # violet:
 

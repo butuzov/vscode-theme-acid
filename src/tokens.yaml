@@ -32,21 +32,15 @@ formats:
 
   # ~~ Functions ~~
 
-  function_definition: &function_definition                               # DONE
+  definition: &definition                                                 # DONE
     style: syntax.green
-
-  function_arrow: &function_arrow                                         # FIXME
-    style: syntax.blue
-
-  function_name: &function_name                                           # DONE
-    style: syntax.blue_lite
-
-  function_name: &function_builtin                                        # DONE
+  builtin: &builtin                                                       # DONE
     style: u@syntax.blue_lite
-
-  function_name: &function_parameters                                     # DONE
+  parameters: &parameters                                                 # DONE
     style: i@syntax.white
 
+  property: &property                                               # DONE
+    style: syntax.green
 
   # ~~ Import ~~
 
@@ -55,42 +49,31 @@ formats:
   import_name: &import_name                                               # DONE
     style: syntax.white
 
-
-  operator: &operator                                                     # DONE
-    style: syntax.blue
-
-  operator_assignment: &operator_assignment                               # DONE
-    style: syntax.green
-  operator_math: &operator_math                                           # DONE
+  operator: &operators                                                    # DONE
+    style: syntax.green_lite
+  operator: &op_bitwise                                                   # DONE
     style: syntax.blue_lite
-  operator_compare: &operator_compare                                     # DONE
-    style: syntax.green
-  operator_bitwise: &operator_bitwise                                     # DONE
-    style: syntax.green
-  operator_other: &operator_other                                         # DONE
-    style: syntax.blue
+  operator: &op_special                                                   # DONE
+    style: syntax.yellow_lite
 
-  punctuation: &punctuation                                               # FIXME
+
+  punctuation: &punctuation                                               # DONE
     style: syntax.white
-
-  punctuation_braces: &punctuation_braces                                 # FIXME
-    style: syntax.white
-
 
   constant: &constant                                                     # FIXME
     style: ibu@red
   constant_language: &constant_language                                   # DONE
     style: b@syntax.blue
-  constant_other: &constant_other                                         # FIXME
-    style: ibu@red
-  constant_string: &constant_string                                       # FIXME
-    style: ibu@red
 
-  constant_number: &constant_number                                       # FIXME
+  constant_other: &constant_other                                         # DONE
+    style: u@syntax.yellow
+
+
+  constant_number: &constant_number                                       # DONE
     style: syntax.blue
-  constant_int: &constant_int                                             # FIXME
+  constant_int: &constant_int                                             # DONE
     style: syntax.blue
-  constant_float: &constant_float                                         # FIXME
+  constant_float: &constant_float                                         # DONE
     style: syntax.blue
 
   # ~~~ Objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -98,25 +81,13 @@ formats:
   class: &class                                                           # DONE
     style: syntax.green
   class_name: &class_name                                                 # DONE
-    style: ui@syntax.blue_lite
+    style: syntax.blue_lite
   class_name_inherited: &class_name_inherited                             # DONE
-    style: i@syntax.blue_lite
-
+    style: syntax.blue_lite
   class_this: &class_this                                                 # DONE
     style: syntax.yellow
-
   class_access_modifier: &class_access_modifier                           # DONE
-    style: i@syntax.blue
-
-  class_new: &class_new                                                   # FIXME
-    style: ibu@red
-
-  storage_dict: &storage_dict                                             # FIXME
-    style: ibu@red
-
-  storage_array: &storage_array                                           # FIXME
-    style: ibu@red
-
+    style: ui@syntax.green/a80
   variable: &variable                                                     # DONE
     style: syntax.blue
 
@@ -190,34 +161,21 @@ grammars:
 
   # ~~~ Operators ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - name: operator/operator
-    <<: *operator
+  - name: operator/math
+    <<: *operators
     scope:
     - keyword.operator.address
-
-  - name: operator/math
-    <<: *operator_math
-    scope:
     - keyword.operator.arithmetic
     - keyword.operator.increment
     - keyword.operator.decrement
-
-  - name: operator/compare
-    <<: *operator_compare
-    scope:
     - keyword.operator.comparison
+    - keyword.operator.assignment
 
-  - name: operator/operator_bitwise
-    <<: *operator_bitwise
+  - name: operator/math
+    <<: *op_bitwise
     scope:
     - keyword.operator.arithmetic.bitwise
     - keyword.operator.bitwise
-
-
-  - name: operator/operator_assignment
-    <<: *operator_assignment
-    scope:
-    - keyword.operator.assignment
 
   # ~~~ Constants ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -267,19 +225,19 @@ grammars:
   # ~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: function/definition
-    <<: *function_definition
+    <<: *definition
     scope: storage.type.function
 
   - name: function/name
-    <<: *function_name
+    <<: *name
     scope: entity.name.function
 
   - name: function/builtin
-    <<: *function_builtin
+    <<: *builtin
     scope: support.function.builtin
 
   - name: function/parameters
-    <<: *function_parameters
+    <<: *parameters
     scope:
     - meta.function.parameters
 
@@ -311,7 +269,7 @@ grammars:
   # ~~~ Punctuation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: punctuation.definition.parameters
-    <<: *punctuation_braces
+    <<: *punctuation
     settings:
       fontStyle: normal
     scope:
@@ -358,12 +316,12 @@ grammars:
     scope: source.python
 
   - name: "python/function/lambda"
-    <<: *function_definition
+    <<: *definition
     scope:
     - storage.type.function.lambda.python
 
   - name: "python/function/dunders"
-    <<: *function_name
+    <<: *name
     settings:
       fontStyle: italic
     scope:
@@ -371,12 +329,12 @@ grammars:
     - support.variable.magic.python
 
   - name: python/function/name"
-    <<: *function_name
+    <<: *name
     scope:
     - meta.function-call.generic.python
 
   - name: punctuation.definition.parameters
-    <<: *punctuation_braces
+    <<: *punctuation
     settings:
       fontStyle: italic
     scope:
@@ -432,18 +390,18 @@ grammars:
     scope: entity.name.package.go
 
 
-  - name: "go/import"
+  - name: go/import
     <<: *import
     scope:
     - keyword.import.go
 
-  - name: "go/import/name"
+  - name: go/import/name
     <<: *import_name
     scope:
     - entity.name.import
 
-  - name: "go/definitions"
-    <<: *function_definition
+  - name: go/definitions
+    <<: *definition
     scope:
     - keyword.function.go
     - keyword.var.go
@@ -451,9 +409,8 @@ grammars:
     - keyword.map.go
     - keyword.type.go
 
-  - name: "go/definitions"
-    settings:
-      foreground: syntax.green_lite
+  - name: go/definitions
+    <<: *definition
     scope:
     - keyword.struct.go
     - keyword.interface.go
@@ -470,15 +427,13 @@ grammars:
     - storage.type.rune.go
     - storage.type.uintptr.go
 
-  - name: "go/function"
-    <<: *function_name
+  - name: go/function
+    <<: *name
     scope:
     - support.function.go
 
-  - name: "go/operator/other"
-    <<: *operator_other
-    settings:
-      fontStyle: bold
+  - name: go/operator/other
+    <<: *op_special
     scope:
     - keyword.operator.ellipsis.go
     - keyword.operator.address.go
@@ -490,6 +445,32 @@ grammars:
     - keyword.operator.channel.go
     - keyword.channel.go
 
+  - name: go/placeholder
+    <<: *string_placeholder
+    scope:
+    - constant.other.placeholder.go
+
+- # GRAMMAR ~~~ Go Template ~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: go/placeholder
+    <<: *string_placeholder
+    scope:
+    - constant.other.placeholder.gotemplate
+
+  - name: go/temlates/var
+    <<: *variable
+    scope:
+    - variable.other.gotemplate
+
+  - name: go/keywords
+    settings:
+      foreground: syntax.green
+    scope:
+    - punctuation.section.embedded.begin.gotemplate
+    - punctuation.section.embedded.end.gotemplate
+    - keyword.operator.pipe.gotemplate
+
+
 - # GRAMMAR ~~~ PHP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: "*"
@@ -500,15 +481,16 @@ grammars:
     <<: *punctuation
     scope:
     - meta.include.php string.quoted.double.php
+    - meta.include.php string.quoted.single.php
 
   - name: php/names
-    <<: *function_name
+    <<: *name
     scope:
     - entity.name.type.interface.php
     - entity.name.type.trait.php
 
   - name: php/entities
-    <<: *function_definition
+    <<: *definition
     scope:
     - storage.type.interface.php
     - storage.type.trait.php
@@ -520,14 +502,24 @@ grammars:
     - storage.type.php
 
   - name: php/var/$
-    <<: *operator_other
+    <<: *op_special
     settings:
-      fontStyle: bold
+      fontStyle: normal
     scope:
     - storage.modifier.reference.php
     - punctuation.definition.variable.php
     - punctuation.definition.arrow.php
     - keyword.operator.key.php
+
+  - name: php/var/param/$
+    <<: *op_special
+    settings:
+      fontStyle: italic
+    scope:
+    - meta.function.parameter.no-default.php storage.modifier.reference.php
+    - meta.function.parameter.no-default.php punctuation.definition.variable.php
+    - meta.function.parameter.no-default.php punctuation.definition.arrow.php
+    - meta.function.parameter.no-default.php keyword.operator.key.php
 
   - name: php/this/new
     <<: *class_this
@@ -548,7 +540,7 @@ grammars:
     - keyword.other.use.php
 
   - name: php/function
-    <<: *function_name
+    <<: *name
     scope:
     - meta.use.php support.class.php
     - meta.function-call.php entity.name.function.php
@@ -661,7 +653,7 @@ grammars:
     - meta.function-call.php support.function.zlib.php
 
   - name: php/builtin
-    <<: *function_builtin
+    <<: *builtin
     scope:
     - support.function.construct.output.php
     - support.function.basic_functions.php
@@ -700,7 +692,7 @@ grammars:
     scope:
     - string.quoted support.constant.terraform
 
-- # GRAMMAR ~~~ Docker ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- # GRAMMAR ~~~ Docker ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: "docker/keywords"
     settings:
@@ -711,13 +703,28 @@ grammars:
 
 - # GRAMMAR ~~~ HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- # GRAMMAR ~~~ JavaScript ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- # GRAMMAR ~~~ TypeScript ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: "*"
     <<: *punctuation
-    scope: source.ts
+    scope:
+    - text.html
+
+  - name: "*"
+    settings:
+      foreground: syntax.blue_lite
+    scope:
+    - entity.name.tag.html
+    - punctuation.definition.tag.begin.html
+    - punctuation.definition.tag.end.html
+
+
+- # GRAMMAR ~~~ TypeScript / JavaScript ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    <<: *punctuation
+    scope:
+    - source.ts
+    - source.js
 
   - name: ts/import
     <<: *import
@@ -733,28 +740,28 @@ grammars:
     - constant.language.import-export-all.ts
 
   - name: ts/operators
-    <<: *operator
+    <<: *operators
     scope:
     - keyword.operator.ternary.ts
+    - keyword.operator.ternary.js
     - keyword.operator.spread.ts
-
-  - name: ts/operators
-    <<: *operator_assignment
-    scope:
     - keyword.operator.expression.of.ts
     - keyword.operator.type.ts
     - keyword.operator.expression.typeof.ts
+    - keyword.operator.expression.typeof.js
     - keyword.operator.optional.ts
+    - keyword.operator.relational.ts
+    - keyword.operator.relational.js
 
   - name: ts/type
     <<: *type
     scope:
     - entity.name.type.ts
+    - entity.name.type.js
     - support.type.primitive.ts
     - entity.name.type.alias.ts
     - entity.name.type.enum.ts
     - entity.name.type.interface.ts
-    - entity.name.type.ts
 
   - name: ts/type/generics/braces
     settings:
@@ -770,37 +777,45 @@ grammars:
     <<: *class_this
     scope:
     - keyword.operator.new.ts
+    - keyword.operator.new.js
     - variable.language.this.ts
+    - variable.language.this.js
 
   - name: ts/module
     settings:
       foreground: syntax.yellow
     scope:
     - entity.name.type.module.ts
+    - entity.name.type.module.js
     - variable.other.object.ts
+    - variable.other.object.js
 
   - name: ts/functions/name
-    <<: *function_name
+    <<: *name
     scope:
     - support.function.json.ts
+    - support.function.js
 
   - name: ts/functions/parameters
-    <<: *punctuation_braces
+    <<: *punctuation
     settings:
       fontStyle: italic
     scope:
     - variable.parameter.ts
+    - variable.parameter.js
 
-  - name: ts/definitions"
-    <<: *function_definition
+  - name: ts/definitions
+    <<: *definition
     scope:
     - storage.type.type.ts
     - meta.var.expr.ts storage.type.ts
+    - meta.var.expr.js storage.type.js
     - storage.type.enum.ts
     - storage.type.interface.ts
+    - storage.modifier.js
 
   - name: ts/builtin
-    <<: *function_builtin
+    <<: *builtin
     scope:
     - support.class.builtin.ts
     - support.class.console.ts
@@ -810,15 +825,124 @@ grammars:
     - support.constant.json.ts
 
 
-
-- # GRAMMAR ~~~ CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- # GRAMMAR ~~~ LESS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- # GRAMMAR ~~~ SCSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  - name: js/key
+    <<: *variable_name
+    scope:
+    - meta.object-literal.key.js
 
 
-- # GRAMMAR ~~~ MARKDOWN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- # GRAMMAR ~~~ Protobuf ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    <<: *punctuation
+    scope:
+    - source.proto
+
+  - name: proto/definitions
+    <<: *definition
+    scope:
+    - keyword.other.proto
+    - keyword.other.proto
+
+  - name: proto/class/name
+    <<: *class_name
+    scope:
+    - entity.name.class.message.proto
+
+  - name: proto/class/name
+    <<: *parameters
+    scope:
+    - entity.name.class.proto
+
+  - name: proto/type
+    <<: *type
+    scope:
+    - storage.type.proto
+
+  - name: proto/constant
+    <<: *constant_other
+    scope:
+    - constant.other.proto
+
+- # GRAMMAR ~~~ CSS/LESS/SCSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    <<: *punctuation
+    scope:
+    - source.css
+
+  - name: style/mixins_or_functions
+    <<: *name
+    scope:
+    - entity.other.attribute-name.class.mixin.css
+    - support.function.misc.css
+    - support.function.type-checking.less
+    - support.function.any-method.builtin.less
+    - support.function.url.css
+    - support.function.misc.scss
+
+
+  - name: style/keywords
+    <<: *keywords
+    scope:
+    - keyword.other.default.scss
+    - keyword.other.important.css
+
+  - name: style/string
+    <<: *string
+    scope:
+    - support.constant.font-name.css
+    - variable.parameter.url.scss
+
+  - name: style/variable/init
+    descr: "Declaration of variable and its property"
+    settings:
+      foreground: syntax.yellow_lite
+    scope:
+    - meta.property-list.css variable.css
+    - meta.definition.variable.scss variable.scss
+    - variable.other.less
+
+  - name: style/property/name
+    settings:
+      foreground: syntax.green_lite
+    scope:
+    - support.type.property-name.css
+    - support.type.vendored.property-name.css
+    - meta.property-list.scss entity.name.tag.css
+    - meta.property-list.css entity.name.tag.css
+
+  - name: style/property/value
+    <<: *property
+    scope:
+    - meta.property-value.css
+    - support.constant.property-value.css
+    - support.constant.color.w3c-standard-color-name.css
+    - variable.parameter.keyframe-list.css
+
+  - name: style/property/value+variable
+    settings:
+      foreground: "#a9ba21"
+      fontStyle: normal
+    scope:
+    - meta.property-value.scss variable.scss
+    - meta.property-value.css variable.other.less
+    - meta.function.variable.css variable.argument.css
+
+  - name: style/parameters
+    <<: *parameters
+    descr: "italic in mixin parameters in scss, less isn't working"
+    scope:
+    - meta.at-rule.mixin.scss variable.scss
+    - meta.at-rule.supports.header.css meta.property-name.css
+    - variable.other.less
+
+  - name: style/other
+    <<: *keywords_control
+    scope:
+    - entity.other.keyframe-offset.css
+
+- # GRAMMAR ~~~ MARKDOWN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: &highlight
       foreground: highBg
@@ -912,7 +1036,7 @@ grammars:
     scope: constant.other.timestamp.yaml
 
   - name: yaml/operator
-    <<: *operator
+    <<: *operators
     scope:
     - punctuation.definition.anchor.yaml
     - punctuation.definition.alias.yaml

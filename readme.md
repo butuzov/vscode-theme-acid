@@ -1,6 +1,8 @@
-# Acid Night (WIP)
+# Acid (WIP)
 
-VSC Night Theme with bright colors for Go/Python/PHP development.
+![](icon.svg)
+
+Dark VSC Theme with opionated coloring for Go/Python/PHP development.
 
 ## TODO
 
@@ -11,21 +13,21 @@ VSC Night Theme with bright colors for Go/Python/PHP development.
  - [x] WIP: Highlighting Grammar for PHP
  - [ ] Highlighting Grammar for Jinja Templates
  - [x] Highlighting Grammar for Go
- - [ ] Highlighting Grammar for Go Templates
+ - [x] Highlighting Grammar for Protobuf
+ - [x] Highlighting Grammar for Go Templates
  - [x] Highlighting Grammar for HCL (terraform)
- - [ ] Highlighting Grammar for HTML
- - [ ] Highlighting Grammar for JS
+ - [x] Highlighting Grammar for HTML
+ - [x] Highlighting Grammar for JS
  - [x] Highlighting Grammar for Markdown
  - [x] WIP: Highlighting Grammar for TypeScript
- - [ ] Highlighting Grammar for CSS
- - [ ] Highlighting Grammar for LESS
- - [ ] Highlighting Grammar for SCSS
+ - [x] Highlighting Grammar for CSS
+ - [x] Highlighting Grammar for LESS
+ - [x] Highlighting Grammar for SCSS
  - [x] Highlighting Grammar for Dockerfile
  - [ ] Maybe: Highlighting Grammar for Ruby
  - [x] Explorer Tree Defined coloring (currently partially random colors)
  - [ ] REJECTED: Replace random colors by defined colors.
  - [ ] Fix for the microsoft/vscode#99573
- - [ ] CI/CD: theme-[color].json generation only for CI procedure.
  - [ ] CI/CD: GitHub Actions (once it ready to see world).
 
 
