@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 
 import sys, json
+"""
+    Extracts grammars from tm tmLanguage.json files
+
+    ./scripts/grammar php.tmLanguage.json
+
+"""
 
 
 def traverse(items):
@@ -17,13 +23,11 @@ def traverse(items):
             if k == "name" and isinstance(v, str):
                 results.append(v)
                 continue
-            if isinstance(v, list):
+
+            if isinstance(v, list) or isinstance(v, dict):
                 results += traverse(v)
                 continue
 
-            if isinstance(v, dict):
-                results += traverse(v)
-                continue
         return results
 
     return results
@@ -34,11 +38,18 @@ def main(grammar):
     with open(grammar, "r") as f:
         data = traverse(json.load(f))
 
-    [print(item) for item in sorted(list(set(data)))]
+    items = [item for item in sorted(list(set(data)))]
+    print("\n".join(items))
 
 
 if __name__ == "__main__":
 
-    # file = sys.argv[1]
-
-    main(sys.argv[1])
+    try:
+        if len(sys.argv) > 1:
+            main(sys.argv[1])
+        else:
+            exit(
+                "Provide path to tmLanguage.json file:\n\t./grammar [tmLanguage.json]"
+            )
+    except BaseException as e:
+        print(e)
