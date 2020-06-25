@@ -1,7 +1,7 @@
 {
   "name": "acid",
   "displayName": "Acid",
-  "description": "acid",
+  "description": "Calm and simple dark theme focused on python/go development",
   "engines": {
     "vscode": "^1.45.0"
   },
@@ -17,15 +17,23 @@
     "extension": "vsce package",
     "install": "code --force --install-extension  acid-0.0.0.vsix"
   },
+  "keywords": [
+    "Theme",
+    "Dark Theme",
+    "Acid",
+    "Go",
+    "Python"
+  ],
   "contributes": {
     "themes": [
       {
         "label": "Acid",
         "uiTheme": "vs-dark",
-        "path": "./themes/theme.json"
+        "path": "./acid.json"
       }
     ]
   },
+  "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
     "url": "https://github.com/butuzov/acid"
