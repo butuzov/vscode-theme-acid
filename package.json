@@ -7,7 +7,7 @@
   },
   "icon": "icon.png",
   "publisher": "butuzov",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "categories": [
     "Themes"
   ],
@@ -15,7 +15,10 @@
     "build": "./scripts/compiler",
     "quick_build": "./scripts/compiler --quick",
     "extension": "vsce package",
-    "install": "code --force --install-extension  acid-0.0.0.vsix"
+    "publish": "vsce publish",
+    "release": "npm run quick_build && npm run clean && npm run extension",
+    "clean": "rm -rf src && rm -rf scripts && unlink icon.psd",
+    "install": "code --force --install-extension  acid-0.0.1.vsix"
   },
   "keywords": [
     "Theme",
