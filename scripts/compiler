@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
 """
     This script watches for sources and rebuild theme.json
+
+        ./scripts/compiler
 """
 
 import json, yaml
-import time
+from time import sleep
 from random import choice, choices
 
 import hashlib
 
 from datetime import datetime
 from os.path import splitext
-
-
-class Test(dict):
-    pass
 
 
 class Theme:
@@ -34,7 +32,6 @@ class Theme:
         self._file_palette = "src/palette.yaml"
         self._file_theme = "src/theme.yaml"
         self._file_tokens = "src/tokens.yaml"
-        self._file_colors = "src/colors.yaml"
         self._monitor = {}
 
         # destination
@@ -45,7 +42,6 @@ class Theme:
         theme = self._is_changed(self._file_theme)
         tokens = self._is_changed(self._file_tokens)
         palette = self._is_changed(self._file_palette)
-        colors = self._is_changed(self._file_colors)
 
         if palette:
             self._palette = Theme.read(self._file_palette)
@@ -59,11 +55,7 @@ class Theme:
             self._theme = Theme.read(self._file_theme)
             print("Theme changed         : {0}".format(datetime.now().time()))
 
-        if colors:
-            self._colors = Theme.read(self._file_colors)
-            print("Colors changed        : {0}".format(datetime.now().time()))
-
-        return palette or theme or tokens or colors
+        return palette or theme or tokens
 
     def dpath(self, color_map, path):
         tmp = dict(color_map)
@@ -179,7 +171,7 @@ class Theme:
             json.dump(theme, fp=f, indent=4)
 
     def unpack(self, value: str, redefined: dict) -> dict:
-        """ unpack short value to style and foreground """
+        """ unpack short value e.g. `bui@black` to style and foreground """
 
         if '@' in value:
             fontStyle, foreground = value.split("@")
@@ -221,7 +213,7 @@ class Theme:
 
 
 def main(settings: dict):
-    theme = Theme("Acid Night", "dark")
+    theme = Theme("Acid", "dark")
     while True:
         if theme.is_changed():
             theme.generate(settings['shuffle_tokens'])
@@ -229,7 +221,7 @@ def main(settings: dict):
         if settings['quick']:
             return
 
-        time.sleep(1)
+        sleep(1)
 
 
 if __name__ == "__main__":
