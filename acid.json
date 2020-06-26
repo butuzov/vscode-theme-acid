@@ -339,6 +339,38 @@
             ]
         },
         {
+            "name": "keyword.operator.logical",
+            "settings": {
+                "foreground": "#ff6188"
+            },
+            "scope": "keyword.operator.logical"
+        },
+        {
+            "name": "*",
+            "settings": {
+                "foreground": "#fcfcfc"
+            },
+            "scope": "source.starlark"
+        },
+        {
+            "name": "starlark/docstring",
+            "settings": {
+                "foreground": "#fcfcfc80",
+                "fontStyle": "italic"
+            },
+            "scope": [
+                "comment.block.documentation.starlark punctuation.definition.string.begin.starlark",
+                "comment.block.documentation.starlark punctuation.definition.string.end.starlark"
+            ]
+        },
+        {
+            "name": "starlark/functions",
+            "settings": {
+                "foreground": "#abdae8"
+            },
+            "scope": "support.function.starlark"
+        },
+        {
             "name": "doc/type",
             "settings": {
                 "foreground": "#ffd866"
@@ -459,13 +491,6 @@
                 "fontStyle": "normal"
             },
             "scope": "meta.function-call.python support.type.python"
-        },
-        {
-            "name": "python/flow",
-            "settings": {
-                "foreground": "#ff6188"
-            },
-            "scope": "keyword.operator.logical"
         },
         {
             "name": "*",

@@ -276,6 +276,28 @@ grammars:
     - punctuation.definition.parameters.begin
     - punctuation.definition.parameters.end
 
+  - name: keyword.operator.logical
+    <<: *keywords_control
+    scope:
+    - keyword.operator.logical
+
+- # GRAMMAR ~~~ Starlark ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    <<: *punctuation
+    scope: source.starlark
+
+  - name: starlark/docstring
+    <<: *comment
+    scope:
+    - comment.block.documentation.starlark punctuation.definition.string.begin.starlark
+    - comment.block.documentation.starlark punctuation.definition.string.end.starlark
+
+  - name: starlark/functions
+    <<: *name
+    scope:
+    - support.function.starlark
+
 - # GRAMMAR ~~~ Documentation Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: doc/type
@@ -372,10 +394,6 @@ grammars:
     scope:
     - meta.function-call.python support.type.python
 
-  - name: python/flow
-    <<: *keywords_control
-    scope:
-    - keyword.operator.logical
 
 - # GRAMMAR ~~~ Go ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
