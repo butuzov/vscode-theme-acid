@@ -11,15 +11,6 @@
   "categories": [
     "Themes"
   ],
-  "scripts": {
-    "build": "./scripts/compiler",
-    "quick_build": "./scripts/compiler --quick",
-    "extension": "vsce package",
-    "publish": "vsce publish",
-    "release": "npm run quick_build && npm run clean && npm run extension",
-    "clean": "rm -rf src && rm -rf scripts && unlink icon.psd",
-    "install": "code --force --install-extension  acid-0.0.1.vsix"
-  },
   "keywords": [
     "Theme",
     "Dark Theme",
