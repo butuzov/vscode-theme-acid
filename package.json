@@ -45,7 +45,8 @@
   "bugs": {
     "url": "https://github.com/butuzov/acid/issues"
   },
-  "devDependencies": {
-    "vsce": "^1.76.0"
+  "devDependencies": {},
+  "dependencies": {
+    "vsce": "^1.77.0"
   }
 }

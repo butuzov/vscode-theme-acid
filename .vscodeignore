@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+Makefile
+icon.psd
+*.vsix
+.gitignore
+src
+examples
+scripts
+syntaxes
