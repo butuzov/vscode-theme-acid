@@ -488,6 +488,41 @@ grammars:
     - punctuation.section.embedded.end.gotemplate
     - keyword.operator.pipe.gotemplate
 
+- # GRAMMAR ~~~ Shell ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    <<: *punctuation
+    scope: source.shell
+
+  - name: shell/var/type/number
+    <<: *var_type_number
+    scope:
+    - constant.numeric.hex.shell
+    - constant.numeric.integer.shell
+    - constant.numeric.octal.shell
+
+  - name: shell/modifer
+    <<: *definition
+    settings:
+      fontStyle: normal
+    scope:
+    - storage.modifier.shell
+
+  - name: shell/keywords
+    settings:
+      foreground: syntax.green
+      fontStyle: regular
+    scope:
+    - keyword.operator.redirect.shell
+    - keyword.operator.pipe.shell
+
+  - name: shell/keywords
+    settings:
+      foreground: syntax.yellow
+    scope:
+    - punctuation.section.array.shell
+    - variable.other.bracket.shell
+
 
 - # GRAMMAR ~~~ PHP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -624,6 +624,53 @@
             "settings": {
                 "foreground": "#fcfcfc"
             },
+            "scope": "source.shell"
+        },
+        {
+            "name": "shell/var/type/number",
+            "settings": {
+                "foreground": "#3f96b3"
+            },
+            "scope": [
+                "constant.numeric.hex.shell",
+                "constant.numeric.integer.shell",
+                "constant.numeric.octal.shell"
+            ]
+        },
+        {
+            "name": "shell/modifer",
+            "settings": {
+                "fontStyle": "normal",
+                "foreground": "#81c784"
+            },
+            "scope": "storage.modifier.shell"
+        },
+        {
+            "name": "shell/keywords",
+            "settings": {
+                "foreground": "#81c784",
+                "fontStyle": "regular"
+            },
+            "scope": [
+                "keyword.operator.redirect.shell",
+                "keyword.operator.pipe.shell"
+            ]
+        },
+        {
+            "name": "shell/keywords",
+            "settings": {
+                "foreground": "#f1c40f"
+            },
+            "scope": [
+                "punctuation.section.array.shell",
+                "variable.other.bracket.shell"
+            ]
+        },
+        {
+            "name": "*",
+            "settings": {
+                "foreground": "#fcfcfc"
+            },
             "scope": "source.php"
         },
         {
