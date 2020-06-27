@@ -123,7 +123,16 @@
         "pickerGroup.border": "#a9ba21",
         "pickerGroup.foreground": "#a9ba21",
         "widget.shadow": "#fff0",
-        "scrollbar.shadow": "#fff0"
+        "scrollbar.shadow": "#fff0",
+        "inputValidation.errorBackground": "#494949",
+        "inputValidation.errorForeground": "#e1e1e1",
+        "inputValidation.errorBorder": "#e74c3c",
+        "inputValidation.infoBackground": "#494949",
+        "inputValidation.infoForeground": "#e1e1e1",
+        "inputValidation.infoBorder": "#a9ba21",
+        "inputValidation.warningBackground": "#494949",
+        "inputValidation.warningForeground": "#e1e1e1",
+        "inputValidation.warningBorder": "#f1c40f"
     },
     "tokenColors": [
         {
