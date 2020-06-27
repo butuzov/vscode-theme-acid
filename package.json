@@ -39,5 +39,26 @@
   "devDependencies": {},
   "dependencies": {
     "vsce": "^1.77.0"
-  }
+  },
+  "galleryBanner": {
+    "color": "#232323",
+    "theme": "dark"
+  },
+  "badges": [
+    {
+      "url": "https://vsmarketplacebadge.apphb.com/version/butuzov.acid.svg",
+      "href": "https://marketplace.visualstudio.com/items/butuzov.acid",
+      "description": "Extension version"
+    },
+    {
+      "url": "https://vsmarketplacebadge.apphb.com/installs/butuzov.acid.svg",
+      "href": "https://marketplace.visualstudio.com/items/butuzov.acid",
+      "description": "Extension installs"
+    },
+    {
+      "url": "https://vsmarketplacebadge.apphb.com/rating/butuzov.acid.svg",
+      "href": "https://marketplace.visualstudio.com/items/butuzov.acid",
+      "description": "Extension Rating"
+    }
+  ]
 }

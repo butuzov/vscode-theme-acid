@@ -1,12 +1,13 @@
-# Acid (WIP)
+# Acid VSCode Theme
+
+[![Marketplace](https://vsmarketplacebadge.apphb.com/version/butuzov.acid.svg)](https://marketplace.visualstudio.com/items/butuzov.acid) [![Installs](https://vsmarketplacebadge.apphb.com/installs/butuzov.acid.svg)](https://marketplace.visualstudio.com/items/butuzov.acid) [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/butuzov.acid.svg)](https://marketplace.visualstudio.com/items/butuzov.acid)
+
 
 ![](https://butuzov.github.io/acid/preview.png)
 
-Dark VSC Theme with opinionated coloring for Go/Python/PHP development.
-
 ## Syntax Highlighting
 
-Go (and templates)/Python/Starlark/PHP/TypeScript/JavaScript/CSS/LESS/SCSS/Dockerfiles/Markdown/protobuf/hcl
+Supported syntax highlighting: Go (and Go templates), Python, Starlark, PHP, TypeScript, JavaScript, CSS/LESS/SCSS, Dockerfiles, Markdown, protobuf, hcl, shell.
 
 
 ## Dev Install
