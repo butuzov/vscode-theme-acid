@@ -1,7 +1,4 @@
-# Acid Night
-#
-# black:             "#171412"
-# black:             "#141414"
+# Acid
 black:             "#232323"
 dark:              "#494949"
 white:   &white    "#e1e1e1"
