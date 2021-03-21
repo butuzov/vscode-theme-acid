@@ -1,7 +1,7 @@
 {
   "name": "acid",
   "displayName": "Acid",
-  "description": "Calm and simple dark theme focused on python/go development",
+  "description": "Code in Golang/Python/PHP with Darkish VSCode Theme",
   "engines": {
     "vscode": "^1.45.0"
   },
@@ -16,7 +16,18 @@
     "Dark Theme",
     "Acid",
     "Go",
-    "Python"
+    "Python",
+    "HCL",
+    "PHP",
+    "Starlark",
+    "JavaScript",
+    "TypeScript",
+    "CSS",
+    "LESS",
+    "SCSS",
+    "Dockerfile",
+    "protobuf",
+    "shell"
   ],
   "contributes": {
     "themes": [
@@ -30,15 +41,15 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/butuzov/acid"
+    "url": "https://github.com/butuzov/vscode-theme-acid"
   },
-  "homepage": "https://github.com/butuzov/acid",
+  "homepage": "https://github.com/butuzov/vscode-theme-acid",
   "bugs": {
-    "url": "https://github.com/butuzov/acid/issues"
+    "url": "https://github.com/butuzov/vscode-theme-acid/issues"
   },
   "devDependencies": {},
   "dependencies": {
-    "vsce": "^1.77.0"
+    "vsce": "^1.87.0"
   },
   "galleryBanner": {
     "color": "#232323",
