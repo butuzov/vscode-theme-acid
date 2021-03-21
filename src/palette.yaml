@@ -1,8 +1,7 @@
-# Acid
-black:             "#232323"
-dark:              "#494949"
-white:   &white    "#e1e1e1"
-
+# ACID
+black:                 "#232323"
+dark:                  "#494949"
+white:       &white    "#e1e1e1"
 red:         &red      "#e74c3c" # !!!
 orange:      &orange   "#f39c12" # <
 yellow:      &yellow   "#f1c40f" # <
@@ -10,13 +9,9 @@ green:       &green    "#99cf54" # <
 cyan:        &cyan     "#06b1c4"
 blue:        &blue     "#5e98e2" # <
 magenta:     &magenta  "#9b59b6"
+none:                  "#fff0"
 
-
-
-none: "#fff0"
-
-
-# Main Color
+# Main Colors
 highBg: "#a9ba21"
 highFg: "#101010"
 
@@ -47,11 +42,6 @@ syntax:
   green:           "#81c784"
   blue_lite:       "#abdae8"
   blue:            "#3f96b3"
-
-  # violet:
-
-
-
 
 
   orange:        "#fc9867"     # eq #fc9867

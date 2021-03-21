@@ -1,59 +1,15 @@
 {
   "name": "acid",
-  "displayName": "Acid",
-  "description": "Code in Golang/Python/PHP with Darkish VSCode Theme",
-  "engines": {
-    "vscode": "^1.45.0"
-  },
-  "icon": "icon.png",
+  "displayName": "ACID",
   "publisher": "butuzov",
   "version": "0.0.2",
-  "categories": [
-    "Themes"
-  ],
-  "keywords": [
-    "Theme",
-    "Dark Theme",
-    "Acid",
-    "Go",
-    "Python",
-    "HCL",
-    "PHP",
-    "Starlark",
-    "JavaScript",
-    "TypeScript",
-    "CSS",
-    "LESS",
-    "SCSS",
-    "Dockerfile",
-    "protobuf",
-    "shell"
-  ],
-  "contributes": {
-    "themes": [
-      {
-        "label": "Acid",
-        "uiTheme": "vs-dark",
-        "path": "./acid.json"
-      }
-    ]
-  },
   "license": "SEE LICENSE IN LICENSE.md",
+  "description": "Code in Golang/Python/PHP with Darkish VSCode Theme",
+  "homepage": "https://github.com/butuzov/vscode-theme-acid",
+  "icon": "assets/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/butuzov/vscode-theme-acid"
-  },
-  "homepage": "https://github.com/butuzov/vscode-theme-acid",
-  "bugs": {
-    "url": "https://github.com/butuzov/vscode-theme-acid/issues"
-  },
-  "devDependencies": {},
-  "dependencies": {
-    "vsce": "^1.87.0"
-  },
-  "galleryBanner": {
-    "color": "#232323",
-    "theme": "dark"
   },
   "badges": [
     {
@@ -71,5 +27,54 @@
       "href": "https://marketplace.visualstudio.com/items/butuzov.acid",
       "description": "Extension Rating"
     }
+  ],
+  "bugs": {
+    "url": "https://github.com/butuzov/vscode-theme-acid/issues"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "ACID",
+        "uiTheme": "vs-dark",
+        "path": "./acid.json"
+      }
+    ]
+  },
+  "dependencies": {
+    "vsce": "^1.87.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "vscode": "^1.45.0"
+  },
+  "galleryBanner": {
+    "color": "#232323",
+    "theme": "dark"
+  },
+  "scripts": {
+    "package:vsix": "vsce package -o $npm_package_name.vsix",
+    "publish:vsix": "vsce publish"
+  },
+  "keywords": [
+    "Theme",
+    "Soft Colors",
+    "Dark Theme",
+    "Go",
+    "Python",
+    "HCL",
+    "PHP",
+    "Starlark",
+    "JavaScript",
+    "TypeScript",
+    "CSS",
+    "LESS",
+    "SCSS",
+    "Dockerfile",
+    "protobuf",
+    "YAML",
+    "shell"
   ]
 }

@@ -1,0 +1,45 @@
+name: Continuous Deployment
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  release:
+    name: VSCode Marketplace
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - run: make deps-ci-release
+
+      - name: Bump Version (package.json)
+        run: |
+          export VERSION_RELEASE=${GITHUB_REF/refs\/tags\/v/}
+          cat <<< $(jq -r ".version = env.VERSION_RELEASE" ./package.json) > package.json
+
+      - name: Create Package
+        run: |
+          export VERSION_RELEASE=${GITHUB_REF/refs\/tags\/v/}
+          mkdir ./dist
+          make package-theme
+          ls -la
+
+
+      # https://github.com/softprops/action-gh-release
+      - name: Github Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: acid.vsix
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: VSC Release
+        run: make package-publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}

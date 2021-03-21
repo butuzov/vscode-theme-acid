@@ -5,21 +5,36 @@ Code in Golang/Python/PHP with Darkish VSCode Theme
 [![Marketplace](https://vsmarketplacebadge.apphb.com/version/butuzov.acid.svg)](https://marketplace.visualstudio.com/items/butuzov.acid) [![Installs](https://vsmarketplacebadge.apphb.com/installs/butuzov.acid.svg)](https://marketplace.visualstudio.com/items/butuzov.acid) [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/butuzov.acid.svg)](https://marketplace.visualstudio.com/items/butuzov.acid)
 
 
-
 ## Syntax Highlighting
 
-Supported syntax highlighting: Go (and Go templates), Python, Starlark, PHP, TypeScript, JavaScript, CSS/LESS/SCSS, Dockerfiles, Markdown, protobuf, hcl, shell.
+Supported syntax highlighting: `Go`/`Golang` (and` Go` templates), `Python`, `Starlark`, `PHP`, `TypeScript`, `JavaScript`, `CSS`/`LESS`/`SCSS`, `Dockerfile`, `Markdown`, `protobuf`, `yaml`, `hcl`, `shell`.
 
+## Contributing
 
-## Dev Install
+We have to dead with 3 yaml files: `palette.yaml` - out pallet, `theme.yaml` - values for colors and `tokens.yaml` syntax coloring. If you are not familiar with it - checkout [Learn  in Y minutes](https://learnxinyminutes.com/docs/yaml/) entry for yaml.
 
-```bash
-# Compile, build and install
-make install_ext_dev
+Editing tokens - prefixes stands:
+* `i` for italic
+* `b` fod bold
+* `u` for underline
+
+```yaml
+# example 1: theme.yaml
+editor:
+  background: black            # rgb value ref as black (see pallet.yaml)
+  foreground: white/a90        # rgb value ref as white with 90% alpha (see pallet.yaml)
+
+# example 2: tokens.yaml
+formats:
+  comment: &comment
+    style: i@syntax.white/a50 # italic font and white text with 50% alpha (see pallet.yaml)
 ```
 
-## Helper resources
+After changes done, you can recompile json. You can use either `make` or [`task`](https://github.com/go-task/task).
 
-* [Hexadecimal color code for transparency](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
-* Sublime syntax highlight themes [ColorSublime](https://colorsublime.github.io/)
-* [vscode themes](https://vscodethemes.com/)
+```shell
+# continues recompile ... using make
+make build
+# continues recompile ... using task
+task -w
+```

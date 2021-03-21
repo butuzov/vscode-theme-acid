@@ -39,7 +39,7 @@ formats:
   parameters: &parameters                                                 # DONE
     style: i@syntax.white
 
-  property: &property                                               # DONE
+  property: &property                                                     # DONE
     style: syntax.green
 
   # ~~ Import ~~
