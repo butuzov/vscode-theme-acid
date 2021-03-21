@@ -1,0 +1,27 @@
+# https://taskfile.dev
+
+version: '3'
+
+silent: true
+
+
+
+tasks:
+  default:
+    cmds:
+    - task: watch
+
+  # deps:
+  #   https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+
+  watch:
+    sources:
+    - src/*.yaml
+    cmds:
+    - task: update
+    - task: check
+
+  update: ./scripts/compiler --quick
+  check: sha1sum  acid.json
+
+
