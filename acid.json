@@ -124,7 +124,7 @@
         "pickerGroup.foreground": "#a9ba21",
         "widget.shadow": "#fff0",
         "scrollbar.shadow": "#fff0",
-        "inputValidation.errorBackground": "#494949",
+        "inputValidation.errorBackground": "#e74c3c",
         "inputValidation.errorForeground": "#e1e1e1",
         "inputValidation.errorBorder": "#e74c3c",
         "inputValidation.infoBackground": "#494949",
