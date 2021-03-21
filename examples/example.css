@@ -1,0 +1,75 @@
+/* this is a comment */
+
+:root {
+--main-bg-color: coral;
+}
+
+#div1 {
+    background-color: var(--main-bg-color);
+}
+#div2 {
+    background-color: var(--main-bg-color);
+}
+
+html {
+
+}
+
+html body.active {
+
+}
+
+html body.active p#important {
+    font: 10px verdana !important;
+}
+
+@import url("fineprint.css") print;
+@import url("bluish.css") speech;
+@import 'custom.css';
+@import url("chrome://communicator/skin/");
+@import "common.css" screen;
+@import url('landscape.css') screen and (orientation:landscape);
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+}
+
+@supports (display: grid) {
+    div {
+        display: grid;
+    }
+}
+
+@document url("https://www.example.com/") {
+    h1 {
+        color: green;
+    }
+}
+
+/* The animation code */
+@keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+}
+
+/* The element to apply the animation to */
+div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@media screen and (min-width: 480px) {
+    body {
+      background-color: lightgreen;
+    }
+}
+
+#div1 {transition-timing-function: linear;}
+#div2 {transition-timing-function: ease;}
+#div3 {transition-timing-function: ease-in;}
+#div4 {transition-timing-function: ease-out;}
+#div5 {transition-timing-function: ease-in-out;}

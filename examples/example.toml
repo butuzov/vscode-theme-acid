@@ -1,0 +1,130 @@
+# baseURL = "/made.ua/"
+languageCode = "en-us"
+title = "made.ua"
+theme = "made.ua"
+
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+paginate = 20
+canonifyurls = true
+
+pygmentsstyle = "bw"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xhtml = true
+
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true
+    style = "dracula"
+    tabWidth = 4
+
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+
+[params]
+
+    author = "Oleg Butuzov"
+    info = "Development and Operations"
+    description = "John Doe's personal website"
+    keywords = "blog, developer, personal"
+    avatarurl = "images/avatar.jpg"
+
+    hideHUGOSupport = true
+
+    # favicon_32 = "/img/favicon-32x32.png"
+    # favicon_16 = "/img/favicon-16x16.png"
+
+    hidecredits = true
+    hidecopyright = true
+    rtl = false
+    math = true
+
+
+[mediaTypes]
+[mediaTypes."text/css"]
+suffixes = ["scss", "css"]
+
+
+# Social links
+# [[params.social]]
+#     name = "mail"
+#     weight = 3
+#     url = "mailto:butuzov@made.ua"
+
+[[params.social]]
+    name = "github"
+    weight = 1
+    url = "https://github.com/butuzov/"
+
+[[params.social]]
+    name = "twitter"
+    weight = 2
+    url = "https://twitter.com/butuzov/"
+
+[[params.social]]
+    name = "linkedin"
+    weight = 3
+    url = "https://www.linkedin.com/in/butuzov/"
+
+
+# Taxonomies
+[taxonomies]
+  # category = "categories"
+  # series = "series"
+  # tag = "tags"
+
+[languages]
+
+    [languages.en]
+        languagename = "English"
+
+        # Menu links
+
+        [[languages.en.menu.main]]
+            name = "Projects"
+            weight = 1
+            url  = "/projects/"
+
+        [[languages.en.menu.main]]
+            name = "Articles"
+            weight = 2
+            url  = "/articles/"
+
+        [[languages.en.menu.main]]
+            name = "Résumé"
+            weight = 3
+            url = "/resume/"
+
+        [[languages.en.menu.main]]
+            name = "About"
+            weight = 4
+            url = "/about/"
