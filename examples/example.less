@@ -1,0 +1,840 @@
+@import "_reset_reset.less";
+@import "_reset_normalize.less";
+
+
+.cuprum() {
+	font-family: 'Cuprum', sans-serif;
+}
+
+.sans() {
+	font-family: 'PT Sans Caption', sans-serif;
+}
+
+.arial(){
+	font-family: Arial;
+}
+
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow:    @string;
+	box-shadow:         @string;
+}
+
+.drop-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	-webkit-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	-moz-box-shadow: @x @y @blur @spread rgba(0, 0, 0, @alpha);
+	box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+.aspect-ratio(@width, @height, @el) {
+	position: relative;
+
+	&:before {
+		display: block;
+		content: "";
+		width: 100%;
+		padding-top: (@height / @width) * 100%;
+	}
+
+	> @{el} {
+		position: absolute;
+		padding:10px;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+#wp-admin-bar-debug-bar {
+
+	input[type="checkbox"] {
+		display: none;
+
+		& + label {
+
+			&:hover {
+				color: #fff;
+				&::before {
+					content: "✓";
+				}
+			}
+
+			&::before {
+				content: "x";
+				width: 16px;
+				height:16px;
+				display: inline-block;
+			}
+
+			cursor: pointer;
+		}
+
+		// Some issue here... maybe I understand something wrong.
+		// Anyway structure alerady complicated, so need to simplify it a bit.
+		// maybe with extend rules, maybe to sort properties.
+		// @todo - fix issue
+		// @todo - simplify all.
+		&:checked + label {
+
+			// Dimm it on hover when its enabled
+			&:hover {
+				color: rgba(240,245,250,.7) !important;
+				&::before {
+					content: "x" !important;
+				}
+			}
+
+			&::before {
+				content: "✓";
+			}
+			color: #fff;
+		}
+	}
+
+	// Better line height for list item elements.
+	// 4.7 was a bit ugly.
+	ul li .ab-item {
+		line-height: 23px !important;
+		* {
+			line-height: inherit;
+		}
+	}
+}
+
+
+@some: foo;
+
+div {
+    margin: if((2 > 1), 0, 3px);
+    color:  if((iscolor(@some)), @some, black);
+}
+
+// Website Design.
+// Start date - 25 May
+html, body {
+	margin:0;
+	padding:0;
+	width:100%;
+	background-color: #000;
+	color: #fff;
+	font-size: 75%;
+	font-family: arial;
+}
+
+@bg: black;
+@bg-light: boolean(luma(@bg) > 50%);
+
+div {
+  background: @bg;
+  color: if(@bg-light, black, white);
+}
+
+.hide {
+	display:none;
+}
+
+// General Styles of Elements
+a { color:#fff }
+
+// Layout
+header, nav.main  {
+	margin:0 auto;
+	max-width:1008px;
+	width:100%;
+}
+
+/* Micro ClearFix Mixin */
+.clearfix {
+  zoom:1;
+  &:before, &:after{ content:""; display:table; }
+  &:after{ clear: both; }
+}
+
+._frame_video {
+	padding:4px 4px 0px;
+
+
+}
+
+
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  .embed-responsive-item,
+  iframe,
+  embed,
+  object,
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+}
+
+// Modifier class for 16:9 aspect ratio
+.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+
+
+body > header {
+
+	background: url('assets/images/header.jpg') no-repeat center center;
+
+	h1 {
+		position: relative;
+
+		&:before {
+			display: block;
+			content: "";
+			width: 100%;
+			padding-top: 40%;
+		}
+
+		a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+
+			background: url('assets/images/logo.png') no-repeat center 20%;
+			background-size:100%;
+			border: 0;
+			font: 0/0 a;
+			text-shadow: none;
+			color: transparent;
+		}
+
+	}
+}
+
+// Navigation.
+nav.main {
+
+	display: flex;
+	justify-content: space-around;
+
+	a {
+		text-decoration: none;
+		color: #fff;
+		font-size: 1.5rem;
+		font-weight: bold;
+
+		letter-spacing: 1px;
+		.cuprum();
+
+		padding-bottom: 0px;
+		bobottom:2px solid transparent;
+		transition:border-bottom .5s;
+		border-bottom:2px solid transparent;
+
+		&:hover,
+		&.active {
+			border-bottom:2px solid #fff;
+		}
+	}
+}
+
+section.main {
+	// main block
+	border:1px solid #959595;
+	margin:5rem auto 3rem auto;
+
+	max-width:1008px;
+	width:98%;
+	min-height: 5rem;
+
+	header {
+		position: relative;
+		top:-1.5rem;
+		width:100%;
+		text-align:center;
+
+		span,
+		a {
+			line-height: 3rem;
+			font-size: 2rem;
+			padding:.5rem 4rem;
+			.cuprum();
+
+			color: #fff;
+			background-color: #000;
+			text-emphasis: uppercase;
+			text-decoration: none;
+			text-align: center;
+		}
+	}
+
+	footer {
+		position: relative;
+		bottom:-1.2rem;
+		width:100%;
+		text-align:center;
+
+		span,
+		a {
+			padding:.5rem 5rem;
+			font-size: 1rem;
+
+			display: inline-block;
+
+			background-color: #000;
+			&:hover {
+				background-color:#fff;
+				color:#000;
+			}
+
+			color:#fff;
+			border:1px solid #fff;
+
+			text-decoration: none;
+			text-align: center;;
+		}
+	}
+
+	nav {
+		text-align: center;
+		padding:1rem;
+		font-size: 1.4rem;
+		line-height: 2rem;
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+}
+
+
+
+section.flex {
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding:0 1rem 1rem 1rem;
+
+	article {
+
+		width:90%;
+		margin-bottom: 1rem !important;
+		margin:0 auto;
+
+		figure {
+			margin:0;
+			width:100%;
+
+			div.image {
+				width: 100%;
+
+				a {
+					cursor: pointer;
+				}
+				a,span {
+					display: block;
+
+					img {
+						max-width:100%;
+						height:auto;
+					}
+				}
+			}
+		}
+	}
+
+	&.flex-3 {
+		article {
+			width:30%;
+		}
+
+
+
+	}
+
+	&.flex-2 {
+		article {
+			width:47%;
+		}
+	}
+
+	/*****************************************************************************
+		Contact Information.
+	*****************************************************************************/
+
+	&.list {
+		article {
+
+			&:first-child {
+				margin-top:0rem;
+				padding-top:0rem;
+				border-top:0px solid #dedede;
+			}
+
+			margin-top:2rem;
+			padding-top:2rem;
+			border-top:1px solid #dedede;
+		}
+	}
+
+	&.noviny.home {
+
+		justify-content: flex-start;
+		align-items:flex-start;
+		flex-direction: row;
+		padding:0 2rem 2rem;
+
+
+		article {
+
+			width:65%;
+			margin:0;
+
+			+ aside {
+				margin-left:2rem;
+
+			}
+
+		}
+
+		aside {
+			// border-left:1px solid #959595;
+			width:32%;
+			min-height:200px;
+
+
+			article {
+				margin-left:10px;
+				width:100%;
+			}
+		}
+	}
+
+	article.noviny {
+
+
+
+
+		&:extend(.clearfix all);
+
+
+		.entry {
+			margin:1rem 0;
+		}
+
+		&.tiny {
+
+			h4 {
+				font-size:1.1rem;
+				line-height: 1.5rem;
+			}
+
+			img {
+				max-width: 60px !important;
+			}
+		}
+
+		a.img {
+			float:left;
+			margin-right:20px;
+
+			img {
+				max-width: 250px;
+			}
+		}
+
+		div {
+
+			.arial();
+
+			h4 {
+				font-size: 2rem;
+				margin:0;
+				padding:0;
+
+				a {
+					font-size: inherit;
+					line-height: inherit;;
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+
+			p.date {
+				color:#959595;
+				margin:.5rem 0 0 0;
+				padding:0;
+				font-size:.75rem;
+				line-height: 1rem;
+			}
+
+			p, li {
+				font-size:1.3rem;
+				line-height: 2rem;
+			}
+
+			ol, ul {
+				margin-left:2rem;
+			}
+		}
+	}
+
+	/*****************************************************************************
+		Contact Information.
+	*****************************************************************************/
+
+	article.album {
+
+		&.single   {
+			width: 33%;
+
+			+ .text {
+				width: 50%;
+				font-size:1.25rem;
+				line-height: 2rem;
+			}
+
+		}
+
+		margin-top:3rem;
+
+		&:nth-child(1),
+		&:nth-child(2),
+		&:nth-child(3) {
+			margin-top:0;
+		}
+
+		figcaption {
+			text-align: center;
+
+			&.buy {
+				margin-top:.5rem;
+				margin-bottom: 1.5rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+
+				a {
+				 	background-repeat: no-repeat;
+					background-position: center center;
+					background-size: 100%;
+
+
+					border:1px solid #a5a5a5;
+					border-radius: 6px;
+
+					cursor:pointer;
+
+					&.google {
+						background-image: url(assets/images/google.gif);
+						width:153px;
+						height:38px;
+					}
+
+					&.apple {
+						width:107px;
+						height:38px;
+						background-image: url(assets/images/itunes.gif);
+					}
+
+					& + a {
+						margin-left:11px;
+					}
+				}
+			}
+
+			.title {
+				display: block;
+				padding:.5rem 0 0 0 ;
+				font-size: 2rem;
+				text-align: center;
+				cursor: pointer;
+				color:#fff;
+				text-decoration: none;
+
+				+ span {
+					margin-top:.1rem;
+					color:#929292;
+					font-size: .75rem;
+					line-height: 1rem;
+					display: block;
+				}
+			}
+		}
+
+		ol.tracks {
+
+			padding:0;
+			padding-left:2.35rem;
+
+			font-size:1.25rem;
+			line-height: 1.35rem;
+
+			display:flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+			flex-direction: column;
+
+			li.track {
+
+				&.current {
+					color:#fff;
+				}
+
+				color:#a1a1a1;
+				min-height:2rem;
+				margin-bottom: .5rem;
+
+				a , span {
+					font-size:1.25rem;
+					line-height: 2rem;
+					margin-left:.5rem;
+					display: block;
+					color: inherit;
+					text-decoration: none;
+				}
+			}
+		}
+
+
+	}
+
+	/*****************************************************************************
+		Contact Information.
+	*****************************************************************************/
+	&.contacts {
+		justify-content: center;
+
+
+		article {
+
+
+			width: 33%;
+			margin-bottom:1rem;
+
+			&.wide {
+				width:100%;
+			}
+
+			* {
+				font-size: 15px;
+				text-align: center;
+			}
+
+			h3 {
+				font-size: 21px;
+			}
+
+
+
+			dl {
+
+				dt {
+					font-size:18px;
+					font-weight: bold;
+					display: block;
+					width: 100%;
+					margin-bottom: 1rem;
+				}
+				dd {
+					margin:0;
+					width: 100%;
+
+					a, span {
+						color:#fff;
+					}
+				}
+			}
+		}
+
+		div {
+			width:100%;
+			ul {
+				display: flex;
+				list-style: none;
+				justify-content: center;
+				li {
+					width:2rem;
+					height:2rem;
+					margin: 0 1rem;
+
+					a {
+						text-decoration:none;
+						color:#676767;
+						list-height: 2rem;
+						font-size: 2rem;
+						&:hover {
+							color:#fff;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	/*****************************************************************************
+		Images
+	*****************************************************************************/
+	&.image {
+
+		div.image {
+
+			float:left;
+			max-width:  7rem;
+			max-height: 7rem;
+
+			img {
+				width:100%;
+				height:auto;
+			}
+
+			+ figcaption {
+				margin-left:9rem;
+				padding:0;
+
+				a {
+					.arial();
+					margin:0;
+					font-size:1rem;
+					text-decoration: none;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+
+				p {
+					margin-top:1rem;
+				}
+
+				span {
+					margin-top:1rem;
+					color:#929292;
+					display: block;
+				}
+			}
+
+		}
+
+	}
+
+	&.gallery {
+		article { width:15%; }
+	}
+
+	/*****************************************************************************
+		Videos
+	*****************************************************************************/
+	&.video {
+
+		article {
+
+
+			// .single html
+			&.single {
+				.arial();
+
+				font-size:1.1rem;
+				line-height: 1.5rem;
+
+			}
+
+
+			figure {
+				@el : div.image ;
+				.aspect-ratio( 16, 9 , @el );
+				margin:0;
+				padding:0;
+
+				div.image {
+					padding:0px;
+
+					a {
+						display: block;
+						width:100%;
+						height:100%;
+						border:1px solid #bbbbbb;
+						overflow: hidden;
+
+						img {
+							max-width:100%;
+						}
+					}
+				}
+			}
+
+			a.text {
+				.arial();
+				padding:.5rem 0;
+				font-size: 1.3rem;
+				text-align: center;
+				display: block;
+				color:#fff;
+				text-decoration: none;
+			}
+
+			margin-bottom: 2rem !important;
+
+		}
+	}
+
+
+}
+
+/*********************************************************************
+	Aspect Ratio
+*********************************************************************/
+
+#overlay {
+	background: rgba(0,0,0, .8);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	text-align: center;
+
+	div {
+		margin:15%;
+		width:70%;
+		height:70%;
+
+		text-align:center;
+		font: 0/0 a;
+
+
+		img {
+
+			&:before {
+				content: ' ';
+				display: inline-block;
+				vertical-align: middle;
+				height: 100%;
+			}
+
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
+
+			border:4px solid #fff;
+			border-radius: 5px;
+
+			vertical-align: middle;
+			display: inline-block;
+		}
+	}
+}
