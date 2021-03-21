@@ -35,7 +35,7 @@ syntax:
   gray_dark:       "#727272"
 
   red_lite:        "#ff6188"
-  red:             "#ff0000"
+  red:             "#e74c3c"     # eq #ff6188
   yellow_lite:     "#ffd866"
   yellow:          "#f1c40f"
   green_lite:      "#a0d787"
@@ -45,6 +45,5 @@ syntax:
 
 
   orange:        "#fc9867"     # eq #fc9867
-  red:           "#e74c3c"     # eq #ff6188
   violet:        "#ab9df2"
 

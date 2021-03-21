@@ -223,12 +223,14 @@ scrollbar: { shadow: none }
 # This style used when vs need to display something.
 # - type in output windown to get "read-only editor" message (infoBackground)
 inputValidation:
-  errorBackground: dark
+  errorBackground: red
   errorForeground: white
   errorBorder: red
+
   infoBackground: dark
   infoForeground: white
   infoBorder: highBg
+
   warningBackground:  dark
   warningForeground: white
   warningBorder: yellow
