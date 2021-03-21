@@ -79,6 +79,9 @@ titleBar:
   inactiveBackground: dark
   inactiveForeground: white
 
+sash:
+  hoverBorder: dark
+
 # UI - StatusBar and status bar items
 
 statusBar:
@@ -94,6 +97,7 @@ statusBar:
   noFolderForeground: black
   noFolderBorder: none
 
+
 statusBarItem:
   activeBackground: dark
   hoverBackground: black/a50
@@ -102,8 +106,8 @@ statusBarItem:
   prominentForeground: white
   prominentHoverBackground: blue
 
-  remoteBackground: blue
-  remoteForeground: white
+  remoteBackground: highBg
+  remoteForeground: black
 
 # Tabs used for tabs descriptions
 tab:
@@ -189,8 +193,8 @@ settings:
 list:
   # activeSelectionBackground: white/a10
   # activeSelectionForeground: white
-  # inactiveSelectionBackground: white/a10
-  # inactiveSelectionForeground:  white
+  inactiveSelectionBackground: white/a10
+  inactiveSelectionForeground:  white
 
   hoverBackground: white/a10
   hoverForeground: white
