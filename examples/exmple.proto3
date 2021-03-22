@@ -23,12 +23,12 @@ package spos;
 // The greeting service definition.
 service Spos {
   // tts req
-  rpc TtsRequest(TtsReq) returns (stream TtsReply) {}
-  rpc TransRequest(TransReq) returns (TransReply) {}
+  rpc TtsRequest(TtsReq) returns(stream TtsReply) {}
+  rpc TransRequest(TransReq) returns(TransReply) {}
   rpc StreamingRecognize(stream StreamingRecognizeRequest)
-      returns (stream StreamingRecognizeResponse);
+      returns(stream StreamingRecognizeResponse);
   rpc StreamingRecTransTTs(stream StreamingRecgTransTtsRequest)
-      returns (stream StreamingRecTranTTsResponse);
+      returns(stream StreamingRecTranTTsResponse);
 }
 
 // The request message containing the text lang gender audio_code
