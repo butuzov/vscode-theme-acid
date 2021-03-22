@@ -21,11 +21,11 @@ jobs:
           export VERSION_RELEASE=${GITHUB_REF/refs\/tags\/v/}
           cat <<< $(jq -r ".version = env.VERSION_RELEASE" ./package.json) > package.json
 
-      # - name: Create Package
-      #   run: |
-      #     export VERSION_RELEASE=${GITHUB_REF/refs\/tags\/v/}
-      #     mkdir ./dist
-      #     make package-theme
+      - name: Create Package
+        run: |
+          export VERSION_RELEASE=${GITHUB_REF/refs\/tags\/v/}
+          mkdir ./dist
+          make package-theme
 
 
       # https://github.com/softprops/action-gh-release
@@ -38,21 +38,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: VSC Release
-      #   run: make package-publish
-      #   env:
-      #     VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      - name: VSC Release
+        run: make package-publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
       - name: Conventional Changelog Action
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          # git-message: 'chore(release): {version}'
-          # git-user-name: 'Awesome Changelog Action'
-          # git-user-email: 'awesome_changelog@github.actions.com'
+          git-message: 'chore(release): {version}'
           preset: 'angular'
           tag-prefix: v
-          output-file: CHNAGE.md
+          output-file: CHANGELOG.md
           release-count: 0
           skip-on-empty: true
           skip-version-file: true
