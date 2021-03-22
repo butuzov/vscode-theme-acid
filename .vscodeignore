@@ -11,3 +11,4 @@ Taskfile.yml
 Makefile
 *.vsix
 package-lock.json
+assets/acid_*

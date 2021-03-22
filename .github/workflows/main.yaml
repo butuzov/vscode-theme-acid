@@ -15,18 +15,23 @@ jobs:
         uses: actions/checkout@v2
 
       - run: make deps-ci-release
+      - run: |
+          git config --global user.email "<butuzov@users.noreply.github.com>"
+          git config --global user.name "Oleg Butuzov"
 
       - name: Bump Version (package.json)
         run: |
           export VERSION_RELEASE=${GITHUB_REF/refs\/tags\/v/}
           cat <<< $(jq -r ".version = env.VERSION_RELEASE" ./package.json) > package.json
+          git commit -a  -m "chore(release): ${VERSION_RELEASE}"
+          git push
+
 
       - name: Create Package
         run: |
           export VERSION_RELEASE=${GITHUB_REF/refs\/tags\/v/}
           mkdir ./dist
           make package-theme
-
 
       # https://github.com/softprops/action-gh-release
       - name: Github Release
@@ -48,6 +53,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-message: 'chore(release): {version}'
+          git-user-email: butuzov@users.noreply.github.com
+          git-user-name: Oleg Butuzov
           preset: 'angular'
           tag-prefix: v
           output-file: CHANGELOG.md
