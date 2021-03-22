@@ -4,6 +4,16 @@ Code in Golang/Python/PHP with Darkish VSCode Theme
 
 [![Marketplace](https://vsmarketplacebadge.apphb.com/version/butuzov.acid.svg)](https://marketplace.visualstudio.com/items/butuzov.acid) [![Installs](https://vsmarketplacebadge.apphb.com/installs/butuzov.acid.svg)](https://marketplace.visualstudio.com/items/butuzov.acid) [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/butuzov.acid.svg)](https://marketplace.visualstudio.com/items/butuzov.acid)
 
+## Screenshots
+
+![Main Page](./assets/acid_exp_page.png)
+_Main Theme Page_
+
+![Golang in ACID](./assets/acid_go.png)
+_Editing Go with ACID_
+
+![proto3 in ACID](./assets/acid_proto.png)
+_Editing proto4 with ACID_
 
 ## Syntax Highlighting
 
