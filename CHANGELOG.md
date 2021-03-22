@@ -1,6 +1,6 @@
 # Change Log
 
-v0.0.2 - 2020 June 27th
+v0.0.2
 * added bash and starlark syntax highlighting
 * added inputValidation coloring.
 
