@@ -12,8 +12,11 @@ _Main Theme Page_
 ![Golang in ACID](./assets/acid_go.png)
 _Editing Go with ACID_
 
+![Python in ACID](./assets/acid_python.png)
+_Editing proto3 with ACID_
+
 ![proto3 in ACID](./assets/acid_proto.png)
-_Editing proto4 with ACID_
+_Editing proto3 with ACID_
 
 ## Syntax Highlighting
 
