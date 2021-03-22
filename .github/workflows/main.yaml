@@ -43,22 +43,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: VSC Release
-      #   run: make package-publish
-      #   env:
-      #     VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      - name: VSC Release
+        run: make package-publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
-      - name: Conventional Changelog Action
-        uses: TriPSs/conventional-changelog-action@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          git-message: 'chore(release): {version}'
-          git-user-email: butuzov@users.noreply.github.com
-          git-user-name: Oleg Butuzov
-          preset: 'angular'
-          tag-prefix: v
-          output-file: CHANGELOG.md
-          release-count: 0
-          skip-on-empty: true
-          skip-version-file: true
-          skip-commit: false
