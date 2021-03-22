@@ -13,6 +13,8 @@ import hashlib
 
 from datetime import datetime
 from os.path import splitext
+from os import O_WRONLY
+import sys
 
 
 class Theme:
@@ -37,23 +39,30 @@ class Theme:
         # destination
         self.dest = "acid.json"
 
-    def is_changed(self) -> bool:
+    def is_changed(self, out=True) -> bool:
 
         theme = self._is_changed(self._file_theme)
         tokens = self._is_changed(self._file_tokens)
         palette = self._is_changed(self._file_palette)
 
+        dest = sys.stdout
+        if not out:
+            dest = os.open('/dev/null', O_WRONLY)
+
         if palette:
             self._palette = Theme.read(self._file_palette)
-            print("Palette changed       : {0}".format(datetime.now().time()))
+            print("Palette changed       : {0}".format(datetime.now().time()),
+                  file=dest)
 
         if tokens:
             self._tokens = Theme.read(self._file_tokens)
-            print("Tokens changed        : {0}".format(datetime.now().time()))
+            print("Tokens changed        : {0}".format(datetime.now().time()),
+                  file=dest)
 
         if theme:
             self._theme = Theme.read(self._file_theme)
-            print("Theme changed         : {0}".format(datetime.now().time()))
+            print("Theme changed         : {0}".format(datetime.now().time()),
+                  file=dest)
 
         return palette or theme or tokens
 
@@ -215,10 +224,11 @@ class Theme:
 def main(settings: dict):
     theme = Theme("Acid", "dark")
     while True:
-        if theme.is_changed():
+        if theme.is_changed(settings["quick"] != "--quick"):
             theme.generate(settings['shuffle_tokens'])
 
         if settings['quick']:
+            theme.generate(settings['shuffle_tokens'])
             return
 
         sleep(1)
