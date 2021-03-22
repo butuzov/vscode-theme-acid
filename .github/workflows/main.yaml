@@ -24,6 +24,7 @@ jobs:
           export VERSION_RELEASE=${GITHUB_REF/refs\/tags\/v/}
           cat <<< $(jq -r ".version = env.VERSION_RELEASE" ./package.json) > package.json
           git commit -a  -m "chore(release): ${VERSION_RELEASE}"
+          git push
 
 
       - name: Create Package
