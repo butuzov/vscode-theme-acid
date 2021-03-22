@@ -48,3 +48,9 @@ make build
 # continues recompile ... using task
 task -w
 ```
+
+## References
+
+* [Hexadecimal color code for transparency](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
+* [vscode themes](https://vscodethemes.com/)
+* [api theme colors](https://code.visualstudio.com/api/references/theme-color)
