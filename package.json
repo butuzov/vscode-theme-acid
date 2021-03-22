@@ -2,7 +2,7 @@
   "name": "acid",
   "displayName": "ACID",
   "publisher": "butuzov",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "SEE LICENSE IN LICENSE.md",
   "description": "Code in Golang/Python/PHP with Darkish VSCode Theme",
   "homepage": "https://github.com/butuzov/vscode-theme-acid",
