@@ -25,7 +25,7 @@ activityBar:
   background: black
   foreground: highBg
   activeBorder: black
-  activeFocusBorder: black
+  activeFocusBorder: red
   border: black
   inactiveForeground: white/a80
 
@@ -112,9 +112,9 @@ statusBarItem:
 # Tabs used for tabs descriptions
 tab:
   border: none
-  activeBackground: black
+  activeBackground: white/a10
   activeForeground: highBg
-  activeBorder: black
+  activeBorder: highBg
   activeBorderTop: black
   activeModifiedBorder: black
   hoverBackground: black
