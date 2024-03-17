@@ -127,7 +127,8 @@ formats:
 
 grammars:
 
-- # GRAMMAR ~~~ Common  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: # GRAMMAR ~~~ Common  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
 
   - name: "comment"
     <<: *comment
@@ -281,7 +282,8 @@ grammars:
     scope:
     - keyword.operator.logical
 
-- # GRAMMAR ~~~ Starlark ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: # GRAMMAR ~~~ Starlark ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
 
   - name: "*"
     <<: *punctuation
@@ -298,7 +300,8 @@ grammars:
     scope:
     - support.function.starlark
 
-- # GRAMMAR ~~~ Documentation Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: # GRAMMAR ~~~ Documentation Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
 
   - name: doc/type
     settings:
@@ -331,7 +334,8 @@ grammars:
     scope:
     - variable.other.jsdoc
 
-- # GRAMMAR ~~~ Python ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: # GRAMMAR ~~~ Python ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
 
   - name: "*"
     <<: *punctuation
@@ -350,7 +354,7 @@ grammars:
     - support.function.magic
     - support.variable.magic.python
 
-  - name: python/function/name"
+  - name: python/function/name
     <<: *name
     scope:
     - meta.function-call.generic.python
@@ -380,9 +384,7 @@ grammars:
     - support.type.python
 
   - name: python/decorator
-    settings:
-      foreground: blue
-      fontStyle: bold
+    style: iu@syntax.blue_lite
     scope:
     - punctuation.definition.decorator.python
     - entity.name.function.decorator.python
@@ -394,9 +396,13 @@ grammars:
     scope:
     - meta.function-call.python support.type.python
 
+  - name: docstring
+    <<: *comment
+    scope: 	string.quoted.docstring.multi.python
 
-- # GRAMMAR ~~~ Go ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- name: # GRAMMAR ~~~ Go ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
   - name: "*"
     <<: *punctuation
     scope: source.go
@@ -410,13 +416,15 @@ grammars:
 
   - name: go/import
     <<: *import
-    scope:
-    - keyword.import.go
+    scope: keyword.import.go
 
   - name: go/import/name
-    <<: *import_name
-    scope:
-    - entity.name.import
+    style: syntax.white
+    scope: entity.name.import.go
+
+  - name: go/import/name/alias
+    style: b@syntax.white/a50
+    scope: variable.other.import.go
 
   - name: go/definitions
     <<: *definition
@@ -444,6 +452,7 @@ grammars:
     - storage.type.numeric.go
     - storage.type.rune.go
     - storage.type.uintptr.go
+    - entity.name.type.any.go
 
   - name: go/function
     <<: *name
@@ -468,8 +477,8 @@ grammars:
     scope:
     - constant.other.placeholder.go
 
-- # GRAMMAR ~~~ Go Template ~~~~~~~~~~~~~~~~~~~~~~~~
-
+- name: # GRAMMAR ~~~ Go Template ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
   - name: go/placeholder
     <<: *string_placeholder
     scope:
@@ -488,8 +497,8 @@ grammars:
     - punctuation.section.embedded.end.gotemplate
     - keyword.operator.pipe.gotemplate
 
-- # GRAMMAR ~~~ Shell ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- name: # GRAMMAR ~~~ Shell ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
   - name: "*"
     <<: *punctuation
     scope: source.shell
@@ -509,9 +518,7 @@ grammars:
     - storage.modifier.shell
 
   - name: shell/keywords
-    settings:
-      foreground: syntax.green
-      fontStyle: regular
+    style: n@syntax.green
     scope:
     - keyword.operator.redirect.shell
     - keyword.operator.pipe.shell
@@ -523,8 +530,8 @@ grammars:
     - punctuation.section.array.shell
     - variable.other.bracket.shell
 
-
-- # GRAMMAR ~~~ PHP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: # GRAMMAR ~~~ PHP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
 
   - name: "*"
     <<: *punctuation
@@ -597,113 +604,7 @@ grammars:
     scope:
     - meta.use.php support.class.php
     - meta.function-call.php entity.name.function.php
-    - meta.function-call.php support.function.alias.php
-    - meta.function-call.php support.function.apc.php
-    - meta.function-call.php support.function.array.php
-    - meta.function-call.php support.function.basic_functions.php
-    - meta.function-call.php support.function.bcmath.php
-    - meta.function-call.php support.function.blenc.php
-    - meta.function-call.php support.function.bz2.php
-    - meta.function-call.php support.function.calendar.php
-    - meta.function-call.php support.function.classobj.php
-    - meta.function-call.php support.function.com.php
-    - meta.function-call.php support.function.construct.output.php
-    - meta.function-call.php support.function.construct.php
-    - meta.function-call.php support.function.ctype.php
-    - meta.function-call.php support.function.curl.php
-    - meta.function-call.php support.function.datetime.php
-    - meta.function-call.php support.function.dba.php
-    - meta.function-call.php support.function.dbx.php
-    - meta.function-call.php support.function.dir.php
-    - meta.function-call.php support.function.eio.php
-    - meta.function-call.php support.function.enchant.php
-    - meta.function-call.php support.function.ereg.php
-    - meta.function-call.php support.function.errorfunc.php
-    - meta.function-call.php support.function.exec.php
-    - meta.function-call.php support.function.exif.php
-    - meta.function-call.php support.function.fann.php
-    - meta.function-call.php support.function.file.php
-    - meta.function-call.php support.function.fileinfo.php
-    - meta.function-call.php support.function.filter.php
-    - meta.function-call.php support.function.fpm.php
-    - meta.function-call.php support.function.funchand.php
-    - meta.function-call.php support.function.gettext.php
-    - meta.function-call.php support.function.gmp.php
-    - meta.function-call.php support.function.hash.php
-    - meta.function-call.php support.function.http.php
-    - meta.function-call.php support.function.iconv.php
-    - meta.function-call.php support.function.iisfunc.php
-    - meta.function-call.php support.function.image.php
-    - meta.function-call.php support.function.info.php
-    - meta.function-call.php support.function.interbase.php
-    - meta.function-call.php support.function.intl.php
-    - meta.function-call.php support.function.json.php
-    - meta.function-call.php support.function.ldap.php
-    - meta.function-call.php support.function.libxml.php
-    - meta.function-call.php support.function.magic.php
-    - meta.function-call.php support.function.mail.php
-    - meta.function-call.php support.function.math.php
-    - meta.function-call.php support.function.mbstring.php
-    - meta.function-call.php support.function.mcrypt.php
-    - meta.function-call.php support.function.memcache.php
-    - meta.function-call.php support.function.mhash.php
-    - meta.function-call.php support.function.mongo.php
-    - meta.function-call.php support.function.mysql.php
-    - meta.function-call.php support.function.mysqli.php
-    - meta.function-call.php support.function.mysqlnd-memcache.php
-    - meta.function-call.php support.function.mysqlnd-ms.php
-    - meta.function-call.php support.function.mysqlnd-qc.php
-    - meta.function-call.php support.function.mysqlnd-uh.php
-    - meta.function-call.php support.function.network.php
-    - meta.function-call.php support.function.nsapi.php
-    - meta.function-call.php support.function.oci8.php
-    - meta.function-call.php support.function.opcache.php
-    - meta.function-call.php support.function.openssl.php
-    - meta.function-call.php support.function.output.php
-    - meta.function-call.php support.function.password.php
-    - meta.function-call.php support.function.pcntl.php
-    - meta.function-call.php support.function.pgsql.php
-    - meta.function-call.php support.function.php_apache.php
-    - meta.function-call.php support.function.php_dom.php
-    - meta.function-call.php support.function.php_ftp.php
-    - meta.function-call.php support.function.php_imap.php
-    - meta.function-call.php support.function.php_mssql.php
-    - meta.function-call.php support.function.php_odbc.php
-    - meta.function-call.php support.function.php_pcre.php
-    - meta.function-call.php support.function.php_spl.php
-    - meta.function-call.php support.function.php_zip.php
-    - meta.function-call.php support.function.posix.php
-    - meta.function-call.php support.function.proctitle.php
-    - meta.function-call.php support.function.pspell.php
-    - meta.function-call.php support.function.readline.php
-    - meta.function-call.php support.function.recode.php
-    - meta.function-call.php support.function.rrd.php
-    - meta.function-call.php support.function.sem.php
-    - meta.function-call.php support.function.session.php
-    - meta.function-call.php support.function.shmop.php
-    - meta.function-call.php support.function.simplexml.php
-    - meta.function-call.php support.function.snmp.php
-    - meta.function-call.php support.function.soap.php
-    - meta.function-call.php support.function.sockets.php
-    - meta.function-call.php support.function.sqlite.php
-    - meta.function-call.php support.function.sqlsrv.php
-    - meta.function-call.php support.function.stats.php
-    - meta.function-call.php support.function.streamsfuncs.php
-    - meta.function-call.php support.function.string.php
-    - meta.function-call.php support.function.sybase.php
-    - meta.function-call.php support.function.taint.php
-    - meta.function-call.php support.function.tidy.php
-    - meta.function-call.php support.function.tokenizer.php
-    - meta.function-call.php support.function.trader.php
-    - meta.function-call.php support.function.uopz.php
-    - meta.function-call.php support.function.url.php
-    - meta.function-call.php support.function.var.php
-    - meta.function-call.php support.function.wddx.php
-    - meta.function-call.php support.function.xhprof.php
-    - meta.function-call.php support.function.xml.php
-    - meta.function-call.php support.function.xmlrpc.php
-    - meta.function-call.php support.function.xmlwriter.php
-    - meta.function-call.php support.function.zlib.php
+    - meta.function-call.php support.function
 
   - name: php/builtin
     <<: *builtin
@@ -713,8 +614,8 @@ grammars:
     - meta.array.php support.function.construct.php
     - support.class.builtin.php
 
-- # GRAMMAR ~~~ HCL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- name: # GRAMMAR ~~~ HCL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
   - name: hcl/name
     desc: "Block Names"
     <<: *name
@@ -745,7 +646,8 @@ grammars:
     scope:
     - string.quoted support.constant.terraform
 
-- # GRAMMAR ~~~ Docker ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name:  # GRAMMAR ~~~ Docker ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
 
   - name: "docker/keywords"
     settings:
@@ -754,7 +656,8 @@ grammars:
     - keyword.operator.dockerfile
     - keyword.other.special-method.dockerfile
 
-- # GRAMMAR ~~~ HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: # GRAMMAR ~~~ HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar: # GRAMMAR ~~~ HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
   - name: "*"
@@ -771,8 +674,8 @@ grammars:
     - punctuation.definition.tag.end.html
 
 
-- # GRAMMAR ~~~ TypeScript / JavaScript ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- name : # GRAMMAR ~~~ TypeScript / JavaScript ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
   - name: "*"
     <<: *punctuation
     scope:
@@ -787,8 +690,7 @@ grammars:
 
   - name: ts/import/all
     <<: *import
-    settings:
-      fontStyle: bold underline
+    style: bu@syntax.red_lite
     scope:
     - constant.language.import-export-all.ts
 
@@ -817,9 +719,7 @@ grammars:
     - entity.name.type.interface.ts
 
   - name: ts/type/generics/braces
-    settings:
-      foreground: syntax.blue
-      fontStyle: bold
+    style: b@syntax.blue
     scope:
     - punctuation.definition.typeparameters.begin.ts
     - punctuation.definition.typeparameters.end.ts
@@ -884,7 +784,8 @@ grammars:
     - meta.object-literal.key.js
 
 
-- # GRAMMAR ~~~ Protobuf ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: # GRAMMAR ~~~ Protobuf ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar: # GRAMMAR ~~~ Protobuf ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: "*"
     <<: *punctuation
@@ -917,7 +818,8 @@ grammars:
     scope:
     - constant.other.proto
 
-- # GRAMMAR ~~~ CSS/LESS/SCSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name:  # GRAMMAR ~~~ CSS/LESS/SCSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:  # GRAMMAR ~~~ CSS/LESS/SCSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: "*"
     <<: *punctuation
@@ -995,7 +897,8 @@ grammars:
     scope:
     - entity.other.keyframe-offset.css
 
-- # GRAMMAR ~~~ MARKDOWN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: # GRAMMAR ~~~ MARKDOWN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:  # GRAMMAR ~~~ MARKDOWN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: &highlight
       foreground: highBg
@@ -1056,7 +959,8 @@ grammars:
     - punctuation.definition.quote.begin.markdown
 
 
-- # GRAMMAR ~~~ JSON ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name:  # GRAMMAR ~~~ JSON ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:  # GRAMMAR ~~~ JSON ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   - name: json/name
     <<: *variable_name
@@ -1064,13 +968,12 @@ grammars:
     - string.json support.type.property-name.json
 
   - name: "json/constant"
-    <<: *var_type_bool
-    <<: *var_type_nil
     scope:
     - constant.language.json
 
-- # GRAMMAR ~~~ YAML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- name:  # GRAMMAR ~~~ YAML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  grammar:
   - name: yaml/document
     settings:
       foreground: syntax.blue
@@ -1111,3 +1014,134 @@ grammars:
       foreground: syntax.yellow
       fontStyle: italic
     scope: storage.type.tag-handle.yaml
+
+- grammar: # GRAMMAR ~~~ Rust ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - name: "*"
+    style: white/a50
+    scope: source.rust
+
+  - name: rust/control flow
+    style: n@syntax.red_lite
+    scope:
+    - keyword.control.rust
+
+  - name: import
+    <<: *import
+    scope:
+    - meta.use.rust
+
+  - name: rust/definitions
+    <<: *definition
+    scope:
+    - meta.function.definition.rust
+    - keyword.declaration.struct.rust
+    - storage.type.rust
+
+  - name: mut
+    style: ubi@syntax.green
+    scope:
+    - source.rust storage.modifier.mut.rust
+    - source.rust storage.modifier
+
+  - name: types
+    <<: *type
+    scope:
+    - entity.name.type.rust
+    - source.rust entity.name.type
+
+  - name: doc punctuation
+    style: i@syntax.white/a80
+    scope: comment.line.documentation.rust
+
+  - name: doc punctuation + doc
+    <<: *comment
+    scope: punctuation.definition.comment.rust
+
+  - name: functions + punctuation
+    <<: *punctuation
+    scope:
+    - punctuation.brackets.angle.rust
+    - punctuation.brackets.round.rust
+    - punctuation.brackets.curly.rust
+    - keyword.operator.key-value.rust
+    - meta.function.definition.rust punctuation.brackets.round.rust
+    - meta.function.definition.rust keyword.operator.arrow.skinny.rust
+
+  - name: attributes
+    style: i@syntax.violet/a80
+    scope:
+    - punctuation.definition.attribute.rust
+    - punctuation.definition.attribute.rust
+    - meta.attribute.rust keyword.operator.assignment.equal.rust
+    - meta.attribute.rust punctuation.brackets.round.rust
+    - meta.attribute.rust
+
+  - name: attributes (string)
+    style: i@syntax.violet/a50
+    scope:
+    - meta.attribute.rust string.quoted.double.rust
+
+  - name: rust/variables
+    style: syntax.white
+    scope:
+    - variable.other.rust
+    - constant.other.caps.rust
+
+  - name: rust/variables/self
+    style: i@syntax.yellow
+    scope:
+    - variable.language.self.rust
+
+  - name: macros$
+    style: b@syntax.white
+    scope: keyword.operator.macro.dollar
+
+  - name: macros
+    style: syntax.white
+    scope: meta.macro.metavariable.rust
+
+  - name: arrow
+    style: syntax.white
+    scope: keyword.operator.arrow.fat.rust
+
+  - name: namespace (puctuation)
+    style: syntax.white/a50
+    scope: keyword.operator.namespace.rust
+
+  - name: namespace (name)
+    style: syntax.blue_lite
+    scope:
+    - source.rust constant.numeric
+
+  - name: namespace (name)
+    style: ib@syntax.blue_lite
+    scope:
+    - source.rust constant.numeric entity.name.type.numeric.rust
+
+  - name: namespace (name)
+    style: syntax.white
+    scope:
+    - entity.name.namespace.rust
+    - meta.use.rust keyword.operator.math.rust
+
+  - name: ending semi
+    style: syntax.white/a60
+    scope: punctuation.semi.rust
+
+  - name: borrowing
+    style: i@syntax.yellow_lite/a80
+    scope:
+    - keyword.operator.borrow.and.rust
+    - punctuation.definition.lifetime.rust
+
+  - name: borrowing (argument)
+    style: i@syntax.white/a80
+    scope:
+    -  meta.function.call.rust keyword.operator.borrow.and.rust
+
+  - name: deref
+    style: i@syntax.white/a80
+    scope:
+    -  keyword.operator.dereference.rust
+

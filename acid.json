@@ -444,7 +444,7 @@
             ]
         },
         {
-            "name": "python/function/name\"",
+            "name": "python/function/name",
             "settings": {
                 "foreground": "#abdae8"
             },
@@ -488,8 +488,8 @@
         {
             "name": "python/decorator",
             "settings": {
-                "foreground": "#5e98e2",
-                "fontStyle": "bold"
+                "foreground": "#abdae8",
+                "fontStyle": "italic underline"
             },
             "scope": [
                 "punctuation.definition.decorator.python",
@@ -503,6 +503,14 @@
                 "fontStyle": "normal"
             },
             "scope": "meta.function-call.python support.type.python"
+        },
+        {
+            "name": "docstring",
+            "settings": {
+                "foreground": "#fcfcfc80",
+                "fontStyle": "italic"
+            },
+            "scope": "string.quoted.docstring.multi.python"
         },
         {
             "name": "*",
@@ -531,7 +539,15 @@
             "settings": {
                 "foreground": "#fcfcfc"
             },
-            "scope": "entity.name.import"
+            "scope": "entity.name.import.go"
+        },
+        {
+            "name": "go/import/name/alias",
+            "settings": {
+                "foreground": "#fcfcfc80",
+                "fontStyle": "bold"
+            },
+            "scope": "variable.other.import.go"
         },
         {
             "name": "go/definitions",
@@ -569,7 +585,8 @@
                 "storage.type.error.go",
                 "storage.type.numeric.go",
                 "storage.type.rune.go",
-                "storage.type.uintptr.go"
+                "storage.type.uintptr.go",
+                "entity.name.type.any.go"
             ]
         },
         {
@@ -661,7 +678,7 @@
             "name": "shell/keywords",
             "settings": {
                 "foreground": "#81c784",
-                "fontStyle": "regular"
+                "fontStyle": "normal"
             },
             "scope": [
                 "keyword.operator.redirect.shell",
@@ -782,113 +799,7 @@
             "scope": [
                 "meta.use.php support.class.php",
                 "meta.function-call.php entity.name.function.php",
-                "meta.function-call.php support.function.alias.php",
-                "meta.function-call.php support.function.apc.php",
-                "meta.function-call.php support.function.array.php",
-                "meta.function-call.php support.function.basic_functions.php",
-                "meta.function-call.php support.function.bcmath.php",
-                "meta.function-call.php support.function.blenc.php",
-                "meta.function-call.php support.function.bz2.php",
-                "meta.function-call.php support.function.calendar.php",
-                "meta.function-call.php support.function.classobj.php",
-                "meta.function-call.php support.function.com.php",
-                "meta.function-call.php support.function.construct.output.php",
-                "meta.function-call.php support.function.construct.php",
-                "meta.function-call.php support.function.ctype.php",
-                "meta.function-call.php support.function.curl.php",
-                "meta.function-call.php support.function.datetime.php",
-                "meta.function-call.php support.function.dba.php",
-                "meta.function-call.php support.function.dbx.php",
-                "meta.function-call.php support.function.dir.php",
-                "meta.function-call.php support.function.eio.php",
-                "meta.function-call.php support.function.enchant.php",
-                "meta.function-call.php support.function.ereg.php",
-                "meta.function-call.php support.function.errorfunc.php",
-                "meta.function-call.php support.function.exec.php",
-                "meta.function-call.php support.function.exif.php",
-                "meta.function-call.php support.function.fann.php",
-                "meta.function-call.php support.function.file.php",
-                "meta.function-call.php support.function.fileinfo.php",
-                "meta.function-call.php support.function.filter.php",
-                "meta.function-call.php support.function.fpm.php",
-                "meta.function-call.php support.function.funchand.php",
-                "meta.function-call.php support.function.gettext.php",
-                "meta.function-call.php support.function.gmp.php",
-                "meta.function-call.php support.function.hash.php",
-                "meta.function-call.php support.function.http.php",
-                "meta.function-call.php support.function.iconv.php",
-                "meta.function-call.php support.function.iisfunc.php",
-                "meta.function-call.php support.function.image.php",
-                "meta.function-call.php support.function.info.php",
-                "meta.function-call.php support.function.interbase.php",
-                "meta.function-call.php support.function.intl.php",
-                "meta.function-call.php support.function.json.php",
-                "meta.function-call.php support.function.ldap.php",
-                "meta.function-call.php support.function.libxml.php",
-                "meta.function-call.php support.function.magic.php",
-                "meta.function-call.php support.function.mail.php",
-                "meta.function-call.php support.function.math.php",
-                "meta.function-call.php support.function.mbstring.php",
-                "meta.function-call.php support.function.mcrypt.php",
-                "meta.function-call.php support.function.memcache.php",
-                "meta.function-call.php support.function.mhash.php",
-                "meta.function-call.php support.function.mongo.php",
-                "meta.function-call.php support.function.mysql.php",
-                "meta.function-call.php support.function.mysqli.php",
-                "meta.function-call.php support.function.mysqlnd-memcache.php",
-                "meta.function-call.php support.function.mysqlnd-ms.php",
-                "meta.function-call.php support.function.mysqlnd-qc.php",
-                "meta.function-call.php support.function.mysqlnd-uh.php",
-                "meta.function-call.php support.function.network.php",
-                "meta.function-call.php support.function.nsapi.php",
-                "meta.function-call.php support.function.oci8.php",
-                "meta.function-call.php support.function.opcache.php",
-                "meta.function-call.php support.function.openssl.php",
-                "meta.function-call.php support.function.output.php",
-                "meta.function-call.php support.function.password.php",
-                "meta.function-call.php support.function.pcntl.php",
-                "meta.function-call.php support.function.pgsql.php",
-                "meta.function-call.php support.function.php_apache.php",
-                "meta.function-call.php support.function.php_dom.php",
-                "meta.function-call.php support.function.php_ftp.php",
-                "meta.function-call.php support.function.php_imap.php",
-                "meta.function-call.php support.function.php_mssql.php",
-                "meta.function-call.php support.function.php_odbc.php",
-                "meta.function-call.php support.function.php_pcre.php",
-                "meta.function-call.php support.function.php_spl.php",
-                "meta.function-call.php support.function.php_zip.php",
-                "meta.function-call.php support.function.posix.php",
-                "meta.function-call.php support.function.proctitle.php",
-                "meta.function-call.php support.function.pspell.php",
-                "meta.function-call.php support.function.readline.php",
-                "meta.function-call.php support.function.recode.php",
-                "meta.function-call.php support.function.rrd.php",
-                "meta.function-call.php support.function.sem.php",
-                "meta.function-call.php support.function.session.php",
-                "meta.function-call.php support.function.shmop.php",
-                "meta.function-call.php support.function.simplexml.php",
-                "meta.function-call.php support.function.snmp.php",
-                "meta.function-call.php support.function.soap.php",
-                "meta.function-call.php support.function.sockets.php",
-                "meta.function-call.php support.function.sqlite.php",
-                "meta.function-call.php support.function.sqlsrv.php",
-                "meta.function-call.php support.function.stats.php",
-                "meta.function-call.php support.function.streamsfuncs.php",
-                "meta.function-call.php support.function.string.php",
-                "meta.function-call.php support.function.sybase.php",
-                "meta.function-call.php support.function.taint.php",
-                "meta.function-call.php support.function.tidy.php",
-                "meta.function-call.php support.function.tokenizer.php",
-                "meta.function-call.php support.function.trader.php",
-                "meta.function-call.php support.function.uopz.php",
-                "meta.function-call.php support.function.url.php",
-                "meta.function-call.php support.function.var.php",
-                "meta.function-call.php support.function.wddx.php",
-                "meta.function-call.php support.function.xhprof.php",
-                "meta.function-call.php support.function.xml.php",
-                "meta.function-call.php support.function.xmlrpc.php",
-                "meta.function-call.php support.function.xmlwriter.php",
-                "meta.function-call.php support.function.zlib.php"
+                "meta.function-call.php support.function"
             ]
         },
         {
@@ -994,8 +905,8 @@
         {
             "name": "ts/import/all",
             "settings": {
-                "fontStyle": "bold underline",
-                "foreground": "#ff6188"
+                "foreground": "#ff6188",
+                "fontStyle": "bold underline"
             },
             "scope": "constant.language.import-export-all.ts"
         },
@@ -1354,9 +1265,7 @@
         },
         {
             "name": "json/constant",
-            "settings": {
-                "foreground": "#abdae8"
-            },
+            "settings": {},
             "scope": "constant.language.json"
         },
         {
@@ -1416,6 +1325,218 @@
                 "fontStyle": "italic"
             },
             "scope": "storage.type.tag-handle.yaml"
+        },
+        {
+            "name": "*",
+            "settings": {
+                "foreground": "#e1e1e180"
+            },
+            "scope": "source.rust"
+        },
+        {
+            "name": "rust/control flow",
+            "settings": {
+                "foreground": "#ff6188",
+                "fontStyle": "normal"
+            },
+            "scope": "keyword.control.rust"
+        },
+        {
+            "name": "import",
+            "settings": {
+                "foreground": "#ff6188"
+            },
+            "scope": "meta.use.rust"
+        },
+        {
+            "name": "rust/definitions",
+            "settings": {
+                "foreground": "#81c784"
+            },
+            "scope": [
+                "meta.function.definition.rust",
+                "keyword.declaration.struct.rust",
+                "storage.type.rust"
+            ]
+        },
+        {
+            "name": "mut",
+            "settings": {
+                "foreground": "#81c784",
+                "fontStyle": "underline bold italic"
+            },
+            "scope": [
+                "source.rust storage.modifier.mut.rust",
+                "source.rust storage.modifier"
+            ]
+        },
+        {
+            "name": "types",
+            "settings": {
+                "foreground": "#ffd866CC"
+            },
+            "scope": [
+                "entity.name.type.rust",
+                "source.rust entity.name.type"
+            ]
+        },
+        {
+            "name": "doc punctuation",
+            "settings": {
+                "foreground": "#fcfcfcCC",
+                "fontStyle": "italic"
+            },
+            "scope": "comment.line.documentation.rust"
+        },
+        {
+            "name": "doc punctuation + doc",
+            "settings": {
+                "foreground": "#fcfcfc80",
+                "fontStyle": "italic"
+            },
+            "scope": "punctuation.definition.comment.rust"
+        },
+        {
+            "name": "functions + punctuation",
+            "settings": {
+                "foreground": "#fcfcfc"
+            },
+            "scope": [
+                "punctuation.brackets.angle.rust",
+                "punctuation.brackets.round.rust",
+                "punctuation.brackets.curly.rust",
+                "keyword.operator.key-value.rust",
+                "meta.function.definition.rust punctuation.brackets.round.rust",
+                "meta.function.definition.rust keyword.operator.arrow.skinny.rust"
+            ]
+        },
+        {
+            "name": "attributes",
+            "settings": {
+                "foreground": "#ab9df2CC",
+                "fontStyle": "italic"
+            },
+            "scope": [
+                "punctuation.definition.attribute.rust",
+                "punctuation.definition.attribute.rust",
+                "meta.attribute.rust keyword.operator.assignment.equal.rust",
+                "meta.attribute.rust punctuation.brackets.round.rust",
+                "meta.attribute.rust"
+            ]
+        },
+        {
+            "name": "attributes (string)",
+            "settings": {
+                "foreground": "#ab9df280",
+                "fontStyle": "italic"
+            },
+            "scope": "meta.attribute.rust string.quoted.double.rust"
+        },
+        {
+            "name": "rust/variables",
+            "settings": {
+                "foreground": "#fcfcfc"
+            },
+            "scope": [
+                "variable.other.rust",
+                "constant.other.caps.rust"
+            ]
+        },
+        {
+            "name": "rust/variables/self",
+            "settings": {
+                "foreground": "#f1c40f",
+                "fontStyle": "italic"
+            },
+            "scope": "variable.language.self.rust"
+        },
+        {
+            "name": "macros$",
+            "settings": {
+                "foreground": "#fcfcfc",
+                "fontStyle": "bold"
+            },
+            "scope": "keyword.operator.macro.dollar"
+        },
+        {
+            "name": "macros",
+            "settings": {
+                "foreground": "#fcfcfc"
+            },
+            "scope": "meta.macro.metavariable.rust"
+        },
+        {
+            "name": "arrow",
+            "settings": {
+                "foreground": "#fcfcfc"
+            },
+            "scope": "keyword.operator.arrow.fat.rust"
+        },
+        {
+            "name": "namespace (puctuation)",
+            "settings": {
+                "foreground": "#fcfcfc80"
+            },
+            "scope": "keyword.operator.namespace.rust"
+        },
+        {
+            "name": "namespace (name)",
+            "settings": {
+                "foreground": "#abdae8"
+            },
+            "scope": "source.rust constant.numeric"
+        },
+        {
+            "name": "namespace (name)",
+            "settings": {
+                "foreground": "#abdae8",
+                "fontStyle": "italic bold"
+            },
+            "scope": "source.rust constant.numeric entity.name.type.numeric.rust"
+        },
+        {
+            "name": "namespace (name)",
+            "settings": {
+                "foreground": "#fcfcfc"
+            },
+            "scope": [
+                "entity.name.namespace.rust",
+                "meta.use.rust keyword.operator.math.rust"
+            ]
+        },
+        {
+            "name": "ending semi",
+            "settings": {
+                "foreground": "#fcfcfc99"
+            },
+            "scope": "punctuation.semi.rust"
+        },
+        {
+            "name": "borrowing",
+            "settings": {
+                "foreground": "#ffd866CC",
+                "fontStyle": "italic"
+            },
+            "scope": [
+                "keyword.operator.borrow.and.rust",
+                "punctuation.definition.lifetime.rust"
+            ]
+        },
+        {
+            "name": "borrowing (argument)",
+            "settings": {
+                "foreground": "#fcfcfcCC",
+                "fontStyle": "italic"
+            },
+            "scope": "meta.function.call.rust keyword.operator.borrow.and.rust"
+        },
+        {
+            "name": "deref",
+            "settings": {
+                "foreground": "#fcfcfcCC",
+                "fontStyle": "italic"
+            },
+            "scope": "keyword.operator.dereference.rust"
         }
     ]
 }

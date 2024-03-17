@@ -44,9 +44,8 @@
     ]
   },
   "dependencies": {
-    "vsce": "^1.88.0"
+    "vsce": "^1.103.1"
   },
-  "devDependencies": {},
   "engines": {
     "vscode": "^1.45.0"
   },

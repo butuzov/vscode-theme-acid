@@ -141,10 +141,12 @@ class Theme:
 
         for items in settingsTokens.get('grammars', []):
 
-            if not isinstance(items, list):
+            # this is purly cosmetical.
+            data = items.get('grammar', [])
+            if not isinstance(data, list):
                 continue
 
-            for item in items:
+            for item in data:
 
                 settings = self.unpack(
                     item.get('style', ""),
