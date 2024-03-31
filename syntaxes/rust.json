@@ -1,0 +1,89 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Rust (extras)",
+    "scopeName": "source.rust.alt",
+    "injectionSelector": "L:source.rust",
+    "patterns": [
+        {
+            "comment": "pub keyword",
+            "match": "\\b(pub(\\((.*?)\\))?)\\s",
+            "captures": {
+                "1": {
+                    "name": "keyword.other.pub.rust"
+                },
+                "2": {
+                    "name": "punctuation.brackets.round.rust"
+                },
+                "3": {
+                    "name": "keyword.other.pub.scoped.rust"
+                }
+            }
+        },
+        {
+            "comment": "&mut",
+            "match": "(&)(mut)",
+            "captures": {
+                "1": {
+                    "name": "keyword.operator.borrow.mut.rust"
+                },
+                "2": {
+                    "name": "storage.modifier.mut.rust"
+                }
+            }
+        },
+        {
+            "comment": "&self",
+            "match": "(&)(self)",
+            "captures": {
+                "1": {
+                    "name": "keyword.operator.borrow.self.rust"
+                },
+                "2": {
+                    "name": "variable.language.self.rust"
+                }
+            }
+        },
+        {
+            "comment": "unsafe keyword",
+            "match": "\\bunsafe\\b",
+            "name": "keyword.other.unsafe.rust"
+        },
+        {
+            "comment": "impl keyword",
+            "match": "\\bimpl\\b",
+            "name": "keyword.other.impl.rust"
+        },
+        {
+            "comment": "move keyword",
+            "match": "\\bmove\\b",
+            "name": "keyword.other.move.rust"
+        },
+        {
+            "comment": "in keyword",
+            "match": "\\s\\bin\\b\\s",
+            "name": "keyword.other.in.rust"
+        },
+        {
+            "comment": "property2",
+            "match": "(\\.)((?!await)[A-Za-z0-9_]+)(?=\\.|\\;|\\))",
+            "captures": {
+                "1": {
+                    "name": "keyword.operator.access.dot.rust"
+                },
+                "2": {
+                    "name": "variable.other.property.rust"
+                }
+            }
+        },
+        {
+            "comment": "async keyword",
+            "match": "\\basync\\b",
+            "name": "keyword.other.async.rust"
+        },
+        {
+            "comment": "async keyword",
+            "match": "\\bawait\\b",
+            "name": "keyword.control.rust"
+        }
+    ]
+}

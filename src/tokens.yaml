@@ -384,10 +384,20 @@ grammars:
     - support.type.python
 
   - name: python/decorator
-    style: iu@syntax.blue_lite
+    style: ui@yellow
     scope:
     - punctuation.definition.decorator.python
+    - meta.function.decorator.python meta.function-call.arguments.python
+    - meta.function.decorator.python punctuation.definition.arguments.begin.python
+    - meta.function.decorator.python punctuation.definition.arguments.end.python
     - entity.name.function.decorator.python
+
+  - name: python/decorator
+    style: ui@white
+    scope:
+    - meta.function.decorator.python meta.function-call.arguments.python
+    - meta.function.decorator.python constant.language.python
+    - meta.function.decorator.python constant.numeric.dec.python
 
   - name: python/type/call/normalization
     settings:
@@ -423,7 +433,7 @@ grammars:
     scope: entity.name.import.go
 
   - name: go/import/name/alias
-    style: b@syntax.white/a50
+    style: u@syntax.white
     scope: variable.other.import.go
 
   - name: go/definitions
@@ -972,176 +982,8 @@ grammars:
     - constant.language.json
 
 
-- name:  # GRAMMAR ~~~ YAML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  grammar:
-  - name: yaml/document
-    settings:
-      foreground: syntax.blue
-    scope:
-    - entity.other.document.begin.yaml
-    - entity.other.document.end.yaml
+# GRAMMAR ~~~ YAML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- grammar: !include languages/yaml.yaml
 
-  - name: yaml/name
-    <<: *variable_name
-    scope: entity.name.tag.yaml
-
-  - name: yaml/vat/type/date
-    <<: *variable_name
-    settings:
-      fontStyle: underline
-    scope: constant.other.timestamp.yaml
-
-  - name: yaml/operator
-    <<: *operators
-    scope:
-    - punctuation.definition.anchor.yaml
-    - punctuation.definition.alias.yaml
-    - keyword.control.flow.block-scalar.folded.yaml
-    - keyword.control.flow.block-scalar.literal.yaml
-    - storage.modifier.chomping-indicator.yaml
-    - constant.language.merge.yaml
-
-  - name: yaml/operator
-    settings:
-      foreground: syntax.white
-      fontStyle: italic
-    scope:
-    - entity.name.type.anchor.yaml
-    - variable.other.alias.yaml
-
-  - name:  yaml/tags
-    settings:
-      foreground: syntax.yellow
-      fontStyle: italic
-    scope: storage.type.tag-handle.yaml
-
-- grammar: # GRAMMAR ~~~ Rust ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  - name: "*"
-    style: white/a50
-    scope: source.rust
-
-  - name: rust/control flow
-    style: n@syntax.red_lite
-    scope:
-    - keyword.control.rust
-
-  - name: import
-    <<: *import
-    scope:
-    - meta.use.rust
-
-  - name: rust/definitions
-    <<: *definition
-    scope:
-    - meta.function.definition.rust
-    - keyword.declaration.struct.rust
-    - storage.type.rust
-
-  - name: mut
-    style: ubi@syntax.green
-    scope:
-    - source.rust storage.modifier.mut.rust
-    - source.rust storage.modifier
-
-  - name: types
-    <<: *type
-    scope:
-    - entity.name.type.rust
-    - source.rust entity.name.type
-
-  - name: doc punctuation
-    style: i@syntax.white/a80
-    scope: comment.line.documentation.rust
-
-  - name: doc punctuation + doc
-    <<: *comment
-    scope: punctuation.definition.comment.rust
-
-  - name: functions + punctuation
-    <<: *punctuation
-    scope:
-    - punctuation.brackets.angle.rust
-    - punctuation.brackets.round.rust
-    - punctuation.brackets.curly.rust
-    - keyword.operator.key-value.rust
-    - meta.function.definition.rust punctuation.brackets.round.rust
-    - meta.function.definition.rust keyword.operator.arrow.skinny.rust
-
-  - name: attributes
-    style: i@syntax.violet/a80
-    scope:
-    - punctuation.definition.attribute.rust
-    - punctuation.definition.attribute.rust
-    - meta.attribute.rust keyword.operator.assignment.equal.rust
-    - meta.attribute.rust punctuation.brackets.round.rust
-    - meta.attribute.rust
-
-  - name: attributes (string)
-    style: i@syntax.violet/a50
-    scope:
-    - meta.attribute.rust string.quoted.double.rust
-
-  - name: rust/variables
-    style: syntax.white
-    scope:
-    - variable.other.rust
-    - constant.other.caps.rust
-
-  - name: rust/variables/self
-    style: i@syntax.yellow
-    scope:
-    - variable.language.self.rust
-
-  - name: macros$
-    style: b@syntax.white
-    scope: keyword.operator.macro.dollar
-
-  - name: macros
-    style: syntax.white
-    scope: meta.macro.metavariable.rust
-
-  - name: arrow
-    style: syntax.white
-    scope: keyword.operator.arrow.fat.rust
-
-  - name: namespace (puctuation)
-    style: syntax.white/a50
-    scope: keyword.operator.namespace.rust
-
-  - name: namespace (name)
-    style: syntax.blue_lite
-    scope:
-    - source.rust constant.numeric
-
-  - name: namespace (name)
-    style: ib@syntax.blue_lite
-    scope:
-    - source.rust constant.numeric entity.name.type.numeric.rust
-
-  - name: namespace (name)
-    style: syntax.white
-    scope:
-    - entity.name.namespace.rust
-    - meta.use.rust keyword.operator.math.rust
-
-  - name: ending semi
-    style: syntax.white/a60
-    scope: punctuation.semi.rust
-
-  - name: borrowing
-    style: i@syntax.yellow_lite/a80
-    scope:
-    - keyword.operator.borrow.and.rust
-    - punctuation.definition.lifetime.rust
-
-  - name: borrowing (argument)
-    style: i@syntax.white/a80
-    scope:
-    -  meta.function.call.rust keyword.operator.borrow.and.rust
-
-  - name: deref
-    style: i@syntax.white/a80
-    scope:
-    -  keyword.operator.dereference.rust
-
+# GRAMMAR ~~~ Rust ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- grammar: !include languages/rust.yaml

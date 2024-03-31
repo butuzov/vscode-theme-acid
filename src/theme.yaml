@@ -70,6 +70,14 @@ sideBarSectionHeader:
   foreground: white
   border: none
 
+editorInlayHint:
+  # foreground: white/a30
+  # background: green
+  typeForeground: white/a40
+  typeBackground: black
+  parameterForeground: white/a40
+  parameterBackground: black
+
 # UI - TitleBar
 
 titleBar:

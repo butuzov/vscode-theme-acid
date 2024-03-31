@@ -41,6 +41,15 @@
         "uiTheme": "vs-dark",
         "path": "./acid.json"
       }
+    ],
+    "grammars": [
+      {
+        "path": "./syntaxes/rust.json",
+        "injectTo": [
+          "source.rust"
+        ],
+        "scopeName": "source.rust.alt"
+      }
     ]
   },
   "dependencies": {
@@ -74,6 +83,7 @@
     "Dockerfile",
     "protobuf",
     "YAML",
+    "Rust",
     "shell"
   ]
 }
