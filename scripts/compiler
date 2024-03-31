@@ -5,17 +5,34 @@
         ./scripts/compiler
 """
 
-import json, yaml
-from time import sleep
-from random import choice, choices
-
 import hashlib
-
-from datetime import datetime
-from os.path import splitext
-from os import O_WRONLY
+import json
 import sys
+from datetime import datetime
+from os import O_WRONLY
+from os.path import join, split, splitext
+from random import choice, choices
+from time import sleep
 
+import yaml
+
+
+class Loader(yaml.CLoader):
+
+    def __init__(self, stream):
+
+        self._root = split(stream.name)[0]
+
+        super(Loader, self).__init__(stream)
+
+    def include(self, node):
+
+        filename = join(self._root, self.construct_scalar(node))
+
+        with open(filename, 'r') as f:
+            return yaml.load(f, Loader)
+
+Loader.add_constructor('!include', Loader.include)
 
 class Theme:
 
@@ -141,10 +158,12 @@ class Theme:
 
         for items in settingsTokens.get('grammars', []):
 
-            if not isinstance(items, list):
+            # this is purly cosmetical.
+            data = items.get('grammar', [])
+            if not isinstance(data, list):
                 continue
 
-            for item in items:
+            for item in data:
 
                 settings = self.unpack(
                     item.get('style', ""),
@@ -208,8 +227,8 @@ class Theme:
         _, ext = splitext(file)
 
         executors = {
-            '.yaml': lambda file: yaml.load(file, Loader=yaml.CLoader),
-            '.yml': lambda file: yaml.load(file, Loader=yaml.CLoader),
+            '.yaml': lambda file: yaml.load(file, Loader=Loader),
+            '.yml':  lambda file: yaml.load(file, Loader=Loader),
             '.json': lambda file: json.load(file),
         }
         try:

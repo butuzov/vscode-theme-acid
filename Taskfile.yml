@@ -9,19 +9,30 @@ silent: true
 tasks:
   default:
     cmds:
-    - task: watch
+    - task: syntax
+    - task: palette
+    # - task: theme
 
-  # deps:
-  #   https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
-
-  watch:
+  syntax:
     sources:
+    - ./syntaxes/rust.yaml
+    method: timestamp
+    cmds:
+    - ./scripts/to_json ./syntaxes/rust.yaml ./syntaxes/rust.json
+
+  palette:
+    sources:
+    - src/languages/*.yaml
     - src/*.yaml
     cmds:
-    - task: update
-    - task: check
+    - ./scripts/compiler --quick
+    - sha1sum acid.json
 
-  update: ./scripts/compiler --quick
-  check: sha1sum  acid.json
-
+  # watch-theme:
+  #   sources:
+  #   - ./acid.json
+  #   - ./syntaxes/rust-extras.tmLanguage.json
+  #   method: timestamp
+  #   cmds:
+  #   - make package-theme
 

@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+import json
+import sys
+
+import yaml
+
+
+def convert(src:str, dst:str="stdout"):
+
+    with open(src, 'r') as json_file:
+        data = json.load(json_file)
+
+    if dst == "stdout":
+        yaml.dump(data, sys.stdout, default_flow_style=False)
+        return
+
+    with open(dst, "w") as f:
+        yaml.dump(data, f, default_flow_style=False)
+        print(data, file=f)
+
+if __name__ == "__main__":
+    import sys
+    convert(*sys.argv[1:])
+    # convert()

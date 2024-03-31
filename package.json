@@ -41,12 +41,20 @@
         "uiTheme": "vs-dark",
         "path": "./acid.json"
       }
+    ],
+    "grammars": [
+      {
+        "path": "./syntaxes/rust.json",
+        "injectTo": [
+          "source.rust"
+        ],
+        "scopeName": "source.rust.alt"
+      }
     ]
   },
   "dependencies": {
-    "vsce": "^1.88.0"
+    "vsce": "^1.103.1"
   },
-  "devDependencies": {},
   "engines": {
     "vscode": "^1.45.0"
   },
@@ -75,6 +83,7 @@
     "Dockerfile",
     "protobuf",
     "YAML",
+    "Rust",
     "shell"
   ]
 }
