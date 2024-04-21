@@ -1,0 +1,39 @@
+$schema: https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json
+name: Go (extras)
+scopeName: source.go.alt
+injectionSelector: "L:source.go"
+
+patterns:
+  - comment: Language constants
+    match: \b(?:(true|false)|(nil)|(iota))\b
+    captures:
+      1:
+        name: constant.language.boolean.go
+      2:
+        name: constant.language.null.go
+      3:
+        name: constant.language.iota.go
+
+  - comment: types conversion (numbers)
+    match: \b(complex(64|128)|float(32|64)|u?int(8|16|32|64)?)\b(?=\()
+    name: entity.name.function.support.builtin.numbers.go
+
+  - comment: types conversion (strings)
+    match: \b(byte|rune|string)\b(?=\()
+    name: entity.name.function.support.builtin.strings.go
+
+  - comment: types conversion (pointer)
+    match: \b(uintptr)\b(?=\()
+    name: entity.name.function.support.builtin.pointer.go
+
+  - match: \b(go)\b\s
+    name: keyword.control.go.go
+
+  - comment: close
+    match: \b(close)\b(?=\()
+    name: entity.name.function.support.builtin.close.go
+
+  - comment: builtin types
+    match: \b(byte|complex(64|128)|float(32|64)|u?int(8|16|32|64)?|rune|string|uintptr)\b(?=\()
+    name: entity.name.function.support.builtin.go
+

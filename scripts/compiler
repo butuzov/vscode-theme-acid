@@ -1,87 +1,85 @@
 #!/usr/bin/env python3
 """
-    This script watches for sources and rebuild theme.json
+This script watches for sources and rebuild theme.json
 
-        ./scripts/compiler
+    ./scripts/compiler
 """
 
-import hashlib
 import json
 import sys
 from datetime import datetime
 from os import O_WRONLY
-from os.path import join, split, splitext
+from os.path import basename, join, split, splitext
 from random import choice, choices
-from time import sleep
 
-import yaml
+from ruamel import yaml
 
 
-class Loader(yaml.CLoader):
+def my_compose_document(self):
+    self.get_event()
+    node = self.compose_node(None, None)
+    self.get_event()
+    # self.anchors = {}    # <<<< commented out
+    return node
 
-    def __init__(self, stream):
 
-        self._root = split(stream.name)[0]
+yaml.SafeLoader.compose_document = my_compose_document
 
-        super(Loader, self).__init__(stream)
 
-    def include(self, node):
+def yaml_include(loader, node):
+    with open(node.value) as inputfile:
+        data = my_safe_load(inputfile, master=loader)
 
-        filename = join(self._root, self.construct_scalar(node))
+        file = basename(inputfile.name).split(".")[0]
 
-        with open(filename, 'r') as f:
-            return yaml.load(f, Loader)
+        def wrap_with_name(item):
+            if val := item.get("name"):
+                item["name"] = f"{file} / {val}"
+            return item
 
-Loader.add_constructor('!include', Loader.include)
+        if isinstance(data, list):
+            return list(map(wrap_with_name, data))
+
+        return list(data.values())[0]
+
+
+#              leave out the [0] if your include file drops the key ^^^
+
+yaml.add_constructor("!include", yaml_include, Loader=yaml.SafeLoader)
+
+
+def my_safe_load(stream, Loader=yaml.SafeLoader, master=None):
+    loader = Loader(stream)
+    if master is not None:
+        loader.anchors = master.anchors
+        # print(loader.anchors)
+    try:
+        return loader.get_single_data()
+    finally:
+        loader.dispose()
+
 
 class Theme:
-
     short = {
-        'i': 'italic',
-        'u': 'underline',
-        'b': 'bold',
-        'n': 'normal',
+        "i": "italic",
+        "u": "underline",
+        "b": "bold",
+        "n": "normal",
     }
 
     def __init__(self, theme_name: str, theme_type: str):
         self._name = theme_name
         self._type = theme_type
 
-        # colors
-        self._file_palette = "src/palette.yaml"
-        self._file_theme = "src/theme.yaml"
-        self._file_tokens = "src/tokens.yaml"
-        self._monitor = {}
+        # Colors.
+        self._colors = Theme.read("src/colors.yaml")
+        # Theme Customization
+        self._themes = Theme.read("src/theme.yaml")
+        # Highlight Colors.
+        self._languages = Theme.read("src/languages.yaml")
 
         # destination
         self.dest = "acid.json"
-
-    def is_changed(self, out=True) -> bool:
-
-        theme = self._is_changed(self._file_theme)
-        tokens = self._is_changed(self._file_tokens)
-        palette = self._is_changed(self._file_palette)
-
-        dest = sys.stdout
-        if not out:
-            dest = os.open('/dev/null', O_WRONLY)
-
-        if palette:
-            self._palette = Theme.read(self._file_palette)
-            print("Palette changed       : {0}".format(datetime.now().time()),
-                  file=dest)
-
-        if tokens:
-            self._tokens = Theme.read(self._file_tokens)
-            print("Tokens changed        : {0}".format(datetime.now().time()),
-                  file=dest)
-
-        if theme:
-            self._theme = Theme.read(self._file_theme)
-            print("Theme changed         : {0}".format(datetime.now().time()),
-                  file=dest)
-
-        return palette or theme or tokens
 
     def dpath(self, color_map, path):
         tmp = dict(color_map)
@@ -94,22 +92,20 @@ class Theme:
         return tmp
 
     def pick(self, path):
-
-        if path == '_':
+        if path == "_":
             value = Theme.random_color()
         elif "/" in path:
             rgb, a = path.split("/")
-            value = self.dpath(self._palette, rgb) + self.dpath(
-                self._palette, a)
+            value = self.dpath(self._colors, rgb) + self.dpath(self._colors, a)
         elif "." in path:
-            value = self.dpath(self._palette, path)
+            value = self.dpath(self._colors, path)
         elif path[0] == "#":
             value = path
         else:
-            value = self.dpath(self._palette, path)
+            value = self.dpath(self._colors, path)
 
         # is this a fontStyle value?
-        if all([True if i in 'ibun' else False for i in value]):
+        if all([True if i in "ibun" else False for i in value]):
             value = " ".join([self.short.get(i) for i in value])
 
         if value in ("italic", "bold", "underline", "normal"):
@@ -120,94 +116,65 @@ class Theme:
 
         return value
 
-    def _is_changed(self, file) -> bool:
-        hasher = hashlib.md5()
-        with open(file, "r") as f:
-            buf = f.read()
-            hasher.update(buf.encode())
-
-        if self._monitor.get(file, None) == hasher.hexdigest():
-            return False
-
-        self._monitor[file] = hasher.hexdigest()
-        return True
-
     def generate(self, shuffle=False):
+        # note: Loading Previous Result (acid.json) and it
+        #       will work as placeholder...
         t = Theme.read(self.dest)
         if not len(t):
-            t['name'] = self._name
-            t['type'] = self._type
+            t["name"] = self._name
+            t["type"] = self._type
 
         # Saving VSC Theme
-        t['colors'] = {}
-        settingsColors = {} if self._theme is None else self._theme
-
-        for section, values in settingsColors.items():
-
+        t["colors"] = {}
+        for section, values in self._themes.items():
+            # TOP LEVEL SETTINGS...
             if isinstance(values, str):
-                t['colors'][f"{section}"] = self.pick(values)
+                t["colors"][f"{section}"] = self.pick(values)
                 continue
 
             if isinstance(values, dict):
                 for param, value in values.items():
-                    t['colors'][f"{section}.{param}"] = self.pick(value)
+                    t["colors"][f"{section}.{param}"] = self.pick(value)
 
-        # Generating Syntax Themes
-        t['tokenColors'] = []
-        settingsTokens = {} if self._tokens is None else self._tokens
+        # Syntax Highlight...
+        t["tokenColors"] = []
 
-        for items in settingsTokens.get('grammars', []):
-
-            # this is purly cosmetical.
-            data = items.get('grammar', [])
-            if not isinstance(data, list):
+        for language in self._languages["includes"]:
+            if not language:
                 continue
 
-            for item in data:
-
-                settings = self.unpack(
-                    item.get('style', ""),
-                    item.get('settings', {}),
-                )
-
-                if 'style' in item: del item['style']
-                if 'settings' in item: del item['settings']
-
-                item['settings'] = settings
-
-                # no scope - pass
-                if 'scope' not in item:
+            for item in language:
+                if "scope" not in item:
                     continue
 
-                # scope move
-                scope = item['scope']
-                del item['scope']
-                if len(scope) == 1:
-                    item['scope'] = scope[0]
-                else:
-                    item['scope'] = scope
-
-                t['tokenColors'].append(item)
+                t["tokenColors"].append(
+                    {
+                        "name": item["name"],
+                        "settings": self.unpack(
+                            item.get("style", ""),
+                            item.get("settings", {}),
+                        ),
+                        "scope": item["scope"],
+                    }
+                )
 
         self.save_theme(self.dest, t)
 
     def save_theme(self, name, theme):
-        """ dump settings to the file """
-
+        """dump settings to the file"""
         with open(name, "w") as f:
             print("{0:<21} : {1}".format(name, datetime.now().time()))
             json.dump(theme, fp=f, indent=4)
 
     def unpack(self, value: str, redefined: dict) -> dict:
-        """ unpack short value e.g. `bui@black` to style and foreground """
-
-        if '@' in value:
+        """unpack short value e.g. `bui@black` to style and foreground"""
+        if "@" in value:
             fontStyle, foreground = value.split("@")
-            redefined['foreground'] = self.pick(foreground)
-            redefined['fontStyle'] = self.pick(fontStyle)
+            redefined["foreground"] = self.pick(foreground)
+            redefined["fontStyle"] = self.pick(fontStyle)
         elif value:
-            is_style = all([True if i in 'ibun' else False for i in value])
-            name = ('foreground', 'fontStyle')[int(is_style)]
+            is_style = all([True if i in "ibun" else False for i in value])
+            name = ("foreground", "fontStyle")[int(is_style)]
             redefined[name] = self.pick(value)
         else:
             for name, value in redefined.items():
@@ -217,19 +184,19 @@ class Theme:
 
     @staticmethod
     def random_color() -> str:
-        """ generates random color (substitute for `_` )"""
-        return "#" + ''.join([choice('0123456789ABCDEF') for j in range(6)])
+        """generates random color (substitute for `_` )"""
+        return "#" + "".join([choice("0123456789ABCDEF") for j in range(6)])
 
     @staticmethod
     def read(file):
-        """ file reader/unserializer utility """
+        """file reader/deserializer utility"""
 
         _, ext = splitext(file)
 
         executors = {
-            '.yaml': lambda file: yaml.load(file, Loader=Loader),
-            '.yml':  lambda file: yaml.load(file, Loader=Loader),
-            '.json': lambda file: json.load(file),
+            ".yaml": lambda file: my_safe_load(file),
+            ".yml": lambda file: my_safe_load(file),
+            ".json": lambda file: json.load(file),
         }
         try:
             with open(file, "r") as f:
@@ -242,20 +209,15 @@ class Theme:
 
 def main(settings: dict):
     theme = Theme("Acid", "dark")
-    while True:
-        if theme.is_changed(settings["quick"] != "--quick"):
-            theme.generate(settings['shuffle_tokens'])
-
-        if settings['quick']:
-            theme.generate(settings['shuffle_tokens'])
-            return
-
-        sleep(1)
+    theme.generate(settings["shuffle_tokens"])
 
 
 if __name__ == "__main__":
     import sys
 
+    """
+    --quick will
+    """
     settings = {
         "quick": "--quick" in sys.argv,
         "shuffle_tokens": "--tokens" in sys.argv,

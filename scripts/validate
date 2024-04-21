@@ -1,0 +1,182 @@
+#!/usr/bin/env python3
+
+import os
+import re
+import sys
+from pathlib import Path
+from textwrap import dedent
+from typing import List
+
+from rich.console import Console
+from rich.table import Table
+
+sys.tracebacklimit = 0
+
+order = {
+    "Sugar": [],
+    "Comments": [],
+    "Types": [
+        "Numbers",
+        "Bools",
+        "Nulls",
+        "Strings",
+        "Other Language Constants",
+    ],
+    "Definitions": [],
+    "Composite Types": [],
+    "Operators": [
+        "Logical",
+        "Math",
+        "Bitwise",
+    ],
+    "Functions": ["Builtins"],
+    "OOP & Data Oriented Programming ": [],
+    "Types System": ["Generics"],
+    "Pointers": [],
+    "Modifiers": [],
+    "Concurrency": [],
+    "Imports, Packages & Modules": ["Imports"],
+}
+
+
+comment_main = re.compile("^# [a-zA-Z0-9,&,-]{1,} ---")
+comment_sub = re.compile("^# ~~~ .*? ~~~")
+
+
+def get_needles() -> List[str]:
+    needles = []
+    for k, v in order.items():
+        needles.append(f"# {k} ---")
+        for v in v:
+            needles.append(f"# ~~~ {v} ~~~")
+
+    return needles
+
+
+from rich.traceback import install
+
+install(extra_lines=1, max_frames=1)
+
+
+class OutOfOrder(BaseException):
+    pass
+
+
+class NotAllowedHeader(BaseException):
+    pass
+
+
+def catch_not_allowed(lines: List[str], header: str, needles: List[str]):
+    # Error 1 - not found in allowed.
+    for line in lines:
+        print(line)
+        if m := comment_main.findall(line):
+            if m[0] not in needles:
+                look_at_me = "^" * 80
+                message = f"""
+                    {header}
+
+                        Not_Found_In_Allowed
+
+                    {line}
+                    {look_at_me}
+
+                        Pattern
+                    {m[0]}
+
+                        Allowed
+                    {"\n                    ".join(needles)}
+                """
+                raise BaseException(dedent(message))
+
+
+def idx_of_match(needle, heystack):
+    for reg in [comment_main, comment_sub]:
+        if m := reg.findall(needle):
+            if m[0] not in heystack:
+                continue
+            return heystack.index(m[0])
+    print(needle)
+
+
+def not_found(lines: List[str], header: str, needles: List[str]):
+    # Error 1 - Not Found in Allowed Errors
+    for line in lines:
+        if idx_of_match(line, needles) is None:
+            table = Table(title=header)
+            table.add_column("Allowed", style="#cccccc", no_wrap=True)
+            table.add_section()
+            for needle in needles:
+                table.add_row(needle)
+            table.add_section()
+            table.add_row(f"[bold red]{line}")
+
+            console = Console()
+            console.print(table)
+
+            # [print(line) for line in needles]
+
+            return False
+    return True
+
+
+def out_of_order(lines: List[str], header: str, needles: List[str]):
+    # Error 2 - Our of Order.
+    needles_num = 0
+    for line_num in range(0, len(lines)):
+        for reg in [comment_main, comment_sub]:
+            if m := reg.findall(lines[line_num]):
+                if m[0] not in needles[needles_num:]:
+                    table = Table(title=header)
+                    table.add_column("Have", style="#cccccc", no_wrap=True)
+                    table.add_column("Want", style="#cccccc", no_wrap=True)
+
+                    correct = sorted(lines, key=lambda x: idx_of_match(x, needles))
+
+                    for k, line in enumerate(lines):
+                        table.add_row(
+                            correct[k].replace(m[0], f"[bold red]{correct[k]}"),
+                            line.replace(m[0], f"[bold green]{line}"),
+                        )
+
+                    console = Console()
+                    console.print(table)
+
+                    # [print(line) for line in lines]
+
+                    return False
+
+                if idx := needles.index(m[0], needles_num):
+                    needles_num = idx
+
+    return True
+
+
+def main(name: str):
+    needles = get_needles()
+    target = Path(os.getcwd()) / name.strip()
+
+    with open(target) as f:
+        lines = f.readlines()
+
+    lines = [line.strip() for line in lines if line.startswith("#")]
+    lines = [
+        line.strip()
+        for line in lines
+        if any((comment_main.match(line), comment_sub.match(line)))
+    ]
+
+    if not not_found(lines, f" [ {name} ] ", needles):
+        sys.exit(1)
+    if not out_of_order(lines, f" [ {name} ] ", needles):
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    import os
+    import sys
+
+    # print(target1, target1.exists())
+    # print(target2, target2.exists())
+
+    main(sys.argv[1].strip())

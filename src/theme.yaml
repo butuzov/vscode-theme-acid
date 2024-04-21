@@ -3,7 +3,6 @@
 
 # Default settings used everywhere.
 contrastActiveBorder: none
-errorForeground: red
 contrastBorder: none
 focusBorder: none
 foreground: white
@@ -12,6 +11,33 @@ foreground: white
 editor:
   background: black
   foreground: white/a90
+  # ----------------------------------------------------------------------------
+  selectionBackground: red                  # <- Current
+  selectionForeground: black
+  selectionHighlightBackground: red/a50     # <- All Others
+  # ----------------------------------------------------------------------------
+  findMatchBackground: red                  # <- Current
+  findMatchHighlightBackground: white/a30   # <- All Others
+
+# Suggestions...
+editorSuggestWidget:
+  # - Background color of the suggestion widget.
+  background: "#343434"
+  # - Border color of the suggestion widget.
+  border: "#232323"
+  # Foreground color of the suggestion widget.
+  foreground: white
+  # - Color of the match highlights in the suggest widget when an item is focused.
+  focusHighlightForeground: green
+  # - Color of the match highlights in the suggestion widget.
+  highlightForeground: highBg
+
+  # Background color of the selected entry in the suggestion widget.
+  selectedBackground: white/a30
+  # Foreground color of the selected entry in the suggest widget.
+  selectedForeground: white
+  # Icon foreground color of the selected entry in the suggest widget.
+  selectedIconForeground: black
 
 # In `opacity` only alpha will be used. Border is large dashed border color.
 editorUnnecessaryCode:
@@ -23,11 +49,11 @@ editorUnnecessaryCode:
 activityBar:
   activeBackground: black
   background: black
-  foreground: highBg
   activeBorder: black
   activeFocusBorder: red
+  foreground: highBg
   border: black
-  inactiveForeground: white/a80
+  inactiveForeground: white/a50
 
 activityBarBadge:
   background: highBg
@@ -54,7 +80,7 @@ problemsErrorIcon:   { foreground: red}
 problemsInfoIcon:    { foreground: blue}
 problemsWarningIcon: { foreground: yellow}
 
-# UI - Sidebar
+# # UI - Sidebar
 
 sideBar:
   background: black
@@ -78,7 +104,7 @@ editorInlayHint:
   parameterForeground: white/a40
   parameterBackground: black
 
-# UI - TitleBar
+# # UI - TitleBar
 
 titleBar:
   activeBackground: dark
@@ -90,7 +116,7 @@ titleBar:
 sash:
   hoverBorder: dark
 
-# UI - StatusBar and status bar items
+# # UI - StatusBar and status bar items
 
 statusBar:
   background: dark
@@ -118,16 +144,20 @@ statusBarItem:
   remoteForeground: black
 
 # Tabs used for tabs descriptions
+# red - with error
+# yellow - with warning?
 tab:
   border: none
   activeBackground: white/a10
   activeForeground: highBg
   activeBorder: highBg
-  activeBorderTop: black
+  activeBorderTop: highBg
   activeModifiedBorder: black
+
   hoverBackground: black
   hoverBorder: black
-  hoverForeground: yellow
+  hoverForeground: orange
+
   inactiveBackground: black
   inactiveForeground: white/a60
   inactiveModifiedBorder: black
@@ -135,14 +165,21 @@ tab:
   unfocusedActiveBackground: black
   unfocusedActiveBorder: black
   unfocusedActiveBorderTop: black
-  unfocusedActiveForeground: white/a80
+  unfocusedActiveForeground: white
   unfocusedActiveModifiedBorder:  black
+
+  unfocusedHoverBackground: black
+  unfocusedHoverBorder: black
+  unfocusedHoverForeground: orange
 
 editorGroupHeader:
   border: none
   noTabsBackground: black
   tabsBackground: black
   tabsBorder: none
+
+# TODO(butuzov):  hover color for links in info box (yellow squigle)
+# editorHoverWidget:
 
 # Text Colors
 
@@ -185,8 +222,8 @@ textBlockQuote:
   background: dark
   border: highBg
 
-icon:
-  foreground: white/a40
+# icon:
+#   foreground: white/a40
 
 dropdown:
   background: dark
@@ -194,42 +231,78 @@ dropdown:
   foreground: white
   listBackground: dark
 
+# Settings UI: https://code.visualstudio.com/api/references/theme-color#settings-editor-colors
 settings:
+  headerForeground:  highBg/a70
+  # headerBorder: red
   modifiedItemIndicator:  highBg
   dropdownListBorder: highBg
+  # rowHoverBackground: red
+  dropdownBackground: black
 
+keybindingLabel:
+  background: dark
+  foreground: white
+  border: black
+  bottomBorder: black
+
+# TODO: Edit Icons (outline)
+# microsoft/vscode/blob/main/src/vs/editor/contrib/symbolIcons/browser/symbolIcons.ts
+# symbolIcon:
+#   functionForeground: red
+#   interfaceForeground: yellow
+
+# File Explorer
 list:
-  # activeSelectionBackground: white/a10
-  # activeSelectionForeground: white
   inactiveSelectionBackground: white/a10
   inactiveSelectionForeground:  white
-
   hoverBackground: white/a10
   hoverForeground: white
 
-  # deemphasizedForeground: red
-  # dropBackground: dark
-
-  # filterMatchBackground: dark
-  # filterMatchBorder: green
-
   focusBackground: white/a10
   focusForeground: white
-  # inactiveFocusBackground: dark
 
   highlightForeground: green
 
-  # invalidItemForeground: red/a20
-  # errorForeground: red/a50
-  # warningForeground: yellow/a50
+  # invalidItemForeground: "#ff0000"
+  # errorForeground: "#e74c3c"
+  # warningForeground: yellow
 
+# Quick Open,
 pickerGroup:
   border: highBg
   foreground: highBg
 
+# quickInput:
+#   background: red
+#   foreground: white
+
+
+# # TOOD: read the possible values here.
+# # peekViewEditor:
+# # peekViewResult:
+# # peekView:
+
 # Extra
 widget:    { shadow: none }
 scrollbar: { shadow: none }
+
+# https://github.com/usernamehw/vscode-error-lens/?tab=readme-ov-file#colors-30
+# errorLens:
+  # errorBackground: red
+  # errorForeground: black
+
+# TODO: fix me to red "#e74c3c"
+errorForeground: red
+
+editorError:
+  # foreground: "#00000000"   # Squiggle color
+  # border: "#00000000"       # Additional double border.
+  background: "#e74c3c66"   # works
+
+editorHint:
+  foreground: magenta
+  border: magenta
 
 
 # This style used when vs need to display something.

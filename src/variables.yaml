@@ -1,0 +1,50 @@
+# NOTE(butuzov): This File is for single source of truth for the
+# coloring scheme across languages.
+
+comment: &comment                       # DONE
+  style: i@syntax.white/a50
+keywords: &keywords                     # FIXME
+  style: ibu@red
+keywords_control: &keywords_control     # DONE
+  style: syntax.red_lite
+# ~~ Name ~~~~~~
+name: &name                             # DONE
+  style: syntax.blue_lite
+
+# ~~ Functions ~~
+parameters: &parameters                 # DONE
+  style: i@syntax.white
+property: &property                     # DONE
+  style: syntax.green
+
+# ~~ Import ~~
+punctuation: &punctuation               # DONE
+  style: syntax.white
+constant: &constant                     # FIXME
+  style: ibu@red
+
+constant_other: &constant_other         # DONE
+  style: u@syntax.yellow
+constant_number: &constant_number       # DONE
+  style: syntax.blue
+constant_int: &constant_int             # DONE
+  style: syntax.blue
+constant_float: &constant_float         # DONE
+  style: syntax.blue
+
+# ~~~ Objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+class: &class                           # DONE
+  style: syntax.green
+class_name: &class_name                 # DONE
+  style: syntax.blue_lite
+class_name_inherited: &class_name_inherited                             # DONE
+  style: syntax.blue_lite
+
+
+
+
+constant_escape: &constant_escape       # DONE
+  style: syntax.white
+# ~~ Misc ~~
+illegal: &illegal                       # DONE
+  style: bu@red

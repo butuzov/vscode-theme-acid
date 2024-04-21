@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-import sys, json
+import json
+import sys
+
 """
     Extracts grammars from tm tmLanguage.json files
 

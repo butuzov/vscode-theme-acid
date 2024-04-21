@@ -1,0 +1,28 @@
+# This document describes a grammar syntaxes for different languages.
+# 1st) using simple rules of predefined grammar
+# 2nd) using custom rules for specifics of grammars.
+
+# colors https://colorswall.com/colors/xkcd
+
+# In order to simplify merging `style` is corresponding to settings
+#  Example 1:
+#   style: 'uibn@color/alpha'
+#    u - underline
+#    b - bold
+#    i - italic
+#    n - normal
+#
+# Example 2:
+#   style: "#404020'
+
+colors: !include "./src/languages/_common_vars.yaml"
+includes:
+- !include ./src/languages/common.yaml
+- !include ./src/languages/yaml.yaml
+- !include ./src/languages/json.yaml
+- !include ./src/languages/toml.yaml
+- !include ./src/languages/rust.yaml
+- !include ./src/languages/python.yaml
+- !include ./src/languages/go.yaml
+# - !include ./src/languages/php.yaml
+

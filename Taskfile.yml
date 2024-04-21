@@ -15,16 +15,28 @@ tasks:
 
   syntax:
     sources:
-    - ./syntaxes/rust.yaml
+    - ./syntaxes/*.yaml
     method: timestamp
     cmds:
-    - ./scripts/to_json ./syntaxes/rust.yaml ./syntaxes/rust.json
+    - ./scripts/to_json ./syntaxes/rust.yaml     ./syntaxes/rust.json
+    - ./scripts/to_json ./syntaxes/python.yaml   ./syntaxes/python.json
+    - ./scripts/to_json ./syntaxes/go.yaml       ./syntaxes/go.json
 
   palette:
     sources:
+    - ./scripts/*
     - src/languages/*.yaml
     - src/*.yaml
     cmds:
+    - clear
+    - ./scripts/validate src/languages/_common_vars.yaml
+    - ./scripts/validate src/languages/common.yaml
+    - ./scripts/validate src/languages/yaml.yaml
+    - ./scripts/validate src/languages/toml.yaml
+    - ./scripts/validate src/languages/json.yaml
+    - ./scripts/validate src/languages/rust.yaml
+    - ./scripts/validate src/languages/python.yaml
+    - ./scripts/validate src/languages/go.yaml
     - ./scripts/compiler --quick
     - sha1sum acid.json
 

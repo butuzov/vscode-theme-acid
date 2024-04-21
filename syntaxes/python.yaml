@@ -1,0 +1,139 @@
+$schema: https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json
+name: Python (extras)
+scopeName: source.python.alt
+injectionSelector: "L:source.python"
+
+patterns:
+  # - include: "#asignment"
+  - include: "#language_constants"
+  - include: "#function_builtin"
+  # - include: "#class_properties"
+  - include: "#imports_tweaked"
+
+repository:
+  imports_tweaked:
+    patterns:
+    # todo(butuzov): проблем кілька
+    # [ ]: Багато рівневі імпорти
+    # [ ]: Пуктуація? (чому блін)
+
+    - name: import.statement.python
+      match: >
+        (?x)
+          (?<!\#.*)\b(from)\b\s+(\.*)?([a-zA-Z0-9]+)\b\s+(?=import\b\s+)
+      captures:
+        1:
+          name: keyword.control.import.from.python
+        2:
+          name: punctuation.definition.import.periods.python
+        3:
+          name: entity.name.import.python
+
+    - name: import.statement.python
+      match: >
+        (?x)
+            (import)\b\s
+            (\.*)?
+            (
+              (\*) |
+              ((?:((?:[a-zA-Z0-9]+)+)((,)\s*)?)+) |
+                (\()
+                 ((?:((?:[a-zA-Z0-9]+)+)((,)\s*)?)+)
+                (\))
+
+            )
+
+      captures:
+        "1":
+          name: keyword.control.import.import.python
+        "4":
+          name: punctuation.definition.import.all.python
+        "5":
+          name: entity.name.import.python
+        "6":
+          name: entity.name.import.python
+        "9":
+          name: punctuation.definition.begin.bracket.round.python
+        "10":
+          name: entity.name.import.python
+        "11":
+          name: entity.name.import.python
+
+    - name: import.statement.python
+      match: >
+          (?x)
+            (?<!\#.*)((?<=(import).*)(\b(as)\b\s+([a-zA-Z0-9]+)){1})
+      captures:
+        4:
+          name: keyword.control.import.as.python
+        5:
+          name: entity.name.import.python
+
+  class_properties:
+    patterns:
+    - name: variable.property.class.python
+      match: >
+        (?x)
+          (?<!\#.*)                         # not with in comment
+          ((?!self)[a-z_]{1}[a-zA-Z0-9_]*)
+          (?=\.)                            # Ends with .
+
+    - name: variable.property.class.python
+      match: >
+        (?x)
+          (?<!\#.*)
+          (?<=(\.))
+          ((?!self)[a-z_]{1}[a-zA-Z0-9_]*)
+          \b
+          (?!\()
+
+  function_builtin:
+    comment: https://docs.python.org/3/library/functions.html#built-in-funcs
+    patterns:
+    - name: support.function.builtin.python
+      match: >
+        (?x)
+          (?<!\#.*)
+          (?<!\.) \b(
+          __import__| abs | aiter | all | anext | any | ascii | bin | bool |
+          bytearray | bytes | callable | chr | classmethod | compile | breakpoint |
+          delattr | dict | dir | divmod | enumerate | eval | exec | filter |
+          format | frozenset | getattr | globals | hasattr | hash | help | hex |
+          id | input | isinstance | issubclass | iter | len | list | locals |
+          map | max | memoryview | min | next | object | oct | open | ord | pow |
+          print | property | range | repr | reversed | round | set | setattr | zip |
+          slice | sorted | staticmethod | str | sum | super | tuple | type | vars
+          )\b(?=\()
+    - name: entity.name.function.support.builtin.numbers.python
+      match: >
+        (?x)
+          (?<!\.) \b(complex | float | int )\b(?=\()
+
+  language_constants:
+    match: \b((True|False)|(None))\b
+    captures:
+      2:
+        name: constant.language.boolean.python
+      3:
+        name: constant.language.null.python
+  # asignment:
+  #   #todo: add repeat variable definition, exclude class name
+  #   #      some.
+  #   match: (?x)
+  #             (?<!\#.*)
+  #             (.*?)
+  #             (<<= | >>= | //= | \*\*=
+  #               | \+= | -= | /= | @=
+  #               | \*= | %= | ~= | \^= | &= | \|=
+  #               | =(?!=))
+  #   captures:
+  #     "1":
+  #       name: punctuation.separator.period.python
+  #     "2":
+  #       name: keyword.operator.assignment.python
+
+
+
+
+
+

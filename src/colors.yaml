@@ -1,0 +1,63 @@
+# ACID
+black:                 "#232323"
+dark:                  "#494949"
+white:       &white    "#e1e1e1"
+red:         &red      "#e74c3c"  #
+orange:      &orange   "#f39c12"  # <
+yellow:      &yellow   "#f1c40f"  # <
+green:       &green    "#99cf54"  # <
+cyan:        &cyan     "#06b1c4"
+blue:        &blue     "#5e98e2"  # <
+magenta:     &magenta  "#9b59b6"
+none:                  "#ffffff00" # transparent
+
+# Main Colors
+highBg: "#a9ba21"
+highFg: "#101010"
+
+# Alpha
+a90 : "E6"
+a80 : "CC"
+a70 : "B3"
+a60 : "99"
+a50 : "80"
+a40 : "66"
+a30 : "4C"
+a20 : "33"
+a10 : "16"
+a00 : "00"
+
+# this comment about todo so what?
+
+# fixme(butuzov): Praesent non nulla ut lorem pretium porttitor eu eget neque.
+
+# todo(butuzov): Etiam at ligula aliquam eros aliquam vulputate et sed risus.
+#  Fusce viverra lectus eget erat sollicitudin, non hendrerit justo pulvinar.
+#  Pellentesque laoreet tellus nec magna suscipit finibus ac eget dolor.
+#  Fusce viverra lectus eget erat sollicitudin, non hendrerit justo pulvinar.
+
+# note(butuzov): Aenean rutrum justo non pretium varius.
+# info(butuzov): Mauris vulputate dolor sit amet est scelerisque consequat.
+# bug(butuzov): Aliquam sed nisl eu velit imperdiet maximus.
+
+syntax:
+  white_white:     "#ffffff"
+  white:           "#fcfcfc"
+  gray:            "#939293"
+  gray_dark:       "#727272"
+
+  pink:            "#ff6188"
+  red_lite:        "#ff6188"
+  red:             "#e74c3c"
+  yellow_lite:     "#ffd866"
+  yellow:          "#f1c40f"
+  green_lite:      "#a0d787"
+  green:           "#81c784"
+  # blue_lite:       "#abdae8"
+  blue_lite:       "#98c7d5"
+  blue:            "#3f96b3"
+
+
+  orange:        "#fc9867"     # eq #fc9867
+  violet:        "#ab9df2"
+

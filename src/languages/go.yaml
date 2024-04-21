@@ -1,0 +1,131 @@
+
+# - name: spy
+#   style: b@red
+#   scope: source.go
+
+# Comments ---------------------------------------------------------------------
+
+# Types ------------------------------------------------------------------------
+
+# ~~~ Nulls ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: var/type/nil
+  style: n@syntax.red_lite
+  scope: constant.language.null.go
+
+# ~~~ Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- name: string
+  <<: *type
+  scope:
+  - storage.type.string.go
+
+- name: string/placeholder
+  <<: *string_placeholder
+  scope:
+  - constant.other.placeholder.go
+
+# Definitions ---------------------------------------------------------------
+
+- name: punctuations
+  style: n@syntax.white_white/a70
+  scope:
+  - source.go punctuation.other
+  - punctuation.definition
+  - punctuation.terminator.go
+
+
+- name: definitions
+  <<: *definition
+  scope:
+  - keyword.struct.go
+  - keyword.interface.go
+  - keyword.map.go
+
+
+# Operators --------------------------------------------------------------------
+
+- name: function/definition
+  style: i@syntax.blue_lite/a70
+  scope: keyword.operator.ellipsis.go
+
+# TODO(fix bold italic)
+- name: Pointer Dereferencing
+  style: i@syntax.white
+  scope:
+  - keyword.operator.address.go
+  - keyword.operator.address.go
+
+# ~~~ Math ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: bitwise
+  <<: *operator_math
+  scope:
+  - keyword.operator.increment.go
+  - keyword.operator.decrement.go
+
+# ~~~ Bitwise ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- name: bitwise
+  <<: *operator_bitwise
+  scope: keyword.operator.arithmetic.bitwise.go
+
+# Functions --------------------------------------------------------------------
+
+- name: function/definition
+  <<: *definition
+  scope: keyword.function.go
+
+- name: entity.name.function.support.builtin.pointer
+  style: syntax.violet
+  scope: entity.name.function.support.builtin.uintptr.go
+
+# Types System --~~~~--------------------------------------------------------
+
+- name: number types
+  <<: *var_type_number
+  scope: storage.type.numeric.go
+
+# Concurrency ---------------------------------------------------------------
+# TODO: define `close` builtin.
+
+- name: "go/async"
+  style: n@syntax.green
+  scope:
+  - source.go keyword.operator.channel.go
+  - keyword.channel.go
+  - keyword.control.go.go
+  - entity.name.function.support.builtin.close.go
+
+# Imports, Packages & Modules --------------------------------------------------
+
+# TODO: move to upper scope.
+
+# package main
+# ^^^^^^^
+- name: go/package
+  style: syntax.yellow_lite/a70
+  scope: keyword.package.go
+
+# TODO: define goal of what I want to achive.
+# package main
+#        ^^^^^
+- name: name of the package
+  style: syntax.yellow
+  scope: entity.name.type.package.go
+
+# ~~~ Imports ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: go/import
+  <<: *import
+  scope: keyword.import.go
+
+#  import m "math"
+#            ^^^^^
+# NOTE: underline comes from somewhere else. We can't tweak it.
+- name: go/import/name
+  style: n@syntax.white
+  scope: entity.name.import.go
+
+#  import m "math"
+#         ^
+- name: go/import/name/alias
+  style: nu@syntax.white
+  scope: variable.other.import.go

@@ -1,42 +1,44 @@
 - name: "*"
-  style: white/a30
-  # style: white
+  style: "#00ffff"
   scope: source.rust
 
-# Control Flow
-# > loop, while for ... in ...,
-# >
-- name: rust/control_flow
-  style: n@syntax.red_lite
+# TODO:
+# ---------------------------
+
+# NOTE(butuzov): зроблено те що можна назвати 80%/20%, все інше в порядку живої черги:
+# [ ]: async, move & await - нормалізувати кольори
+# [ ]: const (storage.type.rust)
+# [x]: where
+# [ ]: mod & ref
+# [ ]: decimal access (self.0.foobar())
+
+# - name: "*"
+#   <<: *variable_name
+#   # style: white/a30
+#   # style: white
+#   scope: source.rust
+
+# Syntactic sugar
+
+# #[tokio::test]
+# ^^^^^^^^^^^^^
+- name: attributes
+  # <<: *decorators
+  style: green
   scope:
-  - keyword.control.rust
-  - keyword.other.in.rust
-
-# use std::io::Write;
-#     ^^^^^^^^^^^^^^
-# TODO: issue with ?
-# - name: use punctuation
-#   style: syntax.white
-#   scope:
-#   - meta.use.rust
-
-# use std::io::Write;
-# ^^^
-# use std::io::Write as somethingelse;
-# ^^^                ^^
-- name: import
-  style: syntax.red_lite
-  scope:
-  - meta.use.rust keyword.other.rust
+  - source.rust meta.attribute.rust
+  - source.rust meta.attribute.rust keyword.operator.macro.dollar.rust
+  - source.rust meta.attribute.rust punctuation
 
 
-# //  This function panics if called from a [`current_thread`] runtime.
-# ^^^
-# //! This function panics if called from a [`current_thread`] runtime.
-# ^^^
-- name: Comments Punctuation.
-  style: i@syntax.white/a50
-  scope: punctuation.definition.comment.rust
+# #[tokio::test("full")]
+#                ^^^^
+- name: attributes (string)
+  style: i@yellow
+  scope: meta.attribute.rust string.quoted.double.rust
+
+
+# Comments ---------------------------------------------------------------------
 
 # //! This function panics if called from a [`current_thread`] runtime.
 #     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -44,185 +46,11 @@
   style: syntax.white/a80
   scope: comment.line.documentation.rust
 
-# //  This function panics if called from a [`current_thread`] runtime.
-#     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- name: Comment Line
-  style: i@syntax.white/a50
-  scope: comment.line.double-slash.rust
+- name: Comment Block
+  <<: *comment
+  scope: comment.block.rust
 
-# tokio::io::AsyncReadExt
-# ^^^^^  ^^ ^^^^^^^^^^^^
-- name: namespace names
-  style: syntax.white
-  scope:
-  - entity.name.namespace.rust
-  - meta.import.rust
-
-- name: namespace names
-  style: i@syntax.white
-  scope:
-  - entity.name.type.rust
-  - entity.name.module.rust
-
-
-# #[tokio::test]
-# ^^^^^^^^^^^^^
-- name: attributes
-  style: i@yellow/a80
-  scope:
-  - punctuation.definition.attribute.rust
-  - punctuation.definition.attribute.rust
-  - meta.attribute.rust keyword.operator.assignment.equal.rust
-  - meta.attribute.rust keyword.operator.macro.dollar.rust
-  - meta.attribute.rust punctuation.brackets.round.rust
-  - meta.attribute.rust
-
-# PUNCTUATIONS!
-- name: punctuations
-  style: syntax.white/a60
-  scope:
-  - punctuation.brackets.round.rust
-  - punctuation.brackets.curly.rust
-  - punctuation.brackets.angle.rust
-  - punctuation.brackets.square.rust
-  - keyword.operator.access.dot.rust
-  - keyword.operator.question.rust
-  - keyword.operator.assignment.equal.rust
-  - keyword.operator.key-value.rust
-  - keyword.operator.range.rust
-  - punctuation.semi.rust
-  - punctuation.comma.rust
-  - keyword.operator.namespace.rust
-  # might be better to make it italic
-  - keyword.operator.arrow.skinny.rust
-  #
-  - keyword.operator.arrow.fat.rust
-
-# #[tokio::test("full")]
-#                ^^^^
-- name: attributes (string)
-  style: i@yellow
-  scope:
-  - meta.attribute.rust string.quoted.double.rust
-
-# Macros
-- name: macros$
-  style: i@white/a80
-  scope:
-  - keyword.operator.macro.dollar
-
-# - name: macros
-#   style: i@red
-#   scope:
-#   - meta.macro.metavariable.rust
-
-- name: macros
-  style: i@syntax.blue_lite
-  scope:
-  - meta.macro.metavariable.rust keyword.operator.macro.dollar
-  - variable.other.metavariable.name.rust
-
-- name: macros specifier
-  style: i@yellow/a60
-  scope:
-  - variable.other.metavariable.specifier.rust
-
-# Definitions?
-- name: rust/definitions
-  style: n@syntax.green
-  scope:
-  - meta.function.definition.rust
-  - keyword.declaration.struct.rust
-  - storage.type.rust
-  - storage.modifier.rust
-
-- name: rust/definitions
-  style: syntax.white/a90
-  scope:
-  - variable.other.property.rust
-
-# let mut recv_buf = [0u8; 32];
-#     ^^^
-- name: storage.modifier.mut.rust
-  style: i@syntax.green_lite
-  scope:
-  - source.rust storage.modifier.mut.rust
-
-# read_buf(&mut buf).await.unwrap();
-#          ^
-- name: storage.modifier.mut.rust
-  style: i@syntax.green
-  scope:
-  - keyword.operator.borrow.mut.rust
-
-# GENERAL MODIFIERS
-- name: modifiers
-  style: iu@syntax.green
-  scope:
-  # pub async fn main()
-  # ^^^
-  - keyword.other.pub.rust
-  # unsafe impl<T, U> Send for OwnedRwLockReadGuard<T, U>
-  #        ^^^^
-  - keyword.other.impl.rust
-
-# GENERAL SERIOUS MODIFIERS
-- name: unsafe
-  style: bi@syntax.red_lite
-  scope:
-  # unsafe impl<T, U> Send for OwnedRwLockReadGuard<T, U>
-  # ^^^^^^
-  - keyword.other.unsafe.rust
-  # async fn multi_pin() {
-  # ^^^^^
-  - keyword.other.async.rust
-
-# MOVE
-- name: unsafe
-  style: b@syntax.blue
-  scope:
-  - keyword.other.move.rust
-
-
-#  pub(crate) fn spawn_mandatory_blocking<F, R>(_f: F) -> Option<JoinHandle<R>>
-#     ^     ^
-- name: punctuation.brackets.round.rust
-  style: i@syntax.green
-  scope:
-  - source.rust keyword.other.pub.rust punctuation.brackets.round.rust
-
-#  pub(crate) fn spawn_mandatory_blocking<F, R>(_f: F) -> Option<JoinHandle<R>>
-#      ^^^^^
-- name: keyword.other.pub.scoped.rust
-  style: ui@syntax.yellow
-  scope:
-  - source.rust keyword.other.pub.scoped.rust
-
-
-
-# Types (String, Names, i64)
-# Self
-- name: types
-  style: syntax.yellow_lite/a80
-  scope:
-  - entity.name.type.rust
-  - source.rust entity.name.type
-  - variable.language.self.rust
-  - keyword.other.crate.rust
-
-- name: "&self"
-  style: syntax.yellow_lite/a80
-  scope:
-  - keyword.operator.borrow.self.rust
-
-# let n = 1 + 10_10_10 + 2_u64;
-#         ^^^^^^^^^^^^^^^^^
-- name: numbers & math operators
-  style: syntax.blue_lite
-  scope:
-  - keyword.operator.math.rust
-  - source.rust constant.numeric
-
+# Types ---------------------------------------------------------------------
 # let n = 1 + 10_10_10 + 2_u64;
 #                          ^^^
 - name: numbers types
@@ -230,23 +58,51 @@
   scope:
   - source.rust constant.numeric entity.name.type.numeric.rust
 
-# TODO: Switch to green
-# fn new_where<T>() -> T
-# where
-# ^^^^^
-#     T: Default,
-# {  T::default() }
-- name: where
-  style: uib@red
-  # style: ui@syntax.green
+- name: types
+  <<: *type
   scope:
-  - meta.function.definition.rust keyword.other.rust
+  - entity.name.type.rust
 
+- name: bool
+  style: u@syntax.blue
+  scope:
+  - constant.language.bool.rust
+
+
+
+# ~~~ Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- name: string/quotes
+  <<: *string_quotes
+  scope:
+  - punctuation.definition.string.rust
+
+- name: string/placeholder
+  <<: *string_placeholder
+  scope:
+  - punctuation.definition.interpolation.rust
+  - meta.interpolation.rust
 
 - name: string modifiers
   style: bi@green
   scope:
   - string.quoted.byte.raw.rust
+
+# Definitions ---------------------------------------------------------------
+
+- name: definitions
+  <<: *definition
+  scope:
+  - keyword.other.impl.rust
+  - keyword.other.fn.rust
+  - source.rust keyword.other.rust storage.type.rust
+  - storage.modifier.rust
+
+- name: definitions
+  <<: *name
+  scope:
+  - constant.other.caps.rust
+
 
 # let name = 1 + 2_u64;
 #     ^^^^
@@ -259,27 +115,14 @@
   - variable.other.rust
   - constant.other.caps.rust
 
-# # - name: rust/variables/self
-# #   style: i@syntax.yellow
-# #   scope:
-# #   - variable.language.self.rust
 
-
-
-
-# TODO: WTF???
-# - name: borrowing
-#   style: i@syntax.yellow_lite/a80
-#   scope:
-#   - keyword.operator.borrow.and.rust
-#   - punctuation.definition.lifetime.rust
-
-- name: borrowing (argument)
-  style: u@red
-  # TODO: FIX...
-  # style: syntax.yellow
+- name: rust/definitions
+  style: syntax.white/a90
+  # <<: *variable_name
   scope:
-  -  keyword.operator.borrow.and.rust
+  - variable.other.property.rust
+
+# Operators --------------------------------------------------------------------
 
 # *read_buf = buf;
 # ^
@@ -288,3 +131,190 @@
   scope:
   -  keyword.operator.dereference.rust
 
+
+- name: "operators"
+  # style: n@green
+  <<: *operator_default
+  scope:
+  - keyword.operator.access.dot.rust
+  - keyword.operator.question.rust
+  - keyword.operator.assignment.equal.rust
+  - keyword.operator.key-value.rust
+  - keyword.operator.range.rust
+  - keyword.operator.math.rust
+  - keyword.operator.namespace.rust
+
+
+# PUNCTUATIONS!
+- name: punctuations
+  style: n@syntax.white/a60
+  scope:
+  - punctuation.brackets.round.rust
+  - punctuation.brackets.curly.rust
+  - punctuation.brackets.angle.rust
+  - punctuation.brackets.square.rust
+  - keyword.operator.namespace.rust
+  - punctuation.semi.rust
+  - punctuation.comma.rust
+  - keyword.operator.namespace.rust
+  - keyword.operator.comparison.rust
+#   # might be better to make it italic
+  - keyword.operator.arrow.fat.rust
+
+# ~~~ Bitwise ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# TODO: bitwise (https://rustlabs.github.io/docs/rust101/bitwise_operators/)
+
+
+# Control Flow --------------------------------------------------------------
+
+# Control Flow
+# > loop, while for ... in ...,
+# >
+- name: rust/control_flow
+  style: syntax.red_lite
+  scope:
+  - keyword.control.rust
+  - keyword.other.in.rust
+
+# Functions -----------------------------------------------------------------
+
+# fn implementation_detail() {}“eq: HttpRequest) -> impl Responder {
+#                                                ^^
+- name: punctuations
+  style: i@syntax.white/a60
+  scope:
+  - keyword.operator.arrow.skinny.rust
+
+# OOP & Data Oriented Programming  ------------------------------------------
+- name: this
+  <<: *this
+  scope:
+  - variable.language.self.rust
+  - variable.language.super.rust
+  # - keyword.other.crate.rust
+
+# Types System --~~~~-----------------------------------------------------------
+
+# TODO(butuzov): where
+
+- name: Option & Result
+  style: i@green
+  scope:
+  - entity.name.type.option.rust
+  - entity.name.type.result.rust
+
+
+# ~~~ Generics ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: keyword.other.where.rust
+  style: i@syntax.green
+  scope: keyword.other.where.rust
+
+# Pointers ---------------------------------------------------------------------
+
+- name: borrowing
+  style: u@red
+  # TODO: This is temporary, so i can track existingcases.
+  # TODO: Borrowing within macros!
+  # style: n@syntax.yellow
+  scope:
+  - keyword.operator.borrow.and.rust
+
+- name: borrowing (argument in function definition)
+  style: i@syntax.yellow/a70
+  scope: meta.function.definition.rust keyword.operator.borrow.and.rust
+
+- name: borrowing (argument in function call)
+  style: i@syntax.white
+  scope: meta.function.call.rust keyword.operator.borrow.and.rust
+
+- name: "&self"
+  style: syntax.yellow_lite/a80
+  scope: keyword.operator.borrow.self.rust
+
+# Modifiers --------------------------------------------------------------------
+
+- name: modifiers
+  style: iu@syntax.green
+  scope:
+  # pub async fn main()
+  # ^^^
+  - keyword.other.pub.rust
+  # unsafe impl<T, U> Send for OwnedRwLockReadGuard<T, U>
+  #        ^^^^
+  - keyword.other.impl.rust
+
+#  pub(crate) fn spawn_mandatory_blocking<F, R>(_f: F) -> Option<JoinHandle<R>>
+#      ^^^^^
+- name: keyword.other.pub.scoped.rust
+  style: i@syntax.white/a80
+  scope:
+  - source.rust keyword.other.pub.scoped.rust
+
+#  pub(crate) fn spawn_mandatory_blocking<F, R>(_f: F) -> Option<JoinHandle<R>>
+#     ^     ^
+- name: punctuation.brackets.round.rust
+  style: i@syntax.green
+  scope:
+  - source.rust keyword.other.pub.rust punctuation.brackets.round.rust
+
+- name: unsafe
+  style: bi@syntax.red_lite
+  scope:
+  # unsafe impl<T, U> Send for OwnedRwLockReadGuard<T, U>
+  # ^^^^^^
+  - keyword.other.unsafe.rust
+  # async fn multi_pin() {
+  # ^^^^^
+  - keyword.other.async.rust
+
+
+# asyncify(move || builder.create(path)).await
+#          ^^^^
+- name: unsafe
+  style: b@red
+  scope:
+  - keyword.other.move.rust
+
+# read_buf(&mut buf).await.unwrap();
+#          ^
+- name: "&mut var"
+  style: i@syntax.green
+  scope: keyword.operator.borrow.mut.rust
+
+# let mut recv_buf = [0u8; 32];
+#     ^^^
+- name: storage.modifier.mut.rust
+  style: i@syntax.green_lite
+  scope:
+  - source.rust storage.modifier.mut.rust
+
+# Concurrency ---------------------------------------------------------------
+
+
+
+# Imports, Packages & Modules -----------------------------------------------
+# use std::io::Write;
+#     ^^^^^^^^^^^^^^
+# TODO: issue with ?
+- name: use punctuation
+  style: syntax.white
+  scope:
+  - meta.use.rust
+
+# use std::io::Write;
+# ^^^
+# use std::io::Write as somethingelse;
+# ^^^                ^^
+- name: import
+  style: syntax.red_lite
+  scope:
+  - meta.use.rust keyword.other.rust
+
+# tokio::io::AsyncReadExt
+# ^^^^^  ^^ ^^^^^^^^^^^^
+- name: namespace names
+  style: syntax.white
+  scope:
+  - entity.name.namespace.rust
+  - meta.import.rust
+  - entity.name.module.rust

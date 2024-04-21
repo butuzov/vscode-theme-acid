@@ -1,0 +1,4 @@
+- name: name
+  <<: *name
+  scope:
+  - support.type.property-name.json

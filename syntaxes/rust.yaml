@@ -53,13 +53,17 @@ patterns:
     name: keyword.other.in.rust
 
   - comment: property2
-    match: (\.)((?!await)[A-Za-z0-9_]+)(?=\.|\;|\))
+    match: (\.)((?!await)[A-Za-z_]{1}[A-Za-z0-9_]*)(?=\.|,|;|\)|\s)
     captures:
       1:
         name: keyword.operator.access.dot.rust
       2:
         name: variable.other.property.rust
 
+
+  - comment: async keyword
+    match: \bwhere\b
+    name: keyword.other.where.rust
 
   - comment: async keyword
     match: \basync\b

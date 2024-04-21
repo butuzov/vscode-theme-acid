@@ -1,0 +1,124 @@
+# NOTE(comments): Includes  inline comments, multiline comments, doc comments.
+
+
+# Sugar ---------------------------------------------------------------------
+x-decorators: &decorators
+  style: i@yellow
+
+# Comments ------------------------------------------------------------------
+x-comment: &comment
+  style: i@syntax.white/a30
+x-comment-text: &comment_text
+  style: i@syntax.white/a60
+
+# Types ---------------------------------------------------------------------
+type_tod: &type_todo                   # DONE
+  style: ui@red
+type: &type                             # DONE
+  style: syntax.yellow_lite/a80
+
+var_type_bool: &var_type_bool           # Bool
+  style: nu@syntax.blue
+var_type_number: &var_type_number       # Number
+  style: n@syntax.blue
+var_type_float: &var_type_float         # Float
+  style: syntax.violet
+var_type_nil: &var_type_nil             # nil / null / None
+  style: n@syntax.blue
+
+# ~~~ Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+string: &string                         # DONE
+  style: syntax.yellow_lite
+string_quotes: &string_quotes           # DONE
+  style: syntax.yellow
+string_placeholder: &string_placeholder # DONE
+  style: orange
+
+# TODO: ~~~ Other Language Constants ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+constant_language: &constant_language   # DONE
+  style: iub@syntax.blue
+
+# Definitions ---------------------------------------------------------------
+# Note: main definitions + variables.
+
+class_access_modifier: &class_access_modifier
+  style: ui@syntax.green/a80
+
+variable: &variable                     # DONE
+  style: syntax.blue_lite/a80
+
+# Composite Types ----------------------------------------------------------
+## ~~~ Maps/Dicts/Sets/Enums/Otro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Operators -----------------------------------------------------------------
+# TODO: fix me later.
+operator: &operators_todo                 # DONE
+  style: ibu@red
+
+punctuation_default: &punctuation_default #: !?:=.,
+  style: n@white
+
+operator_default: &operator_default      # DONE
+  style: n@white
+
+# ~~~ Logical ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+operator_logical: &operator_logical      # DONE
+  style: n@syntax.red_lite
+
+# ~~~ Math ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+operator_math: &operator_math            # DONE
+  <<: *var_type_number
+
+# ~~~ Bitwise ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+operator_bitwise: &operator_bitwise      # DONE
+  style: nb@syntax.green
+
+# Functions --------------------------------------------------------------------
+params: &params
+  style: "#c0e7f3"
+  settings:
+    fontStyle: italic
+
+# Control Flow -----------------------------------------------------------------
+
+
+# Functions -----------------------------------------------------------------
+definition: &definition                 # DONE
+  style: syntax.green_lite
+
+funcname: &name                     # DONE
+  style: syntax.blue_lite
+
+builtin: &builtin                      # DONE
+  style: "#fdc594"
+  # style: n@syntax.blue_lite
+
+# -> closures
+
+# OOP & Data Oriented Programming  ------------------------------------------
+this: &this                 # DONE
+  style: i@syntax.yellow
+
+class_name_inherited: &class_name_inherited
+  style: i@syntax.violet
+
+# Types System --~~~~---------------------------------------------------------
+# ~~~ Generics ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+# Go: Errors / Panics
+
+# Other keywords?
+
+# Pointers
+
+# Concurrency
+
+# Imports, Packages & Modules -----------------------------------------------
+
+import: &import                         # DONE
+  style: syntax.red_lite
+
+import_name: &import_name               # DONE
+  style: syntax.white

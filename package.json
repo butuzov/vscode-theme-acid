@@ -49,6 +49,20 @@
           "source.rust"
         ],
         "scopeName": "source.rust.alt"
+      },
+      {
+        "path": "./syntaxes/python.json",
+        "injectTo": [
+          "source.python"
+        ],
+        "scopeName": "source.python.alt"
+      },
+      {
+        "path": "./syntaxes/go.json",
+        "injectTo": [
+          "source.go"
+        ],
+        "scopeName": "source.go.alt"
       }
     ]
   },

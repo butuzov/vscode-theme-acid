@@ -1,0 +1,39 @@
+- name: debug
+  style: red/a80
+  scope: source.toml
+
+- name: headers
+  style: b@yellow
+  scope:
+  - support.type.property-name.table.toml
+  - support.type.property-name.array.toml
+  - punctuation.separator.dot.toml
+
+- name: keys
+  <<: *name
+  scope: support.type.property-name.toml
+
+# Comments ---------------------------------------------------------------------
+
+# # Lorem ipsum dolor sit amet.
+# ^
+- name: comments
+  <<: *comment
+  scope:
+  - punctuation.definition.comment.toml
+
+# # Lorem ipsum dolor sit amet.
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- name: comments text
+  style: syntax.white/a50
+  # <<: *comment
+  scope:
+  - comment.line.number-sign.toml
+
+# Types ------------------------------------------------------------------------
+
+# 2001-12-15T02:59:43.1Z
+# ^^^^^^^^^^^^^^^^^^^^^^
+- name: date
+  style: u@syntax.orange
+  scope: constant.other.time.date.toml

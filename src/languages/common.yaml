@@ -1,0 +1,207 @@
+- name: "illegal"
+  style: "#ff00ff"
+  scope:
+  - invalid.illegal
+
+# TODO: remove red.
+- name: punctuation
+  style: red
+  scope: punctuation
+
+# Comments ------------------------------------------------------------------
+
+- name: pubctuation.
+  <<: *comment
+  scope:
+  - punctuation.definition.comment
+
+- name: maybe text?
+  <<: *comment_text
+  scope:
+  - comment.line
+
+# Types ---------------------------------------------------------------------
+
+# ~~~ Numbers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- name: numbers
+  <<: *var_type_number
+  scope:
+  - constant.numeric
+  - constant.numeric.dec.python
+
+# ~~~ Bools ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: var/type/bool
+  <<: *var_type_bool
+  scope: constant.language.boolean
+
+# ~~~ Nulls ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: var/type/nil
+  <<: *var_type_nil
+  scope: constant.language.null
+
+# ~~~ Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: string
+  <<: *string
+  scope:
+  - string.unquoted
+  - string.quoted
+  - string.template
+
+- name: string/quotes
+  <<: *string_quotes
+  scope:
+  - punctuation.definition.string.begin
+  - punctuation.definition.string.end
+
+- name: string/placeholder
+  <<: *string_placeholder
+  scope: constant.character.format.placeholder
+
+- name: constant.character.escape
+  style: white
+  scope: constant.character.escape
+
+# ~~~ Other Language Constants ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: constant/language
+  <<: *constant_language
+  scope: constant.language
+
+# Definitions ------------------------------------------------------------------
+- name: variables
+  <<: *variable
+  scope: variable.other
+
+- name: definitions
+  <<: *definition
+  scope:
+  - keyword.function
+  - keyword.var
+  - keyword.const
+  - keyword.type
+  - keyword.declaration.type
+  - keyword.enum
+  - keyword.declaration.enum
+  - keyword.declaration.struct
+  - keyword.declaration.trait
+
+# Composite Types -----------------------------------------------------------
+
+# Operators -----------------------------------------------------------------
+- name: keyword.operator
+  <<: *operators_todo
+  scope:
+  - keyword.operator
+
+- name: "= / :"
+  <<: *operator_default
+  scope:
+  - keyword.operator.assignment
+  - keyword.operator.comparison
+
+
+# ~~~ Logical ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: or
+  <<: *operator_logical
+  scope:
+  - keyword.operator.logical
+
+# ~~~ Math ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- name: keyword.operator.arithmetic
+  <<: *operator_math
+  scope: keyword.operator.arithmetic
+
+# ~~~ Bitwise ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Control Flow --------------------------------------------------------------
+- name: if/elif/else, while (other variations)
+  style: syntax.red_lite
+  scope:
+  - keyword.control.flow
+  - keyword.control.go
+
+# Functions -----------------------------------------------------------------
+
+- name: function/definition
+  <<: *definition
+  scope: storage.type.function
+
+# TODO(functions): рознести по файлах пізніше
+- name: function/name
+  style: n@syntax.blue_lite
+  scope:
+  - entity.name.function
+  - source.python meta.function-call.generic.python
+
+- name: parameters
+  <<: *params
+  scope:
+  - variable.parameter.go
+  - variable.parameter.function.language.python
+
+# - name: parameter types
+#   style: uib@red
+#   scope:
+#   - meta.function.parameters
+
+- name: assignmnent var
+  style: uib@red
+  scope:
+  - variable.other.assignment.python
+
+# ~~~ Builtins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- name: function/builtin
+  <<: *builtin
+  scope: support.function.builtin
+
+- name: entity.name.function.support.builtin.numbers
+  <<: *var_type_number
+  scope: entity.name.function.support.builtin.numbers
+
+- name: entity.name.function.support.builtin.strings
+  <<: *string
+  scope: entity.name.function.support.builtin.strings
+
+# OOP & Data Oriented Programming  ------------------------------------------
+
+# - name: class
+#   <<: *class
+#   scope: storage.type.class
+
+# - name: class/name
+#   <<: *class_name
+#   scope: entity.name.type.class
+
+- name: class/name/inherited
+  <<: *class_name_inherited
+  scope: meta.class.inheritance.python
+
+# - name: "class/this"
+#   <<: *class_this
+#   scope:
+#   - variable.parameter.function.language.special.self
+#   - variable.language.special.self
+
+# - name: class/access/modifier
+#   <<: *class_access_modifier
+#   scope:
+#   - storage.modifier
+
+# Types System --~~~~--------------------------------------------------------
+
+- name: types
+  <<: *type
+  # settings: # fixme: remove after tests.
+    # fontStyle: underline
+  scope:
+  - entity.name.type
+
+# ~~~ Generics ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Imports, Packages & Modules -----------------------------------------------
+
+- name: import
+  <<: *import
+  scope:
+  - keyword.control.import

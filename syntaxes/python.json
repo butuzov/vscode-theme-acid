@@ -1,0 +1,113 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Python (extras)",
+    "scopeName": "source.python.alt",
+    "injectionSelector": "L:source.python",
+    "patterns": [
+        {
+            "include": "#language_constants"
+        },
+        {
+            "include": "#function_builtin"
+        },
+        {
+            "include": "#imports_tweaked"
+        }
+    ],
+    "repository": {
+        "imports_tweaked": {
+            "patterns": [
+                {
+                    "name": "import.statement.python",
+                    "match": "(?x)\n  (?<!\\#.*)\\b(from)\\b\\s+(\\.*)?([a-zA-Z0-9]+)\\b\\s+(?=import\\b\\s+)\n",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.import.from.python"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.import.periods.python"
+                        },
+                        "3": {
+                            "name": "entity.name.import.python"
+                        }
+                    }
+                },
+                {
+                    "name": "import.statement.python",
+                    "match": "(?x)\n    (import)\\b\\s\n    (\\.*)?\n    (\n      (\\*) |\n      ((?:((?:[a-zA-Z0-9]+)+)((,)\\s*)?)+) |\n        (\\()\n         ((?:((?:[a-zA-Z0-9]+)+)((,)\\s*)?)+)\n        (\\))\n\n    )\n",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.import.import.python"
+                        },
+                        "4": {
+                            "name": "punctuation.definition.import.all.python"
+                        },
+                        "5": {
+                            "name": "entity.name.import.python"
+                        },
+                        "6": {
+                            "name": "entity.name.import.python"
+                        },
+                        "9": {
+                            "name": "punctuation.definition.begin.bracket.round.python"
+                        },
+                        "10": {
+                            "name": "entity.name.import.python"
+                        },
+                        "11": {
+                            "name": "entity.name.import.python"
+                        }
+                    }
+                },
+                {
+                    "name": "import.statement.python",
+                    "match": "(?x)\n  (?<!\\#.*)((?<=(import).*)(\\b(as)\\b\\s+([a-zA-Z0-9]+)){1})\n",
+                    "captures": {
+                        "4": {
+                            "name": "keyword.control.import.as.python"
+                        },
+                        "5": {
+                            "name": "entity.name.import.python"
+                        }
+                    }
+                }
+            ]
+        },
+        "class_properties": {
+            "patterns": [
+                {
+                    "name": "variable.property.class.python",
+                    "match": "(?x)\n  (?<!\\#.*)                         # not with in comment\n  ((?!self)[a-z_]{1}[a-zA-Z0-9_]*)\n  (?=\\.)                            # Ends with .\n"
+                },
+                {
+                    "name": "variable.property.class.python",
+                    "match": "(?x)\n  (?<!\\#.*)\n  (?<=(\\.))\n  ((?!self)[a-z_]{1}[a-zA-Z0-9_]*)\n  \\b\n  (?!\\()\n"
+                }
+            ]
+        },
+        "function_builtin": {
+            "comment": "https://docs.python.org/3/library/functions.html#built-in-funcs",
+            "patterns": [
+                {
+                    "name": "support.function.builtin.python",
+                    "match": "(?x)\n  (?<!\\#.*)\n  (?<!\\.) \\b(\n  __import__| abs | aiter | all | anext | any | ascii | bin | bool |\n  bytearray | bytes | callable | chr | classmethod | compile | breakpoint |\n  delattr | dict | dir | divmod | enumerate | eval | exec | filter |\n  format | frozenset | getattr | globals | hasattr | hash | help | hex |\n  id | input | isinstance | issubclass | iter | len | list | locals |\n  map | max | memoryview | min | next | object | oct | open | ord | pow |\n  print | property | range | repr | reversed | round | set | setattr | zip |\n  slice | sorted | staticmethod | str | sum | super | tuple | type | vars\n  )\\b(?=\\()\n"
+                },
+                {
+                    "name": "entity.name.function.support.builtin.numbers.python",
+                    "match": "(?x)\n  (?<!\\.) \\b(complex | float | int )\\b(?=\\()\n"
+                }
+            ]
+        },
+        "language_constants": {
+            "match": "\\b((True|False)|(None))\\b",
+            "captures": {
+                "2": {
+                    "name": "constant.language.boolean.python"
+                },
+                "3": {
+                    "name": "constant.language.null.python"
+                }
+            }
+        }
+    }
+}

@@ -5,18 +5,54 @@
   style: syntax.red
   scope:
   - entity.other.document.begin.yaml
+
+- name: yaml/document
+  # ...
+  # ^^^
+  style: b@syntax.red
+  scope:
   - entity.other.document.end.yaml
 
-- name: yaml/name
-  style: syntax.blue_lite
+- name: keys
+  <<: *name
   scope: entity.name.tag.yaml
 
-- name: yaml/vat/type/date
-  style: u@syntax.blue_lite
+# Types ------------------------------------------------------------------------
+
+# 2001-12-15T02:59:43.1Z
+# ^^^^^^^^^^^^^^^^^^^^^^
+- name: var/type/date
+  style: u@syntax.orange
   scope: constant.other.timestamp.yaml
 
-- name: yaml/operator
-  style: syntax.green_lite
+# ~~~ Numbers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# BUG: this isn't working, somehow for hex values 0x123
+# TODO(butuzov): Add Suport for Scientific Notation:
+#  key: 1e+12
+- name: hex
+  <<: *var_type_number
+  # style: red
+  scope:
+  - source.yaml constant.numeric.integer.yaml
+
+# ~~~ Bools ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- name: yes and no or true oand false
+  <<: *var_type_bool
+  scope: constant.language.boolean.yaml
+
+# ~~~ Strings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# TODO(butuzov): add support for escaped \u263A or \x0d
+
+# see - name: constant.character.escape.go
+
+# Operators --------------------------------------------------------------------
+# *operator
+# ^
+- name: operator
+  style: b@syntax.green_lite
   scope:
   - punctuation.definition.anchor.yaml
   - punctuation.definition.alias.yaml
@@ -24,13 +60,21 @@
   - keyword.control.flow.block-scalar.literal.yaml
   - storage.modifier.chomping-indicator.yaml
   - constant.language.merge.yaml
+  - meta.flow-pair.explicit.yaml punctuation.definition.key-value.begin.yaml
+  - meta.flow-pair.explicit.yaml punctuation.separator.key-value.mapping.yaml
 
-- name: yaml/operator
-  style: i@syntax.white
+# *operator
+#  ^^^^^^^^
+- name: operator
+  style: b@syntax.green_lite
   scope:
   - entity.name.type.anchor.yaml
   - variable.other.alias.yaml
 
-- name:  yaml/tags
-  style: i@syntax.yellow
+# Functions --------------------------------------------------------------------
+
+# !include file.yaml
+# ^^^^^^^^
+- name: tags
+  style: ib@syntax.red_lite
   scope: storage.type.tag-handle.yaml
